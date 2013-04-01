@@ -12,6 +12,7 @@
 " Thanks:
 "           Amir Salihefendic(https://github.com/amix)
 "           cz848(https://github.com/cz848)
+"           skyl(https://github.com/skyl)
 "
 " General options
 "--------------------------
@@ -53,9 +54,6 @@ set ruler
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
 
 " When searching try to be smart about cases 
 set smartcase
@@ -118,3 +116,13 @@ set laststatus=2
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
+" Use system clipboard, not vim's buffer
+" With this you can copy/paste from/to system clipboard
+set clipboard=unnamedplus
+
+" Auto completion
+" -------------------------------
+" Only insert the longest common text of the matches
+set completeopt+=longest
+" try all words regardless of case
+set ignorecase
