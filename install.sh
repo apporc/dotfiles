@@ -4,6 +4,6 @@
 #git pull git://github.com/fholgado/minibufexpl.vim.git
 #git pull git://github.com/tpope/vim-pathogen.git
 
-mv lotus-vim ~/.lotus_vim
-mv ~/.lotus_vim/vimrc ~/.vimrc
+cp -r lotus-vim ~/.lotus_vim
+cp ~/.lotus_vim/vimrc ~/.vimrc
 
