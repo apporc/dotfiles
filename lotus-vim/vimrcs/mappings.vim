@@ -48,3 +48,6 @@ imap <F2> <ESC>:w<CR>i
 " goto definition with F12
 map <F12> <C-]>
 set cscopetag
+
+"Open a shell splitwindow
+map <F1> :belowright 10split<CR>:ConqueTermSplit bash<CR>

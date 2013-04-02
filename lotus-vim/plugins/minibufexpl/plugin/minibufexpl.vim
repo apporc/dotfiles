@@ -374,7 +374,7 @@ if !exists('g:miniBufExplSortBy')
 endif
 
 if !exists('g:statusLineText')
-  let g:statusLineText = "-MiniBufExplorer-"
+  let g:statusLineText = ""
 endif
 
 " Variable used to pass maxTabWidth info between functions

@@ -122,7 +122,9 @@ set clipboard=unnamedplus
 
 " Auto completion
 " -------------------------------
+"
 " Only insert the longest common text of the matches
 set completeopt+=longest
+
 " try all words regardless of case
 set ignorecase
