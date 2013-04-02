@@ -50,4 +50,4 @@ map <F12> <C-]>
 set cscopetag
 
 "Open a shell splitwindow
-map <F1> :belowright 10split<CR>:ConqueTermSplit bash<CR>
+map <F1> :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
