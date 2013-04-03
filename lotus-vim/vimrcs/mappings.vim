@@ -25,7 +25,7 @@ map <C-l> <C-W>l
 "noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Toggle paste mode on and off
-map <F3> :setlocal paste!<cr>
+map <F9> :setlocal paste!<cr>
 
 " other map
 nmap <tab> v>
@@ -42,12 +42,15 @@ cnoremap <c-p>  <up>
 cnoremap    <esc><c-b> <s-left>
 cnoremap    <esc><c-f> <s-right>
 " in normal mode F2 will save the file
-nmap <F2> :w<CR>
+nmap <F3> :w<CR>
 " in insert mode F2 will exit insert, save, enters insert again
-imap <F2> <ESC>:w<CR>i
+imap <F3> <ESC>:w<CR>i
 " goto definition with F12
-map <F12> <C-]>
+map <silent> <F12> <C-]>
 set cscopetag
 
+" map F4 to save and close all split windows
+map <F4> :wq<CR>
+
 "Open a shell splitwindow
-map <F1> :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
+map <F2> :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
