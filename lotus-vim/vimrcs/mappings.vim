@@ -42,9 +42,9 @@ cnoremap <c-p>  <up>
 cnoremap    <esc><c-b> <s-left>
 cnoremap    <esc><c-f> <s-right>
 " in normal mode F2 will save the file
-nmap <F3> :w<CR>
+nmap <F2> :w<CR>
 " in insert mode F2 will exit insert, save, enters insert again
-imap <F3> <ESC>:w<CR>i
+imap <F2> <ESC>:w<CR>i
 " goto definition with F12
 map <silent> <F12> <C-]>
 set cscopetag
@@ -53,4 +53,4 @@ set cscopetag
 map <F4> :wq<CR>
 
 "Open a shell splitwindow
-map <F2> :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
+map <F3> :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
