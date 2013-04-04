@@ -14,3 +14,4 @@ autocmd Filetype sh silent source ~/.lotus_vim/vimrcs/lan/sh.vim
 autocmd Filetype sh silent source ~/.lotus_vim/vimrcs/lan/javascript.vim
 autocmd Filetype sh silent source ~/.lotus_vim/vimrcs/lan/html.vim
 autocmd Filetype sh silent source ~/.lotus_vim/vimrcs/lan/css.vim
+autocmd Filetype sh silent source ~/.lotus_vim/vimrcs/lan/vim.vim

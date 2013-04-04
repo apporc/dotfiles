@@ -21,7 +21,7 @@ Thanks:
         skyl(https://github.com/skyl)
 
 Languages supported: 
-        c, python, javascript, html, css
+        c, python, javascript, html, css, vim
 
 Plugins used:
         conque
