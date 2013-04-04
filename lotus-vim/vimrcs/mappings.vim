@@ -1,9 +1,6 @@
 " Mappings
 " ---------------------------
 "
-" Visual mode pressing * or # searches for the current selection
-vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 "" Treat long lines as break lines (useful when moving around in them)
 map j gj
@@ -25,7 +22,7 @@ map <C-l> <C-W>l
 "noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Toggle paste mode on and off
-map <F3> :setlocal paste!<cr>
+map <F9> :setlocal paste!<cr>
 
 " other map
 nmap <tab> v>
@@ -44,15 +41,23 @@ cnoremap    <esc><c-f> <s-right>
 " in normal mode F2 will save the file
 nmap <F2> :w<CR>
 " in insert mode F2 will exit insert, save, enters insert again
-imap <F2> <ESC>:w<CR>i
+imap <F2> <ESC>:w<CR>
 " goto definition with F12
-map <F12> <C-]>
+map <silent> <F12> <C-]>
 set cscopetag
 
+" map F4 to save and close all split windows
+map <F4> :wq<CR>
+
 "Open a shell splitwindow
-map <F1> :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
+map <F3> :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
+
+" Visual mode pressing * or # searches for the current selection
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
+
