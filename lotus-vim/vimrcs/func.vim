@@ -49,3 +49,4 @@ function! JavaScriptFold()
     endfunction
     setl foldtext=FoldText()
 endfunction
+

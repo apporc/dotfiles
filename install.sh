@@ -1,9 +1,4 @@
-#cd lotus-vim/plugins/
-#git pull git://github.com/vim-scripts/Tagbar.git
-#git pull git://github.com/scrooloose/nerdtree.git
-#git pull git://github.com/fholgado/minibufexpl.vim.git
-#git pull git://github.com/tpope/vim-pathogen.git
-
+#Lotus vimrc installation script
 
 echo "Installing lotus vimrc."
 if [ -e ~/.vimrc ];then
