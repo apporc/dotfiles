@@ -118,7 +118,10 @@ set laststatus=2
 
 " Use system clipboard, not vim's buffer
 " With this you can copy/paste from/to system clipboard
-set clipboard=unnamedplus
+" First make sure your vim support clipboard option, with 'vim --version|grep clipboard'
+" It should have +clipboard and +xterm_clipboard
+" With Ubuntu, you may need to install vim-gnome instead of the default vim package.
+set clipboard=unnamed
 
 " Auto completion
 " -------------------------------
