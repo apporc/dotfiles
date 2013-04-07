@@ -50,8 +50,8 @@ imap <F2> <ESC>:w<CR>
 map <silent> <F12> <C-]>
 set cscopetag
 
-" map F4 to save and close all split windows
-map <F4> :wq<CR>
+" map F4 to save and close current buffer
+map <F4> :w<CR>:bd<CR>
 
 "Open a shell splitwindow
 map <F3> :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
