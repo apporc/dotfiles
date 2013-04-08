@@ -26,6 +26,9 @@ set nocompatible
 " intelligent comments
 set autowrite
 
+" allow mouse
+set mouse=a
+
 " Enable filetype plugins
 filetype plugin on
 filetype indent on

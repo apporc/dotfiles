@@ -28,3 +28,11 @@ Plugins used:
         minibufexplorer
         nerdtree
         Tagbar
+        vim-powerline
+
+
+NOTE:
+1. on ubuntu, install vim-gnome or compile vim from source code to get clipboard support 
+2. if you want to use fancy mode for powerline, then config your patched font and change "unicode" to "fancy" in
+vimrc/plugins/powerline.vim
+
