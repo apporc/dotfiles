@@ -53,9 +53,6 @@ set cscopetag
 " map F4 to save and close current buffer
 map <F4> :w<CR>:bd<CR>
 
-"Open a shell splitwindow
-map <F3> :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
-
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -64,4 +61,7 @@ let g:mapleader = ","
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
+
+"Open a shell splitwindow
+map <buffer> <F3> :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
 

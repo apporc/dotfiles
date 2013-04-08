@@ -19,7 +19,7 @@ if [ -e ~/.vimrc ];then
         mv -f ~/.lotus_vim ~/.vimbackup
     fi
 fi
-
+#aptitude install python-fontforge vim-gnome
 echo "Copying new vimrc."
 cp -r lotus-vim ~/.lotus_vim
 cp ~/.lotus_vim/vimrc ~/.vimrc

@@ -3,3 +3,6 @@ set omnifunc=javascriptcomplete#CompleteJS
 call JavaScriptFold()
 setl fen
 setl nocindent
+silent source ~/.lotus_vim/vimrcs/lan/ylanmap.vim
+
+
