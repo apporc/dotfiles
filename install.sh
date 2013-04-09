@@ -25,9 +25,9 @@ if [ -z "$fancy" -o "$fancy" == 'y' -o "$fancy" == 'Y' ];then
         mkdir ~/.fonts
     fi
     cd ~/.fonts
-    python ${LOTUS_PWD}/lotus-vim/plugins/vim-powerline/fontpatcher/fontpatcher $font
+    python ~/.lotus_vim/plugins/vim-powerline/fontpatcher/fontpatcher $font
     fc-cache -vf ~/.fonts
-    sed -i 's/unicode/fancy/g' ${LOTUS_PWD}/lotus-vim/vimrcs/plugins/powerline.vim
+    sed -i 's/unicode/fancy/g' ~/.lotus_vim/vimrcs/plugins/powerline.vim
     echo "Don't forget to change your terminal font to [your fontname]"
     echo "And add 'set guifont=[your fontname]' to ~/.lotus_vim/my_configs.vim"
 fi
@@ -66,12 +66,12 @@ install_vim_gnome
 
 install_fontforge
 
-activate_fancy_powerline
-
 backup_original_vimrc 
 
 cp -r ${LOTUS_PWD}/lotus-vim ~/.lotus_vim
 cp ~/.lotus_vim/vimrc ~/.vimrc
+
+activate_fancy_powerline
 
 echo "======================================================="
 echo "Done."
