@@ -15,10 +15,10 @@ nmap <leader>p <ESC>:MBEbp<CR>
 "
 "" switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
 for buffer_no in range(1, 9)
-  execute "nmap <Leader>" . buffer_no . " :b" . buffer_no . "\<CR>"
+  execute "nmap <Leader>" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
 endfor
 
 " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
 for buffer_no in range(10, 100)
-  execute "nmap <Leader>0" . buffer_no . " :b" . buffer_no . "\<CR>"
+  execute "nmap <Leader>0" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
 endfor

@@ -44,8 +44,10 @@ map <F9> :setlocal paste!<cr>
 
 " in normal mode F2 will save the file
 nmap <F2> :w<CR>
-" in insert mode F2 will exit insert, save, enters insert again
+" in insert mode F2 will exit insert, save
 imap <F2> <ESC>:w<CR>
+" in visual mode F2 will exit visual mode, save
+vmap <F2> <ESC>:W<CR>
 " goto definition with F12
 map <silent> <F12> <C-]>
 set cscopetag
@@ -55,8 +57,8 @@ map <F4> :w<CR>:bd<CR>
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = ' '
+let g:mapleader = ' '
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
