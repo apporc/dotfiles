@@ -58,7 +58,6 @@ map <F4> :w<CR>:bd<CR>
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ' '
-let g:mapleader = ' '
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f', '')<CR>

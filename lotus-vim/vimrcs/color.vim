@@ -1,14 +1,15 @@
-" Color
+"unicode Color
 " -----------------------------
 " Enable syntax highlighting
 syntax on
 
 try
-    colorscheme desert
+    colorscheme delek
 catch
+    colorscheme default
 endtry
 
-set background=dark
+" set background=dark
 
 " Set number of colors
 set t_Co=256
