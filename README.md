@@ -24,11 +24,12 @@ Languages supported:
         c, python, javascript, html, css, vim
 
 Plugins used:
-        conque
-        minibufexplorer
-        nerdtree
-        Tagbar
-        vim-powerline
+        git://github.com/vim-scripts/Tagbar.git
+        git://github.com/scrooloose/nerdtree.git
+        git://github.com/fholgado/minibufexpl.vim.git
+        git://github.com/tpope/vim-pathogen.git
+        https://github.com/Lokaltog/vim-powerline.git
+        https://github.com/vim-scripts/Conque-Shell.git
 
 
 NOTE:
