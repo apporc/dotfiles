@@ -16,9 +16,9 @@ Version:
         0.1
 
 Thanks:
-        Amir Salihefendic(https://github.com/amix)
-        cz848(https://github.com/cz848)
-        skyl(https://github.com/skyl)
+        Amir Salihefendic(https://github.com/amix)</br>
+        cz848(https://github.com/cz848)</br>
+        skyl(https://github.com/skyl)</br>
 
 Languages supported: 
         c, python, javascript, html, css, vim
