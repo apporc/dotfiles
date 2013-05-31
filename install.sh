@@ -1,21 +1,41 @@
 #Lotus vimrc installation script
 #Author: apporc
-#NOTE: If you just want to update, run ./install.sh -quiet
+#NOTE: If you just want to update, run ./install.sh -q
 
 LOTUS_PWD=$(pwd)
 quiet_install=0
+os='ubuntu'
+
+usage () {
+    echo "Usage: $0 [-q] [-o [OS]]"
+    echo "-q    Be quietly, if it is not the first time you install this vimrc."
+    echo "-o    The operating system name, supported now including centos, ubuntu, fedora, redhat, debian, gentoo."
+}
 
 install_vim_gnome () {
     read -p "Do you want this script to install vim-gnome?(Y/n)" gnome
     if [ -z "$gnome" -o "$gnome" == 'y' -o "$gnome" == 'Y' ];then
-        sudo aptitude install vim-gnome
+        if [ $os == 'ubuntu' -o $os == 'debian' ];then
+            sudo aptitude install vim-gnome
+        elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
+            sudo yum install vim
+        elif [ $os == 'gentoo' ];then
+            sudo emerge vim
+        fi
     fi
 }
+
 
 install_fontforge () {
     read -p "Do you want this script to install python-fontforge?(Y/n)" fontforge
     if [ -z "$fontforge" -o "$fontforge" == 'y' -o "$fontforge" == 'Y' ];then
-        sudo aptitude install python-fontforge
+        if [ $os == 'ubuntu' -o $os == 'debian' ];then
+            sudo aptitude install python-fontforge
+        elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
+            sudo yum install fontforge
+        elif [ $os == 'gentoo' ];then
+            emerge python-fontforge
+        fi
     fi
 }
 
@@ -66,12 +86,14 @@ fi
 }
 
 parse_opt () {
-    if [ $# -ne 1 ];then
-        return 0
-    fi
-    if [ $1 == '-quiet' ];then
-        quiet_install=1
-    fi
+    while getopts "qo:" opt
+    do
+        case $opt in
+            h) usage;exit 0;;
+            o) os=$OPTARG;;
+            q) quiet_install=1;;
+        esac
+    done
 }
 
 quiet_install () {
@@ -84,11 +106,6 @@ quiet_install () {
 }
 
 first_install() {
-    read -p "This script is tend to work only on ubuntu, want to continue?(Y/n)" ubuntu
-    if [ "$ubuntu" == 'n' -o "$ubuntu" == 'N' ];then
-        exit
-    fi
-    echo "Ok, let's begin."
     echo "BTW, please input your password when you are asked to."
     echo "======================================================="
 
@@ -96,7 +113,7 @@ first_install() {
 
     install_fontforge
 
-    backup_original_vimrc 
+    backup_original_vimrc
 
     cp -r ${LOTUS_PWD}/lotus-vim ~/.lotus_vim
     cp ~/.lotus_vim/vimrc ~/.vimrc
