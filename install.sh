@@ -86,7 +86,7 @@ fi
 }
 
 parse_opt () {
-    while getopts "qo:" opt
+    while getopts "hqo:" opt
     do
         case $opt in
             h) usage;exit 0;;
