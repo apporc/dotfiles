@@ -3,7 +3,9 @@ git submodule add git://github.com/scrooloose/nerdtree.git
 git submodule add git://github.com/fholgado/minibufexpl.vim.git
 git submodule add git://github.com/tpope/vim-pathogen.git
 git submodule add https://github.com/Lokaltog/vim-powerline.git
-git submodule add https://github.com/vim-scripts/Conque-Shell.git
+#BAD#git submodule add https://github.com/vim-scripts/Conque-Shell.git
+git submodule add https://github.com/apporc/Conque-Shell.git
+
 
 When you clone this lotus-vim repo, you should run:
 git submodule init
