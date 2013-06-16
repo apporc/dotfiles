@@ -10,6 +10,3 @@
 [submodule "lotus-vim/plugins/vim-powerline"]
 	path = lotus-vim/plugins/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
-[submodule "lotus-vim/plugins/Conque-Shell"]
-	path = lotus-vim/plugins/Conque-Shell
-	url = https://github.com/apporc/Conque-Shell.git
