@@ -13,6 +13,3 @@
 [submodule "lotus-vim/plugins/Conque-Shell"]
 	path = lotus-vim/plugins/Conque-Shell
 	url = https://github.com/apporc/Conque-Shell.git
-[submodule "Conque-Shell"]
-	path = Conque-Shell
-	url = https://github.com/apporc/Conque-Shell.git
