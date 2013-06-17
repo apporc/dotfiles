@@ -13,3 +13,6 @@
 [submodule "lotus-vim/plugins/Conque-Shell"]
 	path = lotus-vim/plugins/Conque-Shell
 	url = https://github.com/apporc/Conque-Shell.git
+[submodule "lotus-vim/plugins/Indent-Guides"]
+	path = lotus-vim/plugins/Indent-Guides
+	url = https://github.com/vim-scripts/Indent-Guides.git
