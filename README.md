@@ -2,7 +2,7 @@
 Just another vimrc.
   
 #####Maintainer:  
-apporc(https://github.com/apporc)
+[apporc](https://github.com/apporc)  
 appleorchard2000 at gmail.com  
   
 #####Thanks:
@@ -22,7 +22,7 @@ c, python, javascript, html, css, vim
 * [Conque-Shell](https://github.com/apporc/Conque-Shell.git)
 * [Indent-Guides](https://github.com/vim-scripts/Indent-Guides.git)
 
-#####Shotcurts:
+#####Shotcuts:
 
     1.<F7> open NerdTree window.
     2.<F8> open Tagbar window.
