@@ -32,7 +32,7 @@ c, python, javascript, html, css, vim
     4.<F12> jump to the definition of function or else.
     5.<F5> refresh tags.
     6.Leader key is <Space>.
-    7.<Space>n/p for next/previous minibufexplorer tab, <Space>[No.n] for No.n tab(n<10), <Space>[0No.n] for No.n tab(n>=10).
+    7.<Space>n/p for next/previous minibufexplorer tab, <Space>[n(n<10)/0n(n>=10)] for No.n tab.
     8.<F2> save file, <F4> save and close current buffer.
     9.In visual mode, * or # to search.
     10.In normal/visual mode, <tab> and <s-tab> to tab line(try it).
