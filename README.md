@@ -1,5 +1,6 @@
 #lotus-vimrc
 Just another vimrc, there is an install.sh, see  
+
     ./install.sh -h
   
 #####Maintainer:  
