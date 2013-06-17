@@ -1,5 +1,6 @@
 #lotus-vimrc
-Just another vimrc.
+Just another vimrc, there is an install.sh, see  
+    ./install.sh -h
   
 #####Maintainer:  
 [apporc](https://github.com/apporc)  
@@ -34,7 +35,8 @@ c, python, javascript, html, css, vim
     8.<F2> save file, <F4> save and close current buffer.
     9.In visual mode, * or # to search.
     10.In normal/visual mode, <tab> and <s-tab> to tab line(try it).
-    11.For more, see mappings.vim and lan/ plugins/.
+    11.<Ctrl-P> to autocomplete.
+    12.For more, see mappings.vim and lan/ plugins/.
   
 #####Screenshots:  
   ![Screenshot 1](https://lh4.googleusercontent.com/-cY7RcdUpwYg/Ub6QpXW-9OI/AAAAAAAAEPM/D1BS2g560H8/w1118-h640-no/Screenshot-2.png)
