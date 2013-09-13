@@ -50,7 +50,6 @@ imap <F2> <ESC>:w<CR>
 vmap <F2> <ESC>:W<CR>
 " goto definition with F12
 map <silent> <F12> <C-]>
-set cscopetag
 
 " map F4 to save and close current buffer
 map <F4> :w<CR>:bd<CR>

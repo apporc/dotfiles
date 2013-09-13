@@ -43,13 +43,16 @@ install_fontforge () {
 }
 
 patch_font () {
-    read -p "Give you the font path you want to use. (eg, /usr/share/fonts/truetype/ubuntu-font-family/Ubuntu-R.ttf)" font
-    if [ ! -d ~/.fonts ];then
-        mkdir ~/.fonts
+    read -p "Give me the font path you want to use. (eg, /usr/share/fonts/truetype/ubuntu-font-family/Ubuntu-R.ttf)" font
+    if [ -n $font ]
+    then
+        if [ ! -d ~/.fonts ];then
+            mkdir ~/.fonts
+        fi
+        cd ~/.fonts
+        python ~/.lotus_vim/plugins/vim-powerline/fontpatcher/fontpatcher $font
+        fc-cache -vf ~/.fonts
     fi
-    cd ~/.fonts
-    python ~/.lotus_vim/plugins/vim-powerline/fontpatcher/fontpatcher $font
-    fc-cache -vf ~/.fonts
 }
 
 activate_fancy_powerline () {
@@ -117,6 +120,7 @@ update_submodule () {
 
 install_pycscope () {
     if [ -d ~/.lotus_vim/plugins/pycscope ]
+    then
         cd ~/.lotus_vim/plugins/pycscope
         sudo python setup.py install
         cd -
@@ -125,7 +129,7 @@ install_pycscope () {
 
 
 first_install () {
-    if [ ! -d $LOTUS_PWD/lotus-vim/plugins/nerdtree ]
+    if [ ! -e $LOTUS_PWD/lotus-vim/plugins/nerdtree/README.markdown ]
     then
         echo "Plugins not downloaded, downloading it now."
         update_submodule
@@ -154,6 +158,7 @@ first_install () {
 
 
 #main begins here.
+#TODO don't ask those stupid questions, add options for them here.
 parse_opt $@
 
 if [ $quiet_install -eq 1 ];then
