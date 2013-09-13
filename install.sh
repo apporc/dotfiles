@@ -44,7 +44,7 @@ install_fontforge () {
 
 patch_font () {
     read -p "Give me the font path you want to use. (eg, /usr/share/fonts/truetype/ubuntu-font-family/Ubuntu-R.ttf)" font
-    if [ -n $font ]
+    if [ "l$font" != "l" ]
     then
         if [ ! -d ~/.fonts ];then
             mkdir ~/.fonts
