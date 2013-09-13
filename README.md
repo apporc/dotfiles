@@ -13,7 +13,7 @@ appleorchard2000 at gmail.com
 [skyl](https://github.com/skyl)  
 
 #####Languages supported:  
-c, python, javascript, html, css, vim  
+c, python, javascript, html, css, vim, php
 
 #####Plugins used:  
 * [Tagbar](https://github.com/vim-scripts/Tagbar.git)
@@ -23,6 +23,9 @@ c, python, javascript, html, css, vim
 * [vim-powerline](https://github.com/Lokaltog/vim-powerline.git)
 * [Conque-Shell](https://github.com/apporc/Conque-Shell.git)
 * [Indent-Guides](https://github.com/vim-scripts/Indent-Guides.git)
+* [cscope](https://github.com/vim-scripts/cscope.vim.git)
+* [pycscope](https://github.com/portante/pycscope.git)
+* [cscope_maps](https://github.com/chazy/cscope_maps.git)
 
 #####Shotcuts:
 
@@ -36,7 +39,7 @@ c, python, javascript, html, css, vim
     8.<F2> save file, <F4> save and close current buffer.
     9.In visual mode, * or # to search.
     10.In normal/visual mode, <tab> and <s-tab> to tab line(try it).
-    11.<Ctrl-P> to autocomplete.
+    11.<Ctrl-N> or <Ctrl-P> to autocomplete.
     12.For more, see mappings.vim and lan/ plugins/.
   
 #####Screenshots:  
@@ -44,7 +47,9 @@ c, python, javascript, html, css, vim
   ![Screenshot 2](https://lh6.googleusercontent.com/-COF7SB3qhvI/Ub6TSK7z4qI/AAAAAAAAEP8/21E69UwDBRY/w1118-h640-no/Screenshot-3.png)
 
 #####NOTE:  
-1. on ubuntu, install vim-gnome or compile vim from source code to get clipboard support  
-2. if you want to use fancy mode for powerline, then config your patched font and change "unicode" to "fancy" in  
+1. you need to run "git submodule init && git submodule update" at the 
+top of git's working tree to sync those vim plugins at first
+2. on ubuntu, install vim-gnome or compile vim from source code to get clipboard support  
+3. if you want to use fancy mode for powerline, then config your patched font and change "unicode" to "fancy" in  
 vimrc/plugins/powerline.vim  
 

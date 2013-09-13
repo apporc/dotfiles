@@ -7,6 +7,7 @@ au BufNewFile,BufRead *.sh setf <buffer> sh
 au BufNewFile,BufRead *.js setf <buffer> javascript
 au BufNewFile,BufRead *.html setf <buffer> html
 au BufNewFile,BufRead *.css setf <buffer> css
+au BufNewFile,BufRead *.php setf <buffer> php
 
 autocmd Filetype c silent source ~/.lotus_vim/vimrcs/lan/c.vim
 autocmd Filetype python silent source ~/.lotus_vim/vimrcs/lan/python.vim
@@ -17,3 +18,4 @@ autocmd Filetype css silent source ~/.lotus_vim/vimrcs/lan/css.vim
 autocmd Filetype vim silent source ~/.lotus_vim/vimrcs/lan/vim.vim
 autocmd Filetype tagbar silent source ~/.lotus_vim/vimrcs/lan/tagbar.vim
 autocmd Filetype nerdtree silent source ~/.lotus_vim/vimrcs/lan/nerdtree.vim
+autocmd Filetype php silent source ~/.lotus_vim/vimrcs/lan/php.vim

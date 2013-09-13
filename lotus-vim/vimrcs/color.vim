@@ -3,11 +3,8 @@
 " Enable syntax highlighting
 syntax on
 
-try
-    colorscheme delek
-catch
-    colorscheme default
-endtry
+" The most comfortable colorscheme in fact is default.
+colorscheme default
 
 " set background=dark
 

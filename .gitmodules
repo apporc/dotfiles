@@ -16,3 +16,9 @@
 [submodule "lotus-vim/plugins/Indent-Guides"]
 	path = lotus-vim/plugins/Indent-Guides
 	url = https://github.com/vim-scripts/Indent-Guides.git
+[submodule "lotus-vim/plugins/cscope.vim"]
+	path = lotus-vim/plugins/cscope.vim
+	url = https://github.com/vim-scripts/cscope.vim.git
+[submodule "lotus-vim/plugins/pycscope"]
+	path = lotus-vim/plugins/pycscope
+	url = https://github.com/portante/pycscope.git

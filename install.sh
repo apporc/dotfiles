@@ -5,6 +5,9 @@
 LOTUS_PWD=$(pwd)
 quiet_install=0
 os='ubuntu'
+APT=apt-get
+YUM=yum
+EMERGE=emerge
 
 usage () {
     echo "Usage: $0 [-q] [-o [OS]]"
@@ -16,11 +19,11 @@ install_vim_gnome () {
     read -p "Do you want this script to install vim-gnome?(Y/n)" gnome
     if [ -z "$gnome" -o "$gnome" == 'y' -o "$gnome" == 'Y' ];then
         if [ $os == 'ubuntu' -o $os == 'debian' ];then
-            sudo aptitude install vim-gnome
+            sudo ${APT} -y install vim-gnome
         elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
-            sudo yum install vim
+            sudo ${YUM} install -y vim
         elif [ $os == 'gentoo' ];then
-            sudo emerge vim
+            sudo ${EMERGE} vim
         fi
     fi
 }
@@ -30,11 +33,11 @@ install_fontforge () {
     read -p "Do you want this script to install python-fontforge?(Y/n)" fontforge
     if [ -z "$fontforge" -o "$fontforge" == 'y' -o "$fontforge" == 'Y' ];then
         if [ $os == 'ubuntu' -o $os == 'debian' ];then
-            sudo aptitude install python-fontforge
+            sudo ${APT} -y install python-fontforge
         elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
-            sudo yum install fontforge
+            sudo ${YUM} install -y fontforge
         elif [ $os == 'gentoo' ];then
-            emerge python-fontforge
+            ${EMERGE} python-fontforge
         fi
     fi
 }
@@ -105,7 +108,29 @@ quiet_install () {
 
 }
 
-first_install() {
+update_submodule () {
+    cd $LOTUS_PWD
+    git submodule init
+    git submodule update
+    cd -
+}
+
+install_pycscope () {
+    if [ -d ~/.lotus_vim/plugins/pycscope ]
+        cd ~/.lotus_vim/plugins/pycscope
+        sudo python setup.py install
+        cd -
+    fi
+}
+
+
+first_install () {
+    if [ ! -d $LOTUS_PWD/lotus-vim/plugins/nerdtree ]
+    then
+        echo "Plugins not downloaded, downloading it now."
+        update_submodule
+    fi
+
     echo "BTW, please input your password when you are asked to."
     echo "======================================================="
 
@@ -117,6 +142,8 @@ first_install() {
 
     cp -r ${LOTUS_PWD}/lotus-vim ~/.lotus_vim
     cp ~/.lotus_vim/vimrc ~/.vimrc
+
+    install_pycscope 
 
     activate_fancy_powerline -patchfont
 
