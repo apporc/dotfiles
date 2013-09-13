@@ -77,7 +77,8 @@ if [ -e ~/.vimrc ];then
         echo "You'v already had a vimbackup dir,"
         read -p "would you like to delete it(Y/n)?" answer
         if [ "$answer" != 'n' -a "$answer" != 'N' ];then
-            rm -rf ~/.vimbackup
+            #For the pycscope, we need to be root here.
+            sudo rm -rf ~/.vimbackup
         else
             echo "Then please backup it somewhere else yourself."
             exit
