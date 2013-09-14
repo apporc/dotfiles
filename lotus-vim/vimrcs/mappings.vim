@@ -40,7 +40,8 @@ autocmd BufReadPost *
 "noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Toggle paste mode on and off
-map <F9> :setlocal paste!<cr>
+" Can't map <F9> in imap, because when paste option is on, imap is disabled.
+map <F9> :setlocal paste!<CR>
 
 " in normal mode F2 will save the file
 nmap <F2> :w<CR>
