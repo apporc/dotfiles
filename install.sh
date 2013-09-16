@@ -129,6 +129,16 @@ install_pycscope () {
 }
 
 
+install_cscope () {
+    if [ $os == 'ubuntu' -o $os == 'debian' ];then
+        sudo ${APT} -y install cscope
+    elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
+        sudo ${YUM} install -y cscope
+    elif [ $os == 'gentoo' ];then
+        sudo ${EMERGE} cscope
+    fi
+}
+
 first_install () {
     if [ ! -e $LOTUS_PWD/lotus-vim/plugins/nerdtree/README.markdown ]
     then
@@ -149,6 +159,7 @@ first_install () {
     cp ~/.lotus_vim/vimrc ~/.vimrc
 
     install_pycscope 
+    install_cscope
 
     activate_fancy_powerline -patchfont
 
