@@ -139,6 +139,15 @@ install_cscope () {
     fi
 }
 
+install_setuptools () {
+if [ $os == 'ubuntu' -o $os == 'debian' ];then
+        sudo ${APT} -y install python-setuptools
+    elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
+        sudo ${YUM} install -y python-setuptools
+    elif [ $os == 'gentoo' ];then
+        sudo ${EMERGE} python-setuptools
+    fi
+}
 first_install () {
     if [ ! -e $LOTUS_PWD/lotus-vim/plugins/nerdtree/README.markdown ]
     then
@@ -158,6 +167,7 @@ first_install () {
     cp -r ${LOTUS_PWD}/lotus-vim ~/.lotus_vim
     cp ~/.lotus_vim/vimrc ~/.vimrc
 
+    install_setuptools
     install_pycscope 
     install_cscope
 
@@ -171,6 +181,8 @@ first_install () {
 
 #main begins here.
 #TODO don't ask those stupid questions, add options for them here.
+#TODO sed the cscope.vim to set nocscopeverbose
+#TODO from stackoverflow, one suggest me to substitude nnoremap with nmap
 parse_opt $@
 
 if [ $quiet_install -eq 1 ];then
