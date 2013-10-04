@@ -22,3 +22,9 @@
 [submodule "lotus-vim/plugins/pycscope"]
 	path = lotus-vim/plugins/pycscope
 	url = https://github.com/portante/pycscope.git
+[submodule "lotus-vim/plugins/powerline"]
+	path = lotus-vim/plugins/powerline
+	url = https://github.com/Lokaltog/powerline.git
+[submodule "lotus-vim/plugins/syntastic"]
+	path = lotus-vim/plugins/syntastic
+	url = https://github.com/scrooloose/syntastic.git

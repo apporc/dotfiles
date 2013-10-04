@@ -50,7 +50,7 @@ patch_font () {
             mkdir ~/.fonts
         fi
         cd ~/.fonts
-        python ~/.lotus_vim/plugins/vim-powerline/fontpatcher/fontpatcher $font
+        python ~/.lotus_vim/plugins/powerline/font/fontpatcher.py $font
         fc-cache -vf ~/.fonts
     fi
 }
@@ -64,7 +64,6 @@ activate_fancy_powerline () {
                 patch_font
             fi
         fi
-        sed -i 's/unicode/fancy/g' ~/.lotus_vim/vimrcs/plugins/powerline.vim
         echo "Don't forget to change your terminal font to [your fontname]"
         echo "And add 'set guifont=[your fontname]' to ~/.lotus_vim/my_configs.vim"
     fi
@@ -128,6 +127,24 @@ install_pycscope () {
     fi
 }
 
+install_powerline () {
+    if [ -d ~/.lotus_vim/plugins/powerline ]
+    then
+        cd ~/.lotus_vim/plugins/powerline
+        sudo python setup.py install
+        cd -
+        if [ ! -d ~/.config/powerline ]
+        then
+            mkdir ~/.config/powerline
+        fi
+        cp -r ~/.lotus_vim/plugins/powerline/powerline/config_files/* ~/.config/powerline
+        cp -r ~/.lotus_vim/plugins/powerline/powerline/bindings/vim/plugin ~/.lotus_vim/plugins/powerline
+        if [ -e ~/.bashrc ]
+        then
+            echo '. ~/.lotus_vim/plugins/powerline/powerline/bindings/bash/powerline.sh' >> ~/.bashrc
+        fi
+    fi
+}
 
 install_cscope () {
     if [ $os == 'ubuntu' -o $os == 'debian' ];then
@@ -148,6 +165,7 @@ if [ $os == 'ubuntu' -o $os == 'debian' ];then
         sudo ${EMERGE} python-setuptools
     fi
 }
+
 first_install () {
     if [ ! -e $LOTUS_PWD/lotus-vim/plugins/nerdtree/README.markdown ]
     then
@@ -170,6 +188,7 @@ first_install () {
     install_setuptools
     install_pycscope 
     install_cscope
+    install_powerline
 
     activate_fancy_powerline -patchfont
 

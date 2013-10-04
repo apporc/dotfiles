@@ -20,12 +20,13 @@ c, python, javascript, html, css, vim, php
 * [NerdTree](https://github.com/scrooloose/nerdtree.git)
 * [minibufexplorer](https://github.com/fholgado/minibufexpl.vim.git)
 * [vim-pathogen](https://github.com/tpope/vim-pathogen.git)
-* [vim-powerline](https://github.com/Lokaltog/vim-powerline.git)
+* [powerline](https://github.com/Lokaltog/powerline.git)
 * [Conque-Shell](https://github.com/apporc/Conque-Shell.git)
 * [Indent-Guides](https://github.com/vim-scripts/Indent-Guides.git)
 * [cscope](https://github.com/vim-scripts/cscope.vim.git)
 * [pycscope](https://github.com/portante/pycscope.git)
 * [cscope_maps](https://github.com/chazy/cscope_maps.git)
+* [syntastic](https://github.com/scrooloose/syntastic.git)
 
 #####Shotcuts:
 
