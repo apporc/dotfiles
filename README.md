@@ -22,11 +22,13 @@ c, python, javascript, html, css, vim, php
 * [vim-pathogen](https://github.com/tpope/vim-pathogen.git)
 * [powerline](https://github.com/Lokaltog/powerline.git)
 * [Conque-Shell](https://github.com/apporc/Conque-Shell.git)
-* [Indent-Guides](https://github.com/vim-scripts/Indent-Guides.git)
 * [cscope](https://github.com/vim-scripts/cscope.vim.git)
 * [pycscope](https://github.com/portante/pycscope.git)
 * [cscope_maps](https://github.com/chazy/cscope_maps.git)
 * [syntastic](https://github.com/scrooloose/syntastic.git)
+* [pyflakes](https://github.com/kevinw/pyflakes.git)
+* [flake8](https://github.com/bmcustodio/flake8.git)
+* [pylint-mode](https://github.com/vim-scripts/pylint-mode.git)
 
 #####Shotcuts:
 
@@ -50,7 +52,4 @@ c, python, javascript, html, css, vim, php
 #####NOTE:  
 1. you need to run "git submodule init && git submodule update" at the 
 top of git's working tree to sync those vim plugins at first
-2. on ubuntu, install vim-gnome or compile vim from source code to get clipboard support  
-3. if you want to use fancy mode for powerline, then config your patched font and change "unicode" to "fancy" in  
-vimrc/plugins/powerline.vim  
 

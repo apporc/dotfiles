@@ -7,10 +7,15 @@ git submodule add https://github.com/Lokaltog/powerline.git
 git submodule add https://github.com/scrooloose/syntastic.git
 #BAD#git submodule add https://github.com/vim-scripts/Conque-Shell.git
 git submodule add https://github.com/apporc/Conque-Shell.git
-git submodule add https://github.com/vim-scripts/Indent-Guides.git
+#git submodule add https://github.com/vim-scripts/Indent-Guides.git
 git submodule add https://github.com/vim-scripts/cscope.vim.git
 git submodule add https://github.com/portante/pycscope.git
-#Don't need#git submodule add https://github.com/chazy/cscope_maps.git
+#as vimrcs not submodule#git submodule add https://github.com/chazy/cscope_maps.git
+git submodule add https://github.com/scrooloose/syntastic.git
+git submodule add https://github.com/kevinw/pyflakes.git
+git submodule add https://github.com/bmcustodio/flake8.git
+git submodule add https://github.com/vim-scripts/pylint-mode.git
+
 
 When you clone this lotus-vim repo, you should run:
 git submodule init

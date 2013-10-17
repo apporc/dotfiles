@@ -57,16 +57,13 @@ patch_font () {
 
 activate_fancy_powerline () {
     # with options -patchfont or not
-    read -p "Would you like to use fancy mode for powerline?(Y/n)" fancy
-    if [ -z "$fancy" -o "$fancy" == 'y' -o "$fancy" == 'Y' ];then
-        if [ $# -eq 1 ];then
-            if [ $1 == '-patchfont' ];then
-                patch_font
-            fi
+    if [ $# -eq 1 ];then
+        if [ $1 == '-patchfont' ];then
+            patch_font
         fi
-        echo "Don't forget to change your terminal font to [your fontname]"
-        echo "And add 'set guifont=[your fontname]' to ~/.lotus_vim/my_configs.vim"
     fi
+    echo "Don't forget to change your terminal font to [your fontname]"
+    echo "And add 'set guifont=[your fontname]' to ~/.lotus_vim/my_configs.vim"
 }
 
 backup_original_vimrc () {
@@ -102,14 +99,7 @@ parse_opt () {
     done
 }
 
-quiet_install () {
-    backup_original_vimrc
-    cp -r ${LOTUS_PWD}/lotus-vim ~/.lotus_vim
-    cp ~/.lotus_vim/vimrc ~/.vimrc
-    activate_fancy_powerline
-    exit 0
 
-}
 
 update_submodule () {
     cd $LOTUS_PWD
@@ -127,6 +117,24 @@ install_pycscope () {
     fi
 }
 
+install_pyflakes () {
+    if [ -d ~/.lotus_vim/plugins/pyflakes ]
+    then
+        cd  ~/.lotus_vim/plugins/pyflakes
+        sudo python setup.py install
+        cd -
+    fi
+}
+
+install_flake8 () {
+    if [ -d ~/.lotus_vim/plugins/flake8 ]
+    then
+        cd  ~/.lotus_vim/plugins/flake8
+        sudo python setup.py install
+        cd -
+    fi
+}
+
 install_powerline () {
     if [ -d ~/.lotus_vim/plugins/powerline ]
     then
@@ -139,10 +147,11 @@ install_powerline () {
         fi
         cp -r ~/.lotus_vim/plugins/powerline/powerline/config_files/* ~/.config/powerline
         cp -r ~/.lotus_vim/plugins/powerline/powerline/bindings/vim/plugin ~/.lotus_vim/plugins/powerline
-        if [ -e ~/.bashrc ]
-        then
-            echo '. ~/.lotus_vim/plugins/powerline/powerline/bindings/bash/powerline.sh' >> ~/.bashrc
-        fi
+# It's bad to have this bash prompt changed.
+#        if [ -e ~/.bashrc ]
+#        then
+#            echo '. ~/.lotus_vim/plugins/powerline/powerline/bindings/bash/powerline.sh' >> ~/.bashrc
+#        fi
     fi
 }
 
@@ -167,11 +176,7 @@ if [ $os == 'ubuntu' -o $os == 'debian' ];then
 }
 
 first_install () {
-    if [ ! -e $LOTUS_PWD/lotus-vim/plugins/nerdtree/README.markdown ]
-    then
-        echo "Plugins not downloaded, downloading it now."
-        update_submodule
-    fi
+    update_submodule
 
     echo "BTW, please input your password when you are asked to."
     echo "======================================================="
@@ -188,6 +193,8 @@ first_install () {
     install_setuptools
     install_pycscope 
     install_cscope
+    install_pyflakes
+    install_flake8
     install_powerline
 
     activate_fancy_powerline -patchfont
@@ -197,6 +204,15 @@ first_install () {
     exit 0
 }
 
+quiet_install () {
+    update_submodule
+    backup_original_vimrc
+    cp -r ${LOTUS_PWD}/lotus-vim ~/.lotus_vim
+    cp ~/.lotus_vim/vimrc ~/.vimrc
+    activate_fancy_powerline
+    exit 0
+
+}
 
 #main begins here.
 #TODO don't ask those stupid questions, add options for them here.

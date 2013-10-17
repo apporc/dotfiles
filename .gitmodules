@@ -13,9 +13,6 @@
 [submodule "lotus-vim/plugins/Conque-Shell"]
 	path = lotus-vim/plugins/Conque-Shell
 	url = https://github.com/apporc/Conque-Shell.git
-[submodule "lotus-vim/plugins/Indent-Guides"]
-	path = lotus-vim/plugins/Indent-Guides
-	url = https://github.com/vim-scripts/Indent-Guides.git
 [submodule "lotus-vim/plugins/cscope.vim"]
 	path = lotus-vim/plugins/cscope.vim
 	url = https://github.com/vim-scripts/cscope.vim.git
@@ -28,3 +25,12 @@
 [submodule "lotus-vim/plugins/syntastic"]
 	path = lotus-vim/plugins/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "lotus-vim/plugins/pyflakes"]
+	path = lotus-vim/plugins/pyflakes
+	url = git://github.com/kevinw/pyflakes.git
+[submodule "lotus-vim/plugins/flake8"]
+	path = lotus-vim/plugins/flake8
+	url = git://github.com/bmcustodio/flake8.git
+[submodule "lotus-vim/plugins/pylint"]
+	path = lotus-vim/plugins/pylint
+	url = git://github.com/vim-scripts/pylint-mode.git

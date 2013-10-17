@@ -5,9 +5,6 @@ map <silent> <F5> :!ctags -R --sort=yes --fields=+iaS --extra=+q --languages=Pyt
 set tags=tags,TAGS
 set omnifunc=pythoncomplete#Complete
 
-"toggle indent guides for python script
-IndentGuidesToggle
-
 silent source ~/.lotus_vim/vimrcs/plugins/cscope.vim
 silent source ~/.lotus_vim/vimrcs/lan/ylanmap.vim
 
