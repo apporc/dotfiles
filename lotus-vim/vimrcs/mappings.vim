@@ -1,6 +1,9 @@
 " Mappings
 " ---------------------------
 "
+" Disable built-in F1 help key 
+map <F1> <Esc>
+imap <F1> <Esc>"
 
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
