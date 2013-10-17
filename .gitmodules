@@ -31,6 +31,3 @@
 [submodule "lotus-vim/plugins/flake8"]
 	path = lotus-vim/plugins/flake8
 	url = git://github.com/bmcustodio/flake8.git
-[submodule "lotus-vim/plugins/pylint"]
-	path = lotus-vim/plugins/pylint
-	url = git://github.com/vim-scripts/pylint-mode.git
