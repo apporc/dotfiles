@@ -175,6 +175,16 @@ if [ $os == 'ubuntu' -o $os == 'debian' ];then
     fi
 }
 
+install_pylint () {
+if [ $os == 'ubuntu' -o $os == 'debian' ];then
+        sudo ${APT} -y install pylint
+    elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
+        sudo ${YUM} install -y pylint
+    elif [ $os == 'gentoo' ];then
+        sudo ${EMERGE} pylint
+    fi
+
+}
 first_install () {
     update_submodule
 
@@ -196,6 +206,7 @@ first_install () {
     install_pyflakes
     install_flake8
     install_powerline
+    install_pylint
 
     activate_fancy_powerline -patchfont
 
