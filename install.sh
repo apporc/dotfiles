@@ -166,7 +166,7 @@ install_cscope () {
 }
 
 install_setuptools () {
-if [ $os == 'ubuntu' -o $os == 'debian' ];then
+    if [ $os == 'ubuntu' -o $os == 'debian' ];then
         sudo ${APT} -y install python-setuptools
     elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
         sudo ${YUM} install -y python-setuptools
@@ -176,14 +176,14 @@ if [ $os == 'ubuntu' -o $os == 'debian' ];then
 }
 
 install_pylint () {
-if [ $os == 'ubuntu' -o $os == 'debian' ];then
+    if [ $os == 'ubuntu' -o $os == 'debian' ];then
         sudo ${APT} -y install pylint
     elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
         sudo ${YUM} install -y pylint
     elif [ $os == 'gentoo' ];then
         sudo ${EMERGE} pylint
     fi
-
+    cp  ${LOTUS_PWD}/configs/pylintrc ~/.pylintrc
 }
 first_install () {
     update_submodule
