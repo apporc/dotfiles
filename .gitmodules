@@ -32,3 +32,6 @@
 	path = lotus-vim/plugins/flake8
 	url = git://github.com/bmcustodio/flake8.git
 
+[submodule "lotus-vim/plugins/vim-markdown"]
+	path = lotus-vim/plugins/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git

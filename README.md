@@ -28,7 +28,7 @@ c, python, javascript, html, css, vim, php
 * [syntastic](https://github.com/scrooloose/syntastic.git)
 * [pyflakes](https://github.com/kevinw/pyflakes.git)
 * [flake8](https://github.com/bmcustodio/flake8.git)
-* [pylint-mode](https://github.com/vim-scripts/pylint-mode.git)
+* [vim-markdown](https://github.com/plasticboy/vim-markdown.git)
 
 #####Shotcuts:
 
