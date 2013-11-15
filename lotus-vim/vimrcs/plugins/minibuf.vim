@@ -5,8 +5,8 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplModSelTarget = 1 
 let g:statusLineText = "MINIBUFEXPLORER"
 
-nmap <leader>n <ESC>:MBEbn<CR>
-nmap <leader>p <ESC>:MBEbp<CR>
+nmap <leader>f <ESC>:MBEbn<CR>
+nmap <leader>b <ESC>:MBEbp<CR>
 
 "This will not work when in terminal version vim
 "let g:miniBufExplMapCTabSwitchBufs = 1 

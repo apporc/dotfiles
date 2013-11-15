@@ -38,34 +38,31 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ','
+
 
 " Remove the Windows ^M - when the encodings gets messed up
 "noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Toggle paste mode on and off
-" Can't map <F9> in imap, because when paste option is on, imap is disabled.
-map <F9> :setlocal paste!<CR>
+" Can't map this in imap, because when paste option is on, imap is disabled.
+map <leader>p :setlocal paste!<CR>
 
-" in normal mode F2 will save the file
-nmap <F2> :w<CR>
-" in insert mode F2 will exit insert, save
-imap <F2> <ESC>:w<CR>
-" in visual mode F2 will exit visual mode, save
-vmap <F2> <ESC>:W<CR>
-" goto definition with F12
-map <silent> <F12> <C-]>
+" use ',w' to save file
+nmap <leader>w :w<CR>
 
-" map F4 to save and close current buffer
-map <F4> :w<CR>:bd<CR>
+" goto definition with ',j'
+map <silent> <leader>j <C-]>
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ' '
+" map F4 to save and close current buffer, this is too dangerous
+""map <F4> :w<CR>:bd<CR>
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 "Open a shell splitwindow
-map <buffer> <F3> :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
+map <leader>t :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
 
