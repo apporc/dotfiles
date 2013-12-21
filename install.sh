@@ -131,6 +131,7 @@ install_flake8 () {
     then
         cd  ~/.lotus_vim/plugins/flake8
         sudo python setup.py install
+        cp  ${LOTUS_PWD}/configs/flake8 ~/.config/flake8
         cd -
     fi
 }
