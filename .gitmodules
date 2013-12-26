@@ -30,7 +30,7 @@
 	url = git://github.com/kevinw/pyflakes.git
 [submodule "lotus-vim/plugins/flake8"]
 	path = lotus-vim/plugins/flake8
-	url = git://github.com/bmcustodio/flake8.git
+	url = https://github.com/apporc/flake8.git
 
 [submodule "lotus-vim/plugins/vim-markdown"]
 	path = lotus-vim/plugins/vim-markdown
