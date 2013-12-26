@@ -27,7 +27,7 @@ c, python, javascript, html, css, vim, php
 * [cscope_maps](https://github.com/chazy/cscope_maps.git)
 * [syntastic](https://github.com/scrooloose/syntastic.git)
 * [pyflakes](https://github.com/kevinw/pyflakes.git)
-* [flake8](https://github.com/bmcustodio/flake8.git)
+* [flake8](https://github.com/apporc/flake8.git)
 * [vim-markdown](https://github.com/plasticboy/vim-markdown.git)
 
 #####Shotcuts:
