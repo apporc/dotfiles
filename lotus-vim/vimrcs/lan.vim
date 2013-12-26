@@ -2,6 +2,7 @@
 "----------------------------
 filetype on
 au BufNewFile,BufRead *.c,*.h setf <buffer> c
+au BufNewFile,BufRead *.cpp setf <buffer> cpp
 au BufNewFile,BufRead *.py,*.pyw,*py.in setf <buffer> python
 au BufNewFile,BufRead *.sh setf <buffer> sh
 au BufNewFile,BufRead *.js setf <buffer> javascript
@@ -11,6 +12,7 @@ au BufNewFile,BufRead *.php setf <buffer> php
 au BufNewFile,BufRead *.rst setf <buffer> rst
 
 autocmd Filetype c silent source ~/.lotus_vim/vimrcs/lan/c.vim
+autocmd Filetype cpp silent source ~/.lotus_vim/vimrcs/lan/c.vim
 autocmd Filetype python silent source ~/.lotus_vim/vimrcs/lan/python.vim
 autocmd Filetype sh silent source ~/.lotus_vim/vimrcs/lan/sh.vim
 autocmd Filetype js silent source ~/.lotus_vim/vimrcs/lan/javascript.vim
