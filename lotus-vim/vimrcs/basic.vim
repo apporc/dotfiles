@@ -73,6 +73,8 @@ set tm=500
 
 " Add a bit extra margin to the left
 set foldcolumn=1
+" By default, don't fold code
+set foldlevelstart=99
 
 " Turn backup off
 set nobackup

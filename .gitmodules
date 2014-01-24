@@ -35,3 +35,6 @@
 [submodule "lotus-vim/plugins/vim-markdown"]
 	path = lotus-vim/plugins/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "lotus-vim/plugins/dart-vim-plugin"]
+	path = lotus-vim/plugins/dart-vim-plugin
+	url = https://github.com/dart-lang/dart-vim-plugin.git
