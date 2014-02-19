@@ -85,11 +85,6 @@ set expandtab
 " Be smart when using tabs ;)
 set smarttab
 
-" configure tabwidth and insert spaces instead of tabs
-set shiftwidth=4 " indent also with 4 spaces
-set tabstop=4 " tab width is 4 spaces
-set softtabstop=4
-
 " wrap lines at 120 chars. 80 is somewhat antiquated with nowadays displays.
 set lbr
 set textwidth=120
