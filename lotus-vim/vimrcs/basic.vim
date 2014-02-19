@@ -110,7 +110,8 @@ set laststatus=2
 " First make sure your vim support clipboard option, with 'vim --version|grep clipboard'
 " It should have +clipboard and +xterm_clipboard
 " With Ubuntu, you may need to install vim-gnome instead of the default vim package.
-set clipboard=unnamed
+" It made chinese garbled, give up at present.
+"set clipboard=unnamed
 
 " Auto completion
 " -------------------------------
