@@ -144,7 +144,7 @@ install_powerline () {
         cd -
         if [ ! -d ~/.config/powerline ]
         then
-            mkdir ~/.config/powerline
+            mkdir -p  ~/.config/powerline
         fi
         cp -r ~/.lotus_vim/plugins/powerline/powerline/config_files/* ~/.config/powerline
         cp -r ~/.lotus_vim/plugins/powerline/powerline/bindings/vim/plugin ~/.lotus_vim/plugins/powerline

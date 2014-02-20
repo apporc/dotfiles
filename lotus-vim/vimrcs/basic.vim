@@ -76,6 +76,11 @@ set foldcolumn=1
 " By default, don't fold code
 set foldlevelstart=99
 
+" configure tabwidth and insert spaces instead of tabs, for different language it will be setl agagin.
+setl shiftwidth=4 " indent also with 4 spaces
+setl tabstop=4 " tab width is 4 spaces
+setl softtabstop=4
+
 " Turn backup off
 set nobackup
 
