@@ -24,7 +24,7 @@ NeoBundle 'majutsushi/tagbar'
 " File Browsing
 NeoBundle 'scrooloose/nerdtree.git'
 
-" Buffer Exploer
+" Buffer Explorer
 "NeoBundle 'fholgado/minibufexpl.vim.git'
 NeoBundle 'bling/vim-airline'
 
@@ -34,7 +34,8 @@ NeoBundle 'apporc/flake8.git', { 'build': {'unix': 'sudo python setup.py install
 NeoBundle 'scrooloose/syntastic.git'
 
 " Shell inside vim
-NeoBundle 'apporc/Conque-Shell.git'
+" NeoBundle 'apporc/Conque-Shell.git'
+NeoBundle 'Shougo/vimshell'
 
 NeoBundle 'vim-scripts/cscope.vim.git', { 'build': {'unix': 'sudo python setup.py install',} }
 NeoBundle 'portante/pycscope.git', { 'build': {'unix': 'sudo python setup.py install',} }
@@ -51,5 +52,5 @@ NeoBundleCheck
 source ~/.lotus_vim/vimrcs/plugins/airline.vim
 source ~/.lotus_vim/vimrcs/plugins/nerdtree.vim
 source ~/.lotus_vim/vimrcs/plugins/tagbar.vim
-source ~/.lotus_vim/vimrcs/plugins/conque_term.vim
+source ~/.lotus_vim/vimrcs/plugins/vimshell.vim
 source ~/.lotus_vim/vimrcs/plugins/markdown.vim

@@ -62,7 +62,3 @@ map <silent> <leader>j <C-]>
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
-
-"Open a shell splitwindow
-map <leader>t :ConqueTermSplit bash<CR><ESC>:resize 10<CR>i
-
