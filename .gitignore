@@ -1,2 +1,4 @@
 tags
 TAGS
+lotus-vim/bundle/**
+!lotus-vim/bundle/neobundle.vim

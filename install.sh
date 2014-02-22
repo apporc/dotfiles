@@ -130,7 +130,7 @@ first_install () {
     cp ~/.lotus_vim/vimrc ~/.vimrc
 
     install_setuptools
-    install_pycscope 
+    install_pycscope
     install_cscope
     install_pyflakes
     install_flake8
