@@ -18,15 +18,26 @@ NeoBundle 'Shougo/vimproc', { 'build': {
       \   'unix': 'make -f make_unix.mak',
       \ } }
 
-NeoBundle 'vim-scripts/Tagbar.git'
+" Tagbar
+NeoBundle 'majutsushi/tagbar'
+
+" File Browsing
 NeoBundle 'scrooloose/nerdtree.git'
-NeoBundle 'fholgado/minibufexpl.vim.git'
-NeoBundle 'scrooloose/syntastic.git'
-NeoBundle 'apporc/Conque-Shell.git'
-NeoBundle 'vim-scripts/cscope.vim.git', { 'build': {'unix': 'sudo python setup.py install',} }
-NeoBundle 'portante/pycscope.git', { 'build': {'unix': 'sudo python setup.py install',} }
+
+" Buffer Exploer
+"NeoBundle 'fholgado/minibufexpl.vim.git'
+NeoBundle 'bling/vim-airline'
+
+" Syntax Checker
 NeoBundle 'kevinw/pyflakes.git', { 'build': {'unix': 'sudo python setup.py install',} }
 NeoBundle 'apporc/flake8.git', { 'build': {'unix': 'sudo python setup.py install',} }
+NeoBundle 'scrooloose/syntastic.git'
+
+" Shell inside vim
+NeoBundle 'apporc/Conque-Shell.git'
+
+NeoBundle 'vim-scripts/cscope.vim.git', { 'build': {'unix': 'sudo python setup.py install',} }
+NeoBundle 'portante/pycscope.git', { 'build': {'unix': 'sudo python setup.py install',} }
 NeoBundle 'dart-lang/dart-vim-plugin.git'
 
 " Load local plugins, nice for doing development
@@ -37,7 +48,7 @@ syntax enable
 
 NeoBundleCheck
 
-source ~/.lotus_vim/vimrcs/plugins/minibuf.vim
+source ~/.lotus_vim/vimrcs/plugins/airline.vim
 source ~/.lotus_vim/vimrcs/plugins/nerdtree.vim
 source ~/.lotus_vim/vimrcs/plugins/tagbar.vim
 source ~/.lotus_vim/vimrcs/plugins/conque_term.vim
