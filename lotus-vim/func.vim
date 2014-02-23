@@ -9,7 +9,7 @@ function! HasPaste()
 endfunction
 
 " Selection in visual mode
-function! VisualSelection(direction, extra_filter) range
+function! VisualSelection(direction, extra_filter)
     let l:saved_reg = @"
     execute "normal! vgvy"
 
@@ -48,5 +48,12 @@ function! JavaScriptFold()
         return substitute(getline(v:foldstart), '{.*', '{...}', '')
     endfunction
     setl foldtext=FoldText()
+endfunction
+
+" Setting tabwidth, width normally is 2 or 4
+function! SetTabWidth(width)
+  execute 'setl shiftwidth=' . a:width
+  execute 'setl tabstop=' . a:width
+  execute 'setl softtabstop='. a:width
 endfunction
 

@@ -8,7 +8,7 @@ colorscheme default
 
 " set background=dark
 
-" Set number of colors
+" 256bit terminal
 set t_Co=256
 
 " Set extra options when running in GUI mode

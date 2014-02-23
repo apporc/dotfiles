@@ -1,29 +1,29 @@
 " Mappings
 " ---------------------------
 "
-" Disable built-in F1 help key 
-map <F1> <Esc>
-imap <F1> <Esc>"
+" Disable built-in F1 help key
+noremap <F1> <Esc>
+inoremap <F1> <Esc>"
 
 " Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+noremap j gj
+noremap k gk
 
 " tab to indent line
-nmap <tab> v>
-nmap <s-tab> v<
-vmap <tab> >gv 
-vmap <s-tab> <gv 
+nnoremap <tab> v>
+nnoremap <s-tab> v<
+vnoremap <tab> >gv
+vnoremap <s-tab> <gv
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 " command line key shortcut
-cmap    <c-a>   <home>
-cmap    <c-e>   <end>
+cnoremap    <c-a>   <home>
+cnoremap    <c-e>   <end>
 cnoremap <c-b>  <left>
 cnoremap <c-d>  <del>
 cnoremap <c-f>  <right>
@@ -48,13 +48,13 @@ let mapleader = ','
 
 " Toggle paste mode on and off
 " Can't map this in imap, because when paste option is on, imap is disabled.
-map <leader>p :setlocal paste!<CR>
+noremap <leader>p :setlocal paste!<CR>
 
 " use ',w' to save file
-nmap <leader>w :w<CR>
+nnoremap <leader>w :w<CR>
 
 " goto definition with ',j'
-map <silent> <leader>j <C-]>
+noremap <silent> <leader>j <C-]>
 
 " map F4 to save and close current buffer, this is too dangerous
 ""map <F4> :w<CR>:bd<CR>
@@ -62,3 +62,12 @@ map <silent> <leader>j <C-]>
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
+
+
+" <Leader>s: Spell checking shortcuts
+nnoremap <Leader>ss :setlocal spell!<cr>
+nnoremap <Leader>sj ]s
+nnoremap <Leader>sk [s
+nnoremap <Leader>sa zg]s
+nnoremap <Leader>sd 1z=
+nnoremap <Leader>sf z=

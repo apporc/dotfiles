@@ -1,13 +1,13 @@
 set runtimepath+=~/.lotus_vim
 
-source ~/.lotus_vim/vimrcs/func.vim
-source ~/.lotus_vim/vimrcs/basic.vim
-source ~/.lotus_vim/vimrcs/color.vim
-source ~/.lotus_vim/vimrcs/encoding.vim
-source ~/.lotus_vim/vimrcs/ignore.vim
-source ~/.lotus_vim/vimrcs/mappings.vim
-source ~/.lotus_vim/vimrcs/plugin.vim
-source ~/.lotus_vim/vimrcs/lan.vim
+source ~/.lotus_vim/func.vim
+source ~/.lotus_vim/basic.vim
+source ~/.lotus_vim/color.vim
+source ~/.lotus_vim/encoding.vim
+source ~/.lotus_vim/ignore.vim
+source ~/.lotus_vim/mappings.vim
+source ~/.lotus_vim/plugin.vim
+source ~/.lotus_vim/lan.vim
 
 try
     source ~/.lotus_vim/my_configs.vim
