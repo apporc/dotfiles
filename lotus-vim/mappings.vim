@@ -33,7 +33,7 @@ cnoremap    <esc><c-b> <s-left>
 cnoremap    <esc><c-f> <s-right>
 
 " Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
+autocmd MyAutoCmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif

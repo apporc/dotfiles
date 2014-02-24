@@ -37,18 +37,27 @@ NeoBundle 'scrooloose/syntastic.git'
 " NeoBundle 'apporc/Conque-Shell.git'
 NeoBundle 'Shougo/vimshell'
 
+" cscope and pycscope, for code jumping
 NeoBundle 'vim-scripts/cscope.vim.git', { 'build': {'unix': 'sudo python setup.py install',} }
 NeoBundle 'portante/pycscope.git', { 'build': {'unix': 'sudo python setup.py install',} }
+
+" File types
 NeoBundle 'dart-lang/dart-vim-plugin.git'
+
+" Code completion
+" NeoBundle'Shougo/neocomplcache'
+" NeoBundle 'vim-scripts/AutoComplPop'
+NeoBundle 'Valloric/YouCompleteMe'
 
 " Load local plugins, nice for doing development
 execute 'NeoBundleLocal' '~/.lotus_vim/custom'
 
+filetype plugin indent on
 
 NeoBundleCheck
 
 " ==============================================================================
-" Configure Plugins 
+" Configure Plugins
 " ==============================================================================
 "
 
@@ -86,8 +95,8 @@ let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
 " mappings for tabline
-nmap <leader>f <ESC>:bn<CR>
-nmap <leader>b <ESC>:bp<CR>
+nnoremap <leader>f <ESC>:bn<CR>
+nnoremap <leader>b <ESC>:bp<CR>
 
 "" switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
 for buffer_no in range(1, 9)
@@ -103,11 +112,17 @@ endfor
 "" Nerdtree
 " ------------------
 "
-autocmd FileType nerdtree setlocal number
+autocmd MyAutoCmd FileType nerdtree setlocal number
 let NERDTreeWinSize=30
-let NERDTreeIgnore=['\.o$','\.bak$','\.pyc$']
+let NERDTreeShowBookmarks=1
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+" Close vim if the only window open is nerdtree
+autocmd MyAutoCmd BufEnter *
+      \ if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endi
+let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.svn', '\.hg', '\.o$','\.bak$','\.pyc$']
 "map <F6> :NERDTreeMirror<CR>
-map <leader>e :NERDTreeToggle<CR>
+noremap <leader>e :NERDTreeToggle<CR>
 
 " ------------------
 "  Tagbar
@@ -130,4 +145,5 @@ set splitbelow
 " ------------------
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_initial_foldlevel=1
+
 

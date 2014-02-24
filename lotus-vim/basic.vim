@@ -7,6 +7,11 @@ set history=1024
 "disable vi compatibility (emulation of old bugs)
 set nocompatible
 
+" Set augroup
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
 " Write the contents of the file, if it has been modified.
 set autowriteall
 

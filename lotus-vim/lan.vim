@@ -60,12 +60,14 @@ endfunction
 
 "Identify languge types
 "----------------------------
-autocmd Filetype c silent call Auto_C()
-autocmd Filetype cpp silent call Auto_C()
-autocmd Filetype python silent call Auto_PYTHON()
-autocmd Filetype sh silent call Auto_SH()
-autocmd Filetype js silent call Auto_JS()
-autocmd Filetype html silent call Auto_HTML()
-autocmd Filetype css silent call Auto_CSS()
-autocmd Filetype vim silent call Auto_VIM()
-autocmd Filetype php silent call Auto_PHP()
+augroup MyAutoCmd
+  autocmd Filetype c silent call Auto_C()
+  autocmd Filetype cpp silent call Auto_C()
+  autocmd Filetype python silent call Auto_PYTHON()
+  autocmd Filetype sh silent call Auto_SH()
+  autocmd Filetype js silent call Auto_JS()
+  autocmd Filetype html silent call Auto_HTML()
+  autocmd Filetype css silent call Auto_CSS()
+  autocmd Filetype vim silent call Auto_VIM()
+  autocmd Filetype php silent call Auto_PHP()
+augroup END
