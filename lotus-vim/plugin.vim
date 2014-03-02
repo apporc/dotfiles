@@ -118,8 +118,8 @@ let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 " Close vim if the only window open is nerdtree
-autocmd MyAutoCmd BufEnter *
-      \ if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endi
+"autocmd MyAutoCmd BufEnter *
+"      \ if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.svn', '\.hg', '\.o$','\.bak$','\.pyc$']
 "map <F6> :NERDTreeMirror<CR>
 noremap <leader>e :NERDTreeToggle<CR>
