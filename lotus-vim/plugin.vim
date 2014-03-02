@@ -147,3 +147,8 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_initial_foldlevel=1
 
 
+" -----------------
+"  YouCompleteMe
+"  ----------------
+" YCM's identifier completer will also collect identifiers from tags files.
+let g:ycm_collect_identifiers_from_tags_files = 1
