@@ -2,20 +2,20 @@ function! Auto_C()
   setl fdm=syntax
   call SetTabWidth(4)
   setl omnifunc=ccomplete#Complete
-  map <buffer> <silent> <leader>u :!ctags -R --sort=yes --fields=+iaS --extra=+q --languages=C,C++ . && cscope -R -b -q -s .<CR>
+  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=C,C++ . && cscope -R -f .cscope -b -q -s .<CR>
   silent source ~/.lotus_vim/cscope.vim
 endfunction
 
 function! Auto_CSS()
   call SetTabWidth(2)
   setl omnifunc=csscomplete#CompleteCS
-  map <buffer> <silent> <leader>u :!ctags -R --sort=yes --fields=+iaS --extra=+q --languages=HTML .<CR>
+  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=HTML .<CR>
 endfunction
 
 function! Auto_HTML()
   call SetTabWidth(2)
   setl omnifunc=htmlcomplete#CompleteTags
-  map <buffer> <silent> <leader>u :!ctags -R --sort=yes --fields=+iaS --extra=+q --languages=HTML .<CR>
+  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=HTML .<CR>
 endfunction
 
 function! Auto_JS()
@@ -24,14 +24,14 @@ function! Auto_JS()
   call JavaScriptFold()
   call SetTabWidth(4)
   setl omnifunc=javascriptcomplete#CompleteJS
-  map <buffer> <silent> <leader>u :!ctags -R --sort=yes --fields=+iaS --extra=+q --languages=Javascript .<CR>
+  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Javascript .<CR>
 endfunction
 
 function! Auto_PHP()
   setl fdm=syntax
   call SetTabWidth(4)
   setl omnifunc=phpcomplete#Complete
-  map <buffer> <silent> <leader>u :!ctags -R --sort=yes --fields=+iaS --extra=+q --languages=php .<CR>
+  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=php .<CR>
 endfunction
 
 function! Auto_PYTHON()
@@ -42,18 +42,18 @@ function! Auto_PYTHON()
   setl nosmartindent
   setl omnifunc=pythoncomplete#Complete
   "This silent won't work, don't know why.
-  map <buffer> <silent> <leader>u :!ctags -R --sort=yes --fields=+iaS --extra=+q --languages=Python . && pycscope -R .<CR>
+  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Python . && pycscope -R -f .cscope .<CR>
   silent source ~/.lotus_vim/cscope.vim
 endfunction
 
 function! Auto_SH()
   call SetTabWidth(2)
-  map <buffer> <silent> <leader>u :!ctags -R --sort=yes --fields=+iaS --extra=+q --languages=sh .<CR>
+  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=sh .<CR>
 endfunction
 
 function! Auto_VIM()
   call SetTabWidth(2)
-  map <buffer> <silent> <leader>u :!ctags -R --sort=yes --fields=+iaS --extra=+q --languages=Vim .<CR>
+  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Vim .<CR>
 endfunction
 
 
