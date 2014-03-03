@@ -147,4 +147,5 @@ first_install () {
 #TODO from stackoverflow, one suggest me to substitude nnoremap with nmap
 parse_opt $@
 
+git submodule init&&git submodule update
 first_install
