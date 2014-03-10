@@ -36,6 +36,9 @@ NeoBundle 'thinca/vim-unite-history'
 "NeoBundle 'fholgado/minibufexpl.vim.git'
 NeoBundle 'bling/vim-airline' "TODO tabline appearance
 
+" Most Recently Used Files
+NeoBundle 'Shougo/neomru.vim'
+
 " Syntax Checker
 NeoBundle 'kevinw/pyflakes.git', { 'build': {'unix': 'sudo python setup.py install',} }
 NeoBundle 'apporc/flake8.git', { 'build': {'unix': 'sudo python setup.py install',} }
@@ -290,7 +293,7 @@ nnoremap <silent> [unite]d
 " Quick file search
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
 
-" Quick grep from cwd
+" Quick grep from cwd, ask for pattern
 nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
 
 " Quick help
@@ -315,7 +318,7 @@ nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
 " nnoremap <silent> [unite]b :<C-u>UniteWithBufferDir
       " \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
 
-" Quick commands
+" Quick history commands
 nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
 
 " Custom Unite settings
@@ -440,3 +443,10 @@ autocmd MyAutoCmd FileType vimfiler call s:vimfiler_settings()
 function! s:vimfiler_settings()
   nmap     <buffer><expr><CR>  vimfiler#smart_cursor_map("\<PLUG>(vimfiler_expand_tree)", "e")
 endfunction
+
+"===============================================================================
+" NERDCommenter
+"===============================================================================
+
+" Always leave a space between the comment character and the comment
+let NERDSpaceDelims=1
