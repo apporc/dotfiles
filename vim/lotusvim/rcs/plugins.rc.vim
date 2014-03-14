@@ -1,143 +1,6 @@
-"===============================================================================
-" NeoBundle
-"===============================================================================
-
-if has ('vim_starting')
-  set runtimepath+=~/.lotus_vim/bundle/neobundle.vim/
-endif
-
-call neobundle#rc(expand('~/.lotus_vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'Shougo/vimproc', { 'build': {
-      \   'windows': 'make -f make_mingw32.mak',
-      \   'cygwin': 'make -f make_cygwin.mak',
-      \   'mac': 'make -f make_mac.mak',
-      \   'unix': 'make -f make_unix.mak',
-      \ } }
-
-" Tagbar
-NeoBundle 'majutsushi/tagbar'
-
-" File Browsing
-NeoBundle 'scrooloose/nerdtree.git'
-NeoBundle 'Shougo/vimfiler' "TODO see it
-
-" Fuzzy Search
-NeoBundle 'Shougo/unite.vim' "TODO see it deeply
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/unite-help'
-NeoBundle 'Shougo/unite-session'
-NeoBundle 'thinca/vim-unite-history'
-
-" Buffer Explorer
-"NeoBundle 'fholgado/minibufexpl.vim.git'
-NeoBundle 'bling/vim-airline' "TODO tabline appearance
-
-" Most Recently Used Files
-NeoBundle 'Shougo/neomru.vim'
-
-" Syntax Checker
-NeoBundle 'kevinw/pyflakes.git', { 'build': {'unix': 'sudo python setup.py install',} }
-NeoBundle 'apporc/flake8.git', { 'build': {'unix': 'sudo python setup.py install',} }
-NeoBundle 'scrooloose/syntastic.git'
-
-" Shell inside vim
-" NeoBundle 'apporc/Conque-Shell.git'
-NeoBundle 'Shougo/vimshell'
-" NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tpope/vim-dispatch' "TODO see it
-
-" cscope and pycscope, for code jumping
-NeoBundle 'vim-scripts/cscope.vim.git', { 'build': {'unix': 'sudo python setup.py install',} }
-NeoBundle 'portante/pycscope.git', { 'build': {'unix': 'sudo python setup.py install',} }
-
-" File types
-NeoBundle 'dart-lang/dart-vim-plugin.git'
-NeoBundle 'amirh/HTML-AutoCloseTag'
-NeoBundle 'tpope/vim-markdown' "Markdown
-NeoBundle 'terryma/vim-instant-markdown' "Markdown
-" NeoBundle 'vim-ruby/vim-ruby' "Ruby
-" NeoBundle 'tpope/vim-rails'
-NeoBundle 'psykidellic/vim-jekyll' "Jekyll
-" NeoBundle 'kchmck/vim-coffee-script' "CoffeeScript
-NeoBundle 'Chiel92/vim-autoformat'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tsaleh/vim-matchit'
-
-" Code completion
-" NeoBundle'Shougo/neocomplcache'
-" NeoBundle 'vim-scripts/AutoComplPop'
-NeoBundle 'Valloric/YouCompleteMe'
-" NeoBundle 'Shougo/neocomplcache'
-" NeoBundle 'Shougo/neocomplete.vim'
-" NeoBundle 'vim-scripts/AutoComplPop'
-
-" Snippets
-" NeoBundle 'Shougo/neosnippet'
-" NeoBundle 'honza/vim-snippets'
-NeoBundle 'SirVer/ultisnips' "TODO see it deeply
-" NeoBundle 'JazzCore/neocomplcache-ultisnips'
-
-" Comments
-NeoBundle 'scrooloose/nerdcommenter' "TODO see it
-
-" Motions
-NeoBundle 'Lokaltog/vim-easymotion' "TODO see it deeply
-NeoBundle 'goldfeld/vim-seek' "TODO see it deeply
-
-" Text Objects TODO see it deeply
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-entire' " ae, ie
-NeoBundle 'kana/vim-textobj-lastpat' " a/, i/, a?, i?
-NeoBundle 'kana/vim-textobj-line' " al, il
-NeoBundle 'kana/vim-textobj-indent' " ai, ii, aI, iI
-NeoBundle 'lucapette/vim-textobj-underscore' " a_, i_
-" NeoBundle 'terryma/vim-expand-region'
-
-" Color themems
-" NeoBundle 'altercation/vim-colors-solarized'
-" NeoBundle 'tomasr/molokai'
-" NeoBundle 'Lokaltog/vim-distinguished'
-" NeoBundle 'chriskempson/base16-vim'
-" NeoBundle 'tpope/vim-vividchalk'
-" NeoBundle 'chriskempson/tomorrow-theme', {'rtp': 'vim'}
-" NeoBundle 'rainux/vim-desert-warm-256'
-" NeoBundle 'nanotech/jellybeans.vim'
-" NeoBundle 'vim-scripts/wombat256.vim'
-
-" Misc
-" NeoBundle 'kana/vim-submode'
-" NeoBundle 'kana/vim-scratch'
-" NeoBundle 'vim-scripts/BufOnly.vim'
-" NeoBundle 'sjl/gundo.vim'
-" NeoBundle 't9md/vim-quickhl'
-" NeoBundle 'mattn/webapi-vim'
-" NeoBundle 'mattn/gist-vim'
-" NeoBundle 'koron/nyancat-vim'
-" NeoBundle 'Raimondi/delimitMate'
-" NeoBundle 'ton/vim-bufsurf'
-" " NeoBundle 'terryma/vim-smooth-scroll'
-"
-" Git TODO see it
-NeoBundle 'tpope/vim-fugitive'
-
-" Load local plugins, nice for doing development
-execute 'NeoBundleLocal' '~/.lotus_vim/custom'
-
-filetype plugin indent on
-
-NeoBundleCheck
-
-" ==============================================================================
 " Configure Plugins
 " ==============================================================================
 "
-
 " ------------------
 "" vim-airline
 " ------------------
@@ -292,9 +155,13 @@ nnoremap <silent> [unite]d
 
 " Quick file search
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
+" Quick file search with the word under cursor
+nnoremap <silent> [unite]ff :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
 
 " Quick grep from cwd, ask for pattern
-nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
+nnoremap <silent> [unite]gg :<C-u>UniteWithCursorWord -buffer-name=grep grep:.<CR>
+" Quick grep from cwd with the word under cursor
+nnoremap <silent> [unite]g :<C-u>UniteWithCursorWord -buffer-name=grep grep:.<CR>
 
 " Quick help
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>

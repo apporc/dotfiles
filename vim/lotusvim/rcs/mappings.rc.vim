@@ -5,6 +5,11 @@
 noremap <F1> <Esc>
 inoremap <F1> <Esc>"
 
+" Use <Leader> in global plugin.
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader=','
+
 " Treat long lines as break lines (useful when moving around in them)
 noremap j gj
 noremap k gk
@@ -32,17 +37,6 @@ cnoremap <c-p>  <up>
 cnoremap    <esc><c-b> <s-left>
 cnoremap    <esc><c-f> <s-right>
 
-" Return to last edit position when opening files (You want this!)
-autocmd MyAutoCmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ','
-
-
 " Remove the Windows ^M - when the encodings gets messed up
 "noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
@@ -55,9 +49,6 @@ nnoremap <leader>w :w<CR>
 
 " goto definition with ',j'
 noremap <silent> <leader>j <C-]>
-
-" map F4 to save and close current buffer, this is too dangerous
-""map <F4> :w<CR>:bd<CR>
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f', '')<CR>

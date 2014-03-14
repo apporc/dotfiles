@@ -36,7 +36,6 @@ endfunction
 
 function! Auto_PYTHON()
   call SetTabWidth(4)
-  call DeleteTrailingWS()
   setl fdm=indent
   " disable intelligent indentation for python, or the cursor magically show at the head of one new line when commenting.
   setl nosmartindent

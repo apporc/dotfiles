@@ -1,13 +1,6 @@
 " Functions useful
 "-------------------------
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-
+"
 " Selection in visual mode
 function! VisualSelection(direction, extra_filter)
     let l:saved_reg = @"
@@ -39,7 +32,7 @@ endfunc
 
 
 " Javascript fold method
-function! JavaScriptFold() 
+function! JavaScriptFold()
     setl foldmethod=syntax
     setl foldlevelstart=1
     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
@@ -56,4 +49,3 @@ function! SetTabWidth(width)
   execute 'setl tabstop=' . a:width
   execute 'setl softtabstop='. a:width
 endfunction
-
