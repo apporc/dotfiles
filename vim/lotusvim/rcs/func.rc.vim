@@ -43,9 +43,9 @@ function! JavaScriptFold()
     setl foldtext=FoldText()
 endfunction
 
-" Setting tabwidth, width normally is 2 or 4
-function! SetTabWidth(width)
-  execute 'setl shiftwidth=' . a:width
-  execute 'setl tabstop=' . a:width
-  execute 'setl softtabstop='. a:width
+" Startup Commands
+function! Startup()
+  NERDTree
+  Tagbar
+  wincmd l
 endfunction

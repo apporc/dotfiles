@@ -12,8 +12,8 @@ set autowriteall
 set autoread
 " show line number
 set number
-" show current mode
-set showmode
+" get off the default mode indicator, let airline do this.
+set noshowmode
 "Always show current position
 set ruler
 " No annoying sound on errors
@@ -23,7 +23,7 @@ set t_vb=
 " Round indent by shiftwidth when << and >>
 set shiftround
 " Allow vim get settings from code file, like /* vim: set fc=c: */ in a c file.
-set modeline
+"set modeline
 " Allow to display another buffer when current buffer isn't saved.
 set hidden
 " Ignore case on insert completion.
@@ -101,7 +101,7 @@ set keywordprg=:help
 autocmd MyAutoCmd WinEnter * checktime
 
 " Reload .vimrc and .gvimrc automatically.
-autocmd MyAutoCmd BufWritePost .vimrc,vimrc,*.rc.vim source $MYVIMRC |
+autocmd MyAutoCmd BufWritePost .vimrc,.lotusvimrc,lotusvimrc,*.rc.vim source $MYVIMRC |
       \ if has('gui_running') | source $MYGVIMRC | echo "source $MYVIMRC"
 autocmd MyAutoCmd BufWritePost .gvimrc,gvimrc
       \ if has('gui_running') | source $MYGVIMRC | echo "source $MYGVIMRC"
@@ -116,6 +116,9 @@ autocmd MyAutoCmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
+
+" Call startup commands
+autocmd VimEnter * call Startup()
 
 " Files to ignore
 " ------------------------------------------------------------------------------
@@ -156,11 +159,11 @@ if has('mouse')
     set ttymouse=xterm2
   endif
 
-  " Paste.
-  nnoremap <RightMouse> "+p
-  xnoremap <RightMouse> "+p
-  inoremap <RightMouse> <C-r><C-o>+
-  cnoremap <RightMouse> <C-r>+
+    " Paste.
+    nnoremap <RightMouse> "+p
+    xnoremap <RightMouse> "+p
+    inoremap <RightMouse> <C-r><C-o>+
+    cnoremap <RightMouse> <C-r>+
 endif
 
 " Fold settings
@@ -216,7 +219,7 @@ set showcmd
 " Always show the status line
 set laststatus=2
 " Height of command line.
-set cmdheight=2
+"set cmdheight=2
 
 " Swap file settings
 " ------------------------------------------------------------------------------

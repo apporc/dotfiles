@@ -8,7 +8,7 @@ inoremap <F1> <Esc>"
 " Use <Leader> in global plugin.
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader=','
+let mapleader=" "
 
 " Treat long lines as break lines (useful when moving around in them)
 noremap j gj
@@ -21,10 +21,10 @@ vnoremap <tab> >gv
 vnoremap <s-tab> <gv
 
 " Smart way to move between windows
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
 
 " command line key shortcut
 cnoremap    <c-a>   <home>
@@ -42,13 +42,13 @@ cnoremap    <esc><c-f> <s-right>
 
 " Toggle paste mode on and off
 " Can't map this in imap, because when paste option is on, imap is disabled.
-noremap <leader>p :setlocal paste!<CR>
+nnoremap <leader>p :setlocal paste!<CR>
 
 " use ',w' to save file
 nnoremap <leader>w :w<CR>
 
 " goto definition with ',j'
-noremap <silent> <leader>j <C-]>
+nnoremap <silent> <leader>g <C-]>
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f', '')<CR>

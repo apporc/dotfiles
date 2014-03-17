@@ -51,7 +51,11 @@ NeoBundle 'tpope/vim-markdown' "Markdown
 NeoBundle 'terryma/vim-instant-markdown' "Markdown
 
 " Code completion
-NeoBundle 'Valloric/YouCompleteMe'
+"NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Shougo/neocomplete.vim'
+
+" Git
+NeoBundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 

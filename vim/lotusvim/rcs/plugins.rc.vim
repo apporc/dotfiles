@@ -37,18 +37,23 @@ let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
 " mappings for tabline
-nnoremap <leader>f <ESC>:bn<CR>
-nnoremap <leader>b <ESC>:bp<CR>
+nnoremap <c-n> <ESC>:bn<CR>
+nnoremap <c-p> <ESC>:bp<CR>
 
 "" switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
 for buffer_no in range(1, 9)
-  execute "nmap <Leader>" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
+  execute "nnoremap <Leader>" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
 endfor
 
 " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
 for buffer_no in range(10, 100)
-  execute "nmap <Leader>0" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
+  execute "nnoremap <Leader>0" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
 endfor
+
+" Refresh airline color while reloading vimrc
+if exists(":AirlineRefresh")
+    AirlineRefresh
+endif
 
 " ------------------
 "" Nerdtree
@@ -64,13 +69,13 @@ let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 "      \ if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.svn', '\.hg', '\.o$','\.bak$','\.pyc$']
 "map <F6> :NERDTreeMirror<CR>
-noremap <leader>e :NERDTreeToggle<CR>
+nnoremap <c-e> :NERDTreeToggle<CR>
 
 " ------------------
 "  Tagbar
 " ------------------
 "
-nmap <leader>a :TagbarToggle<CR>
+nnoremap <c-a> :TagbarToggle<CR>
 let g:tagbar_width=30
 
 " ------------------
@@ -78,9 +83,149 @@ let g:tagbar_width=30
 " ------------------
 "
 "Open a shell splitwindow
-map <leader>t :VimShellPop<CR>
+nnoremap <c-t> :VimShellPop <CR>
 " Make shell window show below the current window.
 set splitbelow
+
+" Use default key mappings
+let g:vimshell_no_default_keymappings = 0
+
+let g:vimshell_prompt_expr =
+    \ 'escape($USER . ":". fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
+let g:vimshell_prompt_pattern = '^\%(\f\)\+\:\%(\f\|\\.\)\+% '
+" let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_split_command = ''
+let g:vimshell_enable_transient_user_prompt = 1
+let g:vimshell_force_overwrite_statusline = 1
+
+autocmd MyAutoCmd FileType vimshell call s:vimshell_settings()
+function! s:vimshell_settings()
+    " Display user name on Linux.
+    " let g:vimshell_prompt = $USER."% "
+
+    " custom mappings
+    nnoremap <buffer> <c-k> <Nop>
+    nnoremap <buffer> <c-k> <c-w>k
+    " Use ctrl-L to clear in insert mode.
+    imap <buffer> <c-l> <ESC><Plug>(vimshell_clear)i
+
+    call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')
+    call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')
+    let g:vimshell_execute_file_list['zip'] = 'zipinfo'
+    call vimshell#set_execute_file('tgz,gz', 'gzcat')
+    call vimshell#set_execute_file('tbz,bz2', 'bzcat')
+
+    " Use gnome-terminal.
+    let g:vimshell_use_terminal_command = 'gnome-terminal -e'
+
+    " Initialize execute file list.
+    let g:vimshell_execute_file_list = {}
+    call vimshell#set_execute_file('txt,vim,c,h,cpp,d,xml,java', 'vim')
+    let g:vimshell_execute_file_list['rb'] = 'ruby'
+    let g:vimshell_execute_file_list['pl'] = 'perl'
+    let g:vimshell_execute_file_list['py'] = 'python'
+    call vimshell#set_execute_file('html,xhtml', 'gexe firefox')
+
+    nnoremap <silent><buffer> <C-j>
+        \ :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
+
+    " Auto jump.
+    call vimshell#set_alias('j', ':Unite -buffer-name=files
+        \ -default-action=lcd -no-split -input=$$args directory_mru')
+
+    call vimshell#set_alias('up', 'cdup')
+
+    call vimshell#hook#add('chpwd', 'my_chpwd', s:vimshell_hooks.chpwd)
+    call vimshell#hook#add('notfound', 'my_notfound', s:vimshell_hooks.notfound)
+    call vimshell#hook#add('preprompt', 'my_preprompt', s:vimshell_hooks.preprompt)
+    call vimshell#hook#add('preexec', 'my_preexec', s:vimshell_hooks.preexec)
+endfunction
+
+autocmd MyAutoCmd FileType int-* call s:interactive_settings()
+function! s:interactive_settings()
+  call vimshell#hook#set('input', [s:vimshell_hooks.input])
+endfunction
+
+autocmd MyAutoCmd FileType term-* call s:terminal_settings()
+function! s:terminal_settings()
+  inoremap <silent><buffer><expr> <Plug>(vimshell_term_send_semicolon)
+        \ vimshell#term_mappings#send_key(';')
+  inoremap <silent><buffer><expr> j<Space>
+        \ vimshell#term_mappings#send_key('j')
+  "inoremap <silent><buffer><expr> <Up>
+  "      \ vimshell#term_mappings#send_keys("\<ESC>[A")
+
+  " Sticky key.
+  imap <buffer><expr> ;  <SID>texe_sticky_func()
+
+  " Escape key.
+  iunmap <buffer> <ESC><ESC>
+  imap <buffer> <ESC>         <Plug>(vimshell_term_send_escape)
+endfunction
+function! s:texe_sticky_func()
+  let sticky_table = {
+        \',' : '<', '.' : '>', '/' : '?',
+        \'1' : '!', '2' : '@', '3' : '#', '4' : '$', '5' : '%',
+        \'6' : '^', '7' : '&', '8' : '*', '9' : '(', '0' : ')', '-' : '_', '=' : '+',
+        \';' : ':', '[' : '{', ']' : '}', '`' : '~', "'" : "\"", '\' : '|',
+        \}
+  let special_table = {
+        \ "\<ESC>" : "\<ESC>", "\<CR>" : ";\<CR>"
+        \ "\<Space>" : "\<Plug>(vimshell_term_send_semicolon)",
+        \}
+
+  if mode() !~# '^c'
+    echo 'Input sticky key: '
+  endif
+  let char = ''
+
+  while char == ''
+    let char = nr2char(getchar())
+  endwhile
+
+  if char =~ '\l'
+    return toupper(char)
+  elseif has_key(sticky_table, char)
+    return sticky_table[char]
+  elseif has_key(special_table, char)
+    return special_table[char]
+  else
+    return ''
+  endif
+endfunction
+
+let s:vimshell_hooks = {}
+function! s:vimshell_hooks.chpwd(args, context)
+  if len(split(glob('*'), '\n')) < 100
+    call vimshell#execute('ls')
+  else
+    call vimshell#execute('echo "Many files."')
+  endif
+endfunction
+function! s:vimshell_hooks.emptycmd(cmdline, context)
+  call vimshell#set_prompt_command('ls')
+  return 'ls'
+endfunction
+function! s:vimshell_hooks.notfound(cmdline, context)
+  return ''
+endfunction
+function! s:vimshell_hooks.preprompt(args, context)
+  " call vimshell#execute('echo "preprompt"')
+endfunction
+function! s:vimshell_hooks.preexec(cmdline, context)
+  " call vimshell#execute('echo "preexec"')
+
+  let args = vimproc#parser#split_args(a:cmdline)
+  if len(args) > 0 && args[0] ==# 'diff'
+    call vimshell#set_syntax('diff')
+  endif
+
+  return a:cmdline
+endfunction
+function! s:vimshell_hooks.input(input, context)
+  " echomsg 'input'
+  return a:input
+endfunction
 
 " ------------------
 "  Markdown
@@ -89,21 +234,109 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_initial_foldlevel=1
 
 
-" -----------------
+" ------------------
 "  YouCompleteMe
-"  ----------------
+"  -----------------
 " YCM's identifier completer will also collect identifiers from tags files.
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_filetype_blacklist = {
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'text' : 1,
-      \ 'unite' : 1
-      \}
+"let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_filetype_blacklist = {
+"      \ 'notes' : 1,
+"      \ 'markdown' : 1,
+"      \ 'text' : 1,
+"      \ 'unite' : 1
+"      \}
 
-" -----------------
+" ------------------
+" Neocomplete
+" ------------------
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+" For cursor moving in insert mode(Not recommended)
+"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+" Or set this.
+"let g:neocomplete#enable_cursor_hold_i = 1
+" Or set this.
+"let g:neocomplete#enable_insert_char_pre = 1
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType c  setlocal omnifunc=ccomplete#Complete
+autocmd FileType cpp  setlocal omnifunc=ccomplete#Complete
+autocmd FileType sh  setlocal omnifunc=ccomplete#Complete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" ------------------
 "  Unite
-" -----------------
+" ------------------
+
+let g:unite_prompt = 'Unite %'
 " Use the fuzzy matcher for everything
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
@@ -120,12 +353,13 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '.sass-cache',
       \ ], '\|'))
 
-" Map space to the prefix for Unite
+" Map , to the prefix for Unite
+nnoremap , <Nop>
 nnoremap [unite] <Nop>
-nmap <space> [unite]
+nmap , [unite]
 
 " General fuzzy search
-nnoremap <silent> [unite]<space> :<C-u>Unite
+nnoremap <silent> [unite]s :<C-u>Unite
       \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
 
 " Quick registers
@@ -147,7 +381,7 @@ nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=sessions session<CR>
 nnoremap <silent> [unite]a :<C-u>Unite -buffer-name=sources source<CR>
 
 " Quick snippet
-nnoremap <silent> [unite]s :<C-u>Unite -buffer-name=snippets snippet<CR>
+"nnoremap <silent> [unite]s :<C-u>Unite -buffer-name=snippets snippet<CR>
 
 " Quickly switch lcd
 nnoremap <silent> [unite]d
@@ -155,13 +389,9 @@ nnoremap <silent> [unite]d
 
 " Quick file search
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
-" Quick file search with the word under cursor
-nnoremap <silent> [unite]ff :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
 
-" Quick grep from cwd, ask for pattern
-nnoremap <silent> [unite]gg :<C-u>UniteWithCursorWord -buffer-name=grep grep:.<CR>
 " Quick grep from cwd with the word under cursor
-nnoremap <silent> [unite]g :<C-u>UniteWithCursorWord -buffer-name=grep grep:.<CR>
+nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
 
 " Quick help
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
@@ -266,9 +496,9 @@ elseif executable('ack')
   let g:unite_source_grep_recursive_opt = ''
 endif
 
-"===============================================================================
+" ------------------
 " Unite Sessions
-"===============================================================================
+" ------------------
 
 " Save session automatically.
 let g:unite_source_session_enable_auto_save = 1
@@ -282,9 +512,9 @@ function! s:unite_session_on_enter()
   endif
 endfunction
 
-"===============================================================================
+" ------------------
 " Vimfiler
-"===============================================================================
+" ------------------
 
 " Example at: https://github.com/hrsh7th/dotfiles/blob/master/vim/.vimrc
 nnoremap <expr><F2> g:my_open_explorer_command()
@@ -311,9 +541,9 @@ function! s:vimfiler_settings()
   nmap     <buffer><expr><CR>  vimfiler#smart_cursor_map("\<PLUG>(vimfiler_expand_tree)", "e")
 endfunction
 
-"===============================================================================
+" ------------------
 " NERDCommenter
-"===============================================================================
+" ------------------
 
 " Always leave a space between the comment character and the comment
 let NERDSpaceDelims=1

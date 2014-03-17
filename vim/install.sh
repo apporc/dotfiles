@@ -8,30 +8,32 @@ YUM=yum
 EMERGE=emerge
 
 usage () {
-    echo "Usage: $0 [-h] [[-oi] [OS]]"
-    echo "-o    The operating system name, supported now including centos, ubuntu, fedora, redhat, debian, gentoo."
-    echo "-i    Install vim-gnome automatically."
+  echo "Usage: $0 [-h] [[-oi] [OS]]"
+  echo "-o    The operating system name, supported now including centos, ubuntu, fedora, redhat, debian, gentoo."
+  echo "-i    Install vim-gnome automatically."
 }
 
 install_vim_gnome () {
-	if [ $os == 'ubuntu' -o $os == 'debian' ];then
-	    sudo ${APT} -y install vim-gnome
-	elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
-	    sudo ${YUM} install -y vim
-	elif [ $os == 'gentoo' ];then
-	    sudo ${EMERGE} vim
-	fi
+  if [ $os == 'ubuntu' -o $os == 'debian' ];then
+    sudo ${APT} -y install vim-gnome
+    #Use vim-tiny as vi
+    sudo update-alternatives --set vi /usr/bin/vim.tiny
+  elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
+    sudo ${YUM} install -y vim
+  elif [ $os == 'gentoo' ];then
+    sudo ${EMERGE} vim
+  fi
 }
 
 parse_opt () {
-    while getopts "hoi:" opt
-    do
-        case $opt in
-            h) usage;exit 0;;
-            o) os=$OPTARG;;
-	    i) gnome=y;;
-        esac
-    done
+  while getopts "hoi:" opt
+  do
+      case $opt in
+          h) usage;exit 0;;
+          o) os=$OPTARG;;
+    i) gnome=y;;
+      esac
+  done
 }
 
         cp  ${LOTUS_PWD}/lotusvim/configs/flake8 ~/.config/flake8

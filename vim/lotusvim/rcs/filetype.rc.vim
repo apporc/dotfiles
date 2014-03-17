@@ -1,20 +1,24 @@
+" Setting tabwidth, width normally is 2 or 4
+function! SetTabWidth(width)
+  execute 'setl shiftwidth=' . a:width
+  execute 'setl tabstop=' . a:width
+  execute 'setl softtabstop='. a:width
+endfunction
+
 function! Auto_C()
   setl fdm=syntax
   call SetTabWidth(4)
-  setl omnifunc=ccomplete#Complete
   noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=C,C++ . && cscope -R -f .cscope -b -q -s .<CR>
-  silent source ~/.lotus_vim/cscope.vim
+  silent source ~/.lotusvim/rcs/cscope.rc.vim
 endfunction
 
 function! Auto_CSS()
   call SetTabWidth(2)
-  setl omnifunc=csscomplete#CompleteCS
   noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=HTML .<CR>
 endfunction
 
 function! Auto_HTML()
   call SetTabWidth(2)
-  setl omnifunc=htmlcomplete#CompleteTags
   noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=HTML .<CR>
 endfunction
 
@@ -23,14 +27,12 @@ function! Auto_JS()
   setl nocindent
   call JavaScriptFold()
   call SetTabWidth(4)
-  setl omnifunc=javascriptcomplete#CompleteJS
   noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Javascript .<CR>
 endfunction
 
 function! Auto_PHP()
   setl fdm=syntax
   call SetTabWidth(4)
-  setl omnifunc=phpcomplete#Complete
   noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=php .<CR>
 endfunction
 
@@ -39,10 +41,9 @@ function! Auto_PYTHON()
   setl fdm=indent
   " disable intelligent indentation for python, or the cursor magically show at the head of one new line when commenting.
   setl nosmartindent
-  setl omnifunc=pythoncomplete#Complete
   "This silent won't work, don't know why.
   noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Python . && pycscope -R -f .cscope .<CR>
-  silent source ~/.lotus_vim/cscope.vim
+  silent source ~/.lotusvim/rcs/cscope.rc.vim
 endfunction
 
 function! Auto_SH()
