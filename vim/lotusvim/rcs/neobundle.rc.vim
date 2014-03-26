@@ -27,7 +27,9 @@ NeoBundle 'thinca/vim-unite-history'
 
 " Buffer Explorer
 "NeoBundle 'fholgado/minibufexpl.vim.git'
-NeoBundle 'bling/vim-airline' "TODO tabline appearance
+NeoBundle 'bling/vim-airline'
+NeoBundle 'moll/vim-bbye'  " Preserve the window when closing buffer.
+NeoBundle 'vim-scripts/BufOnly.vim'
 
 " Most Recently Used Files
 NeoBundle 'Shougo/neomru.vim'
@@ -38,11 +40,11 @@ NeoBundle 'apporc/flake8.git', { 'build': {'unix': 'sudo python setup.py install
 NeoBundle 'scrooloose/syntastic.git'
 
 " Shell inside vim
-" NeoBundle 'apporc/Conque-Shell.git'
-NeoBundle 'Shougo/vimshell'
+NeoBundle 'apporc/Conque-Shell.git'
+"NeoBundle 'Shougo/vimshell'
 
 " cscope and pycscope, for code jumping
-NeoBundle 'vim-scripts/cscope.vim.git', { 'build': {'unix': 'sudo python setup.py install',} }
+NeoBundle 'vim-scripts/cscope.vim.git'
 NeoBundle 'portante/pycscope.git', { 'build': {'unix': 'sudo python setup.py install',} }
 
 " File types
@@ -51,8 +53,8 @@ NeoBundle 'tpope/vim-markdown' "Markdown
 NeoBundle 'terryma/vim-instant-markdown' "Markdown
 
 " Code completion
-"NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Valloric/YouCompleteMe'
+"NeoBundle 'Shougo/neocomplete.vim'
 
 " Git
 NeoBundle 'tpope/vim-fugitive'

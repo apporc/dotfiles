@@ -5,9 +5,10 @@
 "" vim-airline
 " ------------------
 " Use powerline fonts TODO get back font patcher in install.sh
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 " enable/disable enhanced tabline.
+" Use minibufexplorer now
 let g:airline#extensions#tabline#enabled = 1
 
 " enable/disable displaying tab number in tabs mode.
@@ -27,7 +28,7 @@ let g:airline#extensions#tabline#fnamemod = ':p:.'
 let g:airline#extensions#tabline#fnamecollapse = 1
 
 " configure the minimum number of buffers needed to show the tabline.
-let g:airline#extensions#tabline#buffer_min_count = 0
+let g:airline#extensions#tabline#buffer_min_count = 1
 
 
 " configure separators for the tabline only.
@@ -36,24 +37,36 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
-" mappings for tabline
-nnoremap <c-n> <ESC>:bn<CR>
-nnoremap <c-p> <ESC>:bp<CR>
+noremap <c-n> <ESC>:bn<CR>
+noremap <c-p> <ESC>:bp<CR>
 
-"" switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
+" switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
 for buffer_no in range(1, 9)
-  execute "nnoremap <Leader>" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
+  execute "noremap <Leader>" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
 endfor
 
 " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
 for buffer_no in range(10, 100)
-  execute "nnoremap <Leader>0" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
+  execute "noremap <Leader>0" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
 endfor
 
 " Refresh airline color while reloading vimrc
 if exists(":AirlineRefresh")
     AirlineRefresh
 endif
+
+
+" ------------------
+"  vim-bbye
+" ------------------
+" Close current buffer, but preserve the window.
+noremap <c-w> <ESC>:Bdelete<CR>
+
+" ------------------
+"  BufOnly
+" ------------------
+" Close all buffers but the current one.
+noremap <c-s-w> <ESC>:BufOnly<CR>
 
 " ------------------
 "" Nerdtree
@@ -83,12 +96,14 @@ let g:tagbar_width=30
 " ------------------
 "
 "Open a shell splitwindow
-nnoremap <c-t> :VimShellPop <CR>
+"nnoremap <c-t> :VimShellPop <CR>
 " Make shell window show below the current window.
 set splitbelow
 
 " Use default key mappings
 let g:vimshell_no_default_keymappings = 0
+let g:vimshell_no_save_history_commands = {}
+let g:vimshell_interactive_no_save_history_commands = {}
 
 let g:vimshell_prompt_expr =
     \ 'escape($USER . ":". fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
@@ -116,7 +131,7 @@ function! s:vimshell_settings()
     call vimshell#set_execute_file('tbz,bz2', 'bzcat')
 
     " Use gnome-terminal.
-    let g:vimshell_use_terminal_command = 'gnome-terminal -e'
+    " let g:vimshell_use_terminal_command = 'gnome-terminal -e'
 
     " Initialize execute file list.
     let g:vimshell_execute_file_list = {}
@@ -238,99 +253,99 @@ let g:vim_markdown_initial_foldlevel=1
 "  YouCompleteMe
 "  -----------------
 " YCM's identifier completer will also collect identifiers from tags files.
-"let g:ycm_collect_identifiers_from_tags_files = 1
-"let g:ycm_filetype_blacklist = {
-"      \ 'notes' : 1,
-"      \ 'markdown' : 1,
-"      \ 'text' : 1,
-"      \ 'unite' : 1
-"      \}
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_filetype_blacklist = {
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'text' : 1,
+      \ 'unite' : 1
+      \}
 
 " ------------------
 " Neocomplete
 " ------------------
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType c  setlocal omnifunc=ccomplete#Complete
-autocmd FileType cpp  setlocal omnifunc=ccomplete#Complete
-autocmd FileType sh  setlocal omnifunc=ccomplete#Complete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"let g:acp_enableAtStartup = 0
+"" Use neocomplete.
+"let g:neocomplete#enable_at_startup = 0
+"" Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+"" Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"
+"" Define dictionary.
+"let g:neocomplete#sources#dictionary#dictionaries = {
+"    \ 'default' : '',
+"    \ 'vimshell' : $HOME.'/.vimshell_hist',
+"    \ 'scheme' : $HOME.'/.gosh_completions'
+"        \ }
+"
+"" Define keyword.
+"if !exists('g:neocomplete#keyword_patterns')
+"    let g:neocomplete#keyword_patterns = {}
+"endif
+"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"
+"" Plugin key-mappings.
+"inoremap <expr><C-g>     neocomplete#undo_completion()
+"inoremap <expr><C-l>     neocomplete#complete_common_string()
+"
+"" Recommended key-mappings.
+"" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"  return neocomplete#close_popup() . "\<CR>"
+"  " For no inserting <CR> key.
+"  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+"endfunction
+"" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y>  neocomplete#close_popup()
+"inoremap <expr><C-e>  neocomplete#cancel_popup()
+"" Close popup by <Space>.
+""inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+"
+"" For cursor moving in insert mode(Not recommended)
+""inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+""inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+""inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+""inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+"" Or set this.
+""let g:neocomplete#enable_cursor_hold_i = 1
+"" Or set this.
+""let g:neocomplete#enable_insert_char_pre = 1
+"
+"" AutoComplPop like behavior.
+""let g:neocomplete#enable_auto_select = 1
+"
+"" Shell like behavior(not recommended).
+""set completeopt+=longest
+""let g:neocomplete#enable_auto_select = 1
+""let g:neocomplete#disable_auto_complete = 1
+""inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+"
+"" Enable omni completion.
+"autocmd FileType c  setlocal omnifunc=ccomplete#Complete
+"autocmd FileType cpp  setlocal omnifunc=ccomplete#Complete
+"autocmd FileType sh  setlocal omnifunc=ccomplete#Complete
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"
+"" Enable heavy omni completion.
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+"  let g:neocomplete#sources#omni#input_patterns = {}
+"endif
+""let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+""let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+""let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " ------------------
 "  Unite
@@ -547,3 +562,50 @@ endfunction
 
 " Always leave a space between the comment character and the comment
 let NERDSpaceDelims=1
+
+" ------------------
+" Conque Shell
+" ------------------
+"
+" Keep updating conque buffer after switching to other buffer
+let g:ConqueTerm_ReadUnfocused = 1
+" Close conque buffer when program exits
+let g:ConqueTerm_CloseOnEnd = 1
+" Use vimshell now
+noremap <c-t> <ESC>:ConqueTermSplit bash<CR>
+
+
+" ------------------
+"  MiniBufExplorer
+" ------------------
+"
+"let g:miniBufExplBRSplit = 0   " Put new window above current or on the left for vertical split
+"let g:miniBufExplSplitToEdge = 1 "Put minibufexplorer at the edge of window
+"let g:miniBufExplBuffersNeeded = 1 " Autostart minibuf even there is only one buffer
+"let g:miniBufExplStatusLineText = 'MINIBUFEXPLORER' " No statusline
+"let g:did_minibufexplorer_syntax_inits = 1
+"
+"" Define color
+""hi MBENormal guibg=black ctermbg=black
+""hi MBEChanged guibg=red ctermbg=red
+""hi MBEVisibleNormal guibg=darkgreen ctermbg=darkgreen
+"hi MBEVisibleChanged guibg=red ctermbg=red
+"hi MBEVisibleActiveChanged guibg=red ctermbg=red
+"hi MBEVisibleActiveNormal guibg=darkgreen ctermbg=darkgreen
+"" Tab is already used, this don't work.
+""noremap <C-TAB>   :MBEbn<CR>
+""noremap <C-S-TAB> :MBEbp<CR>
+"noremap <c-n> <ESC>:MBEbn<CR>
+"noremap <c-p> <ESC>:MBEbp<CR>
+"noremap <c-w> <ESC>:MBEbd<CR>
+"
+""" switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
+"for buffer_no in range(1, 9)
+"  execute "noremap <Leader>" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
+"endfor
+"
+"" switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
+"for buffer_no in range(10, 100)
+"  execute "noremap <Leader>0" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
+"endfor
+"

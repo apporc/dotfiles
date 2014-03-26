@@ -172,7 +172,7 @@ endif
 " Enable folding.
 set foldenable
 " Show folding level.
-set foldcolumn=3
+set foldcolumn=0
 " By default, don't fold code
 set foldlevelstart=99
 set fillchars=vert:\|

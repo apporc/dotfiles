@@ -161,5 +161,3 @@ if has("cscope")
     "set ttimeoutlen=100
 
 endif
-
-
