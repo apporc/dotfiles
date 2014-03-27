@@ -44,10 +44,10 @@ cnoremap    <esc><c-f> <s-right>
 " Can't map this in imap, because when paste option is on, imap is disabled.
 nnoremap <leader>p :setlocal paste!<CR>
 
-" use ',w' to save file
+" use <leader>w to save file
 nnoremap <leader>w :w<CR>
 
-" goto definition with ',j'
+" use <leader>g to jump to definition
 nnoremap <silent> <leader>g <C-]>
 
 " Visual mode pressing * or # searches for the current selection
