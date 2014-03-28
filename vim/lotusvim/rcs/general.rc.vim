@@ -81,9 +81,9 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 " With Ubuntu, you may need to install vim-gnome instead of the default vim package.
 " It made chinese garbled, give up at present.
 if has('unnamedplus')
-  set clipboard& clipboard+=unnamedplus
+  set clipboard=unnamedplus
 else
-  set clipboard& clipboard+=unnamed
+  set clipboard=unnamed
 endif
 
 if v:version < 703 || (v:version == 7.3 && !has('patch336'))
