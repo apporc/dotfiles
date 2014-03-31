@@ -60,13 +60,13 @@ endif
 "  vim-bbye
 " ------------------
 " Close current buffer, but preserve the window.
-noremap <c-w> <ESC>:Bdelete<CR>
+nnoremap <c-w> <ESC>:Bdelete<CR>
 
 " ------------------
 "  BufOnly
 " ------------------
 " Close all buffers but the current one.
-noremap <c-m> <ESC>:BufOnly<CR>
+nnoremap <c-m> <ESC>:BufOnly<CR>
 
 " ------------------
 "" Nerdtree
