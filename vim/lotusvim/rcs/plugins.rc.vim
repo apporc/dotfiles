@@ -66,7 +66,7 @@ noremap <c-w> <ESC>:Bdelete<CR>
 "  BufOnly
 " ------------------
 " Close all buffers but the current one.
-noremap <c-s-w> <ESC>:BufOnly<CR>
+noremap <c-m> <ESC>:BufOnly<CR>
 
 " ------------------
 "" Nerdtree
