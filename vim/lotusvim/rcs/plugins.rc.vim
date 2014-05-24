@@ -37,17 +37,18 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
-noremap <c-n> <ESC>:bn<CR>
-noremap <c-p> <ESC>:bp<CR>
+noremap <c-n> :bn<CR>
+noremap <c-p> :bp<CR>
 
 " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
+" <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
 for buffer_no in range(1, 9)
-  execute "noremap <Leader>" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
+  execute "nnoremap <Leader>" . buffer_no . " :b" . buffer_no . "<CR>"
 endfor
 
 " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
 for buffer_no in range(10, 100)
-  execute "noremap <Leader>0" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
+  execute "nnoremap <Leader>0" . buffer_no . " :b" . buffer_no . "<CR>"
 endfor
 
 " Refresh airline color while reloading vimrc
