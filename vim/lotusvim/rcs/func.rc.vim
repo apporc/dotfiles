@@ -45,7 +45,7 @@ endfunction
 
 " Startup Commands
 function! Startup()
-  NERDTree
+  VimFilerExplorer
   Tagbar
   wincmd l
 endfunction

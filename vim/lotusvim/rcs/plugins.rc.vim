@@ -83,7 +83,8 @@ let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 "      \ if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.svn', '\.hg', '\.o$','\.bak$','\.pyc$']
 "map <F6> :NERDTreeMirror<CR>
-nnoremap <c-e> :NERDTreeToggle<CR>
+"<c-e> is vimfiler now.
+"nnoremap <c-e> :NERDTreeToggle<CR>
 
 " ------------------
 "  Tagbar
@@ -91,6 +92,29 @@ nnoremap <c-e> :NERDTreeToggle<CR>
 "
 nnoremap <c-a> :TagbarToggle<CR>
 let g:tagbar_width=30
+
+autocmd MyAutoCmd FileType tagbar call s:tagbar_my_settings()                                  
+function! s:tagbar_my_settings() "{{{                                                            
+  nmap <buffer><c-w> <Nop>
+  nmap <buffer><F12> <Nop>
+  nmap <buffer><c-t> <Nop>
+
+  nmap <buffer><c-n> <Nop>
+  nmap <buffer><c-p> <Nop>
+
+  " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
+  " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
+  for buffer_no in range(1, 9)
+  execute "nmap <buffer><Leader>" . buffer_no . " <Nop>"
+  endfor
+
+  " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
+  for buffer_no in range(10, 100)
+  execute "nmap <buffer><Leader>0" . buffer_no . " <Nop>"
+  endfor
+
+endfunction
+"}}}
 
 "------------------
 "  Markdown
@@ -103,13 +127,13 @@ let g:vim_markdown_initial_foldlevel=1
 "  YouCompleteMe
 "  -----------------
 " YCM's identifier completer will also collect identifiers from tags files.
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_filetype_blacklist = {
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'text' : 1,
-      \ 'unite' : 1
-      \}
+"let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_filetype_blacklist = {
+"      \ 'notes' : 1,
+"      \ 'markdown' : 1,
+"      \ 'text' : 1,
+"      \ 'unite' : 1
+"      \}
 
 " ------------------
 "  Unite
@@ -292,35 +316,6 @@ function! s:unite_session_on_enter()
 endfunction
 
 " ------------------
-" Vimfiler
-" ------------------
-
-" Example at: https://github.com/hrsh7th/dotfiles/blob/master/vim/.vimrc
-nnoremap <expr><F2> g:my_open_explorer_command()
-function! g:my_open_explorer_command()
-  return printf(":\<C-u>VimFilerBufferDir -buffer-name=%s -split -auto-cd -toggle -no-quit -winwidth=%s\<CR>",
-        \ g:my_vimfiler_explorer_name,
-        \ g:my_vimfiler_winwidth)
-endfunction
-
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-" let g:vimfiler_file_icon = ' '
-let g:vimfiler_marked_file_icon = '✓'
-" let g:vimfiler_readonly_file_icon = ' '
-let g:my_vimfiler_explorer_name = 'explorer'
-let g:my_vimfiler_winwidth = 30
-let g:vimfiler_safe_mode_by_default = 0
-" let g:vimfiler_directory_display_top = 1
-
-autocmd MyAutoCmd FileType vimfiler call s:vimfiler_settings()
-function! s:vimfiler_settings()
-  nmap     <buffer><expr><CR>  vimfiler#smart_cursor_map("\<PLUG>(vimfiler_expand_tree)", "e")
-endfunction
-
-" ------------------
 " NERDCommenter
 " ------------------
 
@@ -332,11 +327,11 @@ let NERDSpaceDelims=1
 " ------------------
 "
 " Keep updating conque buffer after switching to other buffer
-let g:ConqueTerm_ReadUnfocused = 1
+"let g:ConqueTerm_ReadUnfocused = 1
 " Close conque buffer when program exits
-let g:ConqueTerm_CloseOnEnd = 1
+"let g:ConqueTerm_CloseOnEnd = 1
 " Use vimshell now
-noremap <c-t> <ESC>:ConqueTermSplit bash<CR>
+"noremap <c-t> <ESC>:ConqueTermSplit bash<CR>
 
 
 " ------------------
@@ -372,4 +367,169 @@ noremap <c-t> <ESC>:ConqueTermSplit bash<CR>
 "for buffer_no in range(10, 100)
 "  execute "noremap <Leader>0" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
 "endfor
+
+" ------------------
+"Neocomplete
+" ------------------
 "
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+" ------------------
+" VimShell
+" ------------------
+"
+"Open a shell splitwindow
+nnoremap <c-t> :VimShellPop <CR>
+" Make shell window show below the current window.
+set splitbelow
+
+" Use default key mappings
+let g:vimshell_no_default_keymappings = 0
+let g:vimshell_no_save_history_commands = {}
+let g:vimshell_interactive_no_save_history_commands = {}
+
+let g:vimshell_prompt_expr =
+    \ 'escape($USER . ":". fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
+let g:vimshell_prompt_pattern = '^\%(\f\)\+\:\%(\f\|\\.\)\+% '
+" let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_split_command = ''
+let g:vimshell_enable_transient_user_prompt = 1
+let g:vimshell_force_overwrite_statusline = 1
+
+autocmd MyAutoCmd FileType vimshell call s:vimshell_my_settings()                                  
+function! s:vimshell_my_settings() "{{{                                                            
+  imap <buffer><C-l> <Plug>(vimshell_clear)
+  nmap <buffer><c-w> <Nop>
+  nmap <buffer><F12> <Nop>
+  nmap <buffer><c-t> <Nop>
+
+  nmap <buffer><c-n> <Nop>
+  nmap <buffer><c-p> <Nop>
+
+  " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
+  " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
+  for buffer_no in range(1, 9)
+  execute "nmap <buffer><Leader>" . buffer_no . " <Nop>"
+  endfor
+
+  " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
+  for buffer_no in range(10, 100)
+  execute "nmap <buffer><Leader>0" . buffer_no . " <Nop>"
+  endfor
+
+endfunction
+"}}}
+
+" ------------------
+" echodoc
+" ------------------
+let bundle = neobundle#get('echodoc.vim')
+function! bundle.hooks.on_source(bundle)
+  let g:echodoc_enable_at_startup = 1
+endfunction
+unlet bundle
+
+" ------------------
+" vimfiler
+" ------------------
+let g:vimfiler_enable_clipboard = 0                                                                
+let g:vimfiler_safe_mode_by_default = 0                                                            
+                                                                                                   
+let g:vimfiler_as_default_explorer = 1                                                             
+
+nnoremap <c-e> :VimFilerExplorer -winwidth=20<CR>
+" %p : full path                                                                                   
+" %d : current directory                                                                           
+" %f : filename                                                                                    
+" %F : filename removed extensions                                                                 
+" %* : filenames                                                                                   
+" %# : filenames fullpath                                                                          
+let g:vimfiler_sendto = {                                                                          
+      \ 'unzip' : 'unzip %f',                                                                      
+      \ 'zip' : 'zip -r %F.zip %*',                                                                
+      \ 'Inkscape' : 'inkspace',                                                                   
+      \ 'GIMP' : 'gimp %*',                                                                        
+      \ 'gedit' : 'gedit',                                                                         
+      \ }                                                                                          
+                                                                                                  
+autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()                                  
+function! s:vimfiler_my_settings() "{{{                                                            
+  call vimfiler#set_execute_file('vim', 'vim')                                        
+  call vimfiler#set_execute_file('txt', 'vim')
+  nmap <buffer><expr><CR>  vimfiler#smart_cursor_map("\<PLUG>(vimfiler_expand_tree)", "e")
+  nmap <buffer><c-r> <Plug>(vimfiler_redraw_screen)
+  "nmap <buffer><C-l> <Plug>(vimfiler_switch_to_other_window)
+  nmap <buffer><c-w> <Nop>
+  nmap <buffer><F12> <Nop>
+  nmap <buffer><c-t> <Nop>
+
+  nmap <buffer><c-n> <Nop>
+  nmap <buffer><c-p> <Nop>
+
+  " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
+  " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
+  for buffer_no in range(1, 9)
+  execute "nmap <buffer><Leader>" . buffer_no . " <Nop>"
+  endfor
+
+  " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
+  for buffer_no in range(10, 100)
+  execute "nmap <buffer><Leader>0" . buffer_no . " <Nop>"
+  endfor
+
+endfunction
+"}}}
+
+" ------------------
+" neosnippet.vim
+" ------------------
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
