@@ -219,7 +219,7 @@ set showcmd
 " Always show the status line
 set laststatus=2
 " Height of command line.
-"set cmdheight=2
+set cmdheight=2
 
 " Swap file settings
 " ------------------------------------------------------------------------------
