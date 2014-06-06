@@ -62,3 +62,6 @@ nnoremap <Leader>sk [s
 nnoremap <Leader>sa zg]s
 nnoremap <Leader>sd 1z=
 nnoremap <Leader>sf z=
+
+" F11 to delete trailing spaces.
+nnoremap <F9> :call DeleteTrailingWS()<CR>

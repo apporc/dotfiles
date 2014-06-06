@@ -93,8 +93,8 @@ let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.svn', '\.hg', '\.o$','\.bak$','
 nnoremap <c-a> :TagbarToggle<CR>
 let g:tagbar_width=30
 
-autocmd MyAutoCmd FileType tagbar call s:tagbar_my_settings()                                  
-function! s:tagbar_my_settings() "{{{                                                            
+autocmd MyAutoCmd FileType tagbar call s:tagbar_my_settings()
+function! s:tagbar_my_settings() "{{{
   nmap <buffer><c-w> <Nop>
   nmap <buffer><F12> <Nop>
   nmap <buffer><c-t> <Nop>
@@ -445,8 +445,8 @@ let g:vimshell_split_command = ''
 let g:vimshell_enable_transient_user_prompt = 1
 let g:vimshell_force_overwrite_statusline = 1
 
-autocmd MyAutoCmd FileType vimshell call s:vimshell_my_settings()                                  
-function! s:vimshell_my_settings() "{{{                                                            
+autocmd MyAutoCmd FileType vimshell call s:vimshell_my_settings()
+function! s:vimshell_my_settings() "{{{
   imap <buffer><C-l> <Plug>(vimshell_clear)
   nmap <buffer><c-w> <Nop>
   nmap <buffer><F12> <Nop>
@@ -481,29 +481,29 @@ unlet bundle
 " ------------------
 " vimfiler
 " ------------------
-let g:vimfiler_enable_clipboard = 0                                                                
-let g:vimfiler_safe_mode_by_default = 0                                                            
-                                                                                                   
-let g:vimfiler_as_default_explorer = 1                                                             
+let g:vimfiler_enable_clipboard = 0
+let g:vimfiler_safe_mode_by_default = 0
+
+let g:vimfiler_as_default_explorer = 1
 
 nnoremap <c-e> :VimFilerExplorer -winwidth=20<CR>
-" %p : full path                                                                                   
-" %d : current directory                                                                           
-" %f : filename                                                                                    
-" %F : filename removed extensions                                                                 
-" %* : filenames                                                                                   
-" %# : filenames fullpath                                                                          
-let g:vimfiler_sendto = {                                                                          
-      \ 'unzip' : 'unzip %f',                                                                      
-      \ 'zip' : 'zip -r %F.zip %*',                                                                
-      \ 'Inkscape' : 'inkspace',                                                                   
-      \ 'GIMP' : 'gimp %*',                                                                        
-      \ 'gedit' : 'gedit',                                                                         
-      \ }                                                                                          
-                                                                                                  
-autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()                                  
-function! s:vimfiler_my_settings() "{{{                                                            
-  call vimfiler#set_execute_file('vim', 'vim')                                        
+" %p : full path
+" %d : current directory
+" %f : filename
+" %F : filename removed extensions
+" %* : filenames
+" %# : filenames fullpath
+let g:vimfiler_sendto = {
+      \ 'unzip' : 'unzip %f',
+      \ 'zip' : 'zip -r %F.zip %*',
+      \ 'Inkscape' : 'inkspace',
+      \ 'GIMP' : 'gimp %*',
+      \ 'gedit' : 'gedit',
+      \ }
+
+autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()
+function! s:vimfiler_my_settings() "{{{
+  call vimfiler#set_execute_file('vim', 'vim')
   call vimfiler#set_execute_file('txt', 'vim')
   nmap <buffer><expr><CR>  vimfiler#smart_cursor_map("\<PLUG>(vimfiler_expand_tree)", "e")
   nmap <buffer><c-r> <Plug>(vimfiler_redraw_screen)
