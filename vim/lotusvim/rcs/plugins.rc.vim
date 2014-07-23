@@ -67,7 +67,7 @@ nnoremap <c-w> :Bdelete<CR>
 "  BufOnly
 " ------------------
 " Close all buffers but the current one.
-nnoremap <F12> :BufOnly<CR>
+nnoremap <c-i> :BufOnly<CR>
 
 " ------------------
 "" Nerdtree
@@ -96,7 +96,7 @@ let g:tagbar_width=30
 autocmd MyAutoCmd FileType tagbar call s:tagbar_my_settings()
 function! s:tagbar_my_settings() "{{{
   nmap <buffer><c-w> <Nop>
-  nmap <buffer><F12> <Nop>
+  nmap <buffer><c-i> <Nop>
   nmap <buffer><c-t> <Nop>
 
   nmap <buffer><c-n> <Nop>
@@ -448,22 +448,24 @@ let g:vimshell_force_overwrite_statusline = 1
 autocmd MyAutoCmd FileType vimshell call s:vimshell_my_settings()
 function! s:vimshell_my_settings() "{{{
   imap <buffer><C-l> <Plug>(vimshell_clear)
-  nmap <buffer><c-w> <Nop>
-  nmap <buffer><F12> <Nop>
-  nmap <buffer><c-t> <Nop>
+  nmap <buffer><c-w> <Plug>(vimshell_exit)
+  nnoremap <buffer><c-i> <Nop>
+  nnoremap <buffer><c-t> <Nop>
+  nnoremap <buffer><c-k> <c-w>k
+  nnoremap <buffer><c-l> <c-w>l
 
-  nmap <buffer><c-n> <Nop>
-  nmap <buffer><c-p> <Nop>
+  nnoremap <buffer><c-n> <Nop>
+  nnoremap <buffer><c-p> <Nop>
 
   " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
   " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
   for buffer_no in range(1, 9)
-  execute "nmap <buffer><Leader>" . buffer_no . " <Nop>"
+  execute "nnoremap <buffer><Leader>" . buffer_no . " <Nop>"
   endfor
 
   " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
   for buffer_no in range(10, 100)
-  execute "nmap <buffer><Leader>0" . buffer_no . " <Nop>"
+  execute "nnoremap <buffer><Leader>0" . buffer_no . " <Nop>"
   endfor
 
 endfunction
@@ -507,23 +509,24 @@ function! s:vimfiler_my_settings() "{{{
   call vimfiler#set_execute_file('txt', 'vim')
   nmap <buffer><expr><CR>  vimfiler#smart_cursor_map("\<PLUG>(vimfiler_expand_tree)", "e")
   nmap <buffer><c-r> <Plug>(vimfiler_redraw_screen)
-  "nmap <buffer><C-l> <Plug>(vimfiler_switch_to_other_window)
-  nmap <buffer><c-w> <Nop>
-  nmap <buffer><F12> <Nop>
-  nmap <buffer><c-t> <Nop>
+  nmap <buffer><C-l> <Plug>(vimfiler_switch_to_other_window)
+  nmap <buffer><c-w> <Plug>(vimfiler_exit)
+  nnoremap <buffer><c-i> <Nop>
+  nnoremap <buffer><c-t> <Nop>
+  nmap <buffer><c-j> <Plug>(vimfiler_switch_to_other_window)
 
-  nmap <buffer><c-n> <Nop>
-  nmap <buffer><c-p> <Nop>
+  nnoremap <buffer><c-n> <Nop>
+  nnoremap <buffer><c-p> <Nop>
 
   " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
   " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
   for buffer_no in range(1, 9)
-  execute "nmap <buffer><Leader>" . buffer_no . " <Nop>"
+  execute "nnoremap <buffer><Leader>" . buffer_no . " <Nop>"
   endfor
 
   " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
   for buffer_no in range(10, 100)
-  execute "nmap <buffer><Leader>0" . buffer_no . " <Nop>"
+  execute "nnoremap <buffer><Leader>0" . buffer_no . " <Nop>"
   endfor
 
 endfunction
