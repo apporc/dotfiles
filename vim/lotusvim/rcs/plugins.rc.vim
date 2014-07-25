@@ -67,7 +67,7 @@ nnoremap <c-w> :Bdelete<CR>
 "  BufOnly
 " ------------------
 " Close all buffers but the current one.
-nnoremap <c-i> :BufOnly<CR>
+nnoremap <c-x> :BufOnly<CR>
 
 " ------------------
 "" Nerdtree
