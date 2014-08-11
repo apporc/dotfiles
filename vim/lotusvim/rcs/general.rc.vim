@@ -244,7 +244,7 @@ set backupdir-=.
 " ------------------------------------------------------------------------------
 "
 " The most comfortable colorscheme in fact is default.
-colorscheme default
+colorscheme grb256
 
 set background=dark
 

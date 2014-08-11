@@ -6,6 +6,9 @@
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc'
 
+" Color Scheme
+NeoBundle 'apporc/grb256'
+
 " Tagbar
 NeoBundle 'majutsushi/tagbar'
 
