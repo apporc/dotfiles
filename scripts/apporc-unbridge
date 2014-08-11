@@ -1,0 +1,6 @@
+#!/bin/bash
+
+virsh iface-destroy br0
+virsh iface-undefine br0
+pid=$(ps -ef |grep 'NetworkManager'|grep -v 'dnsmasq'|grep -v 'grep'|awk '{print $2}')
+su -c "kill $pid" root
