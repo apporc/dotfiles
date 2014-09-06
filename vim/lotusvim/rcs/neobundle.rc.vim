@@ -46,6 +46,7 @@ NeoBundle 'vim-scripts/cscope.vim.git'
 NeoBundle 'portante/pycscope.git', { 'build': {'unix': 'sudo python setup.py install',} }
 
 " File types
+NeoBundle 'fatih/vim-go.git'
 NeoBundle 'dart-lang/dart-vim-plugin.git'
 NeoBundle 'tpope/vim-markdown' "Markdown
 NeoBundle 'terryma/vim-instant-markdown' "Markdown
