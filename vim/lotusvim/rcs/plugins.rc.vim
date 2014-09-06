@@ -539,3 +539,9 @@ endfunction
 " neosnippet.vim
 " ------------------
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
+
+
+" ------------------
+" vim-go
+" ------------------
+let g:go_disable_autoinstall = 1

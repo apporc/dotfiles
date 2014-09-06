@@ -42,18 +42,23 @@ function! Auto_PYTHON()
   " disable intelligent indentation for python, or the cursor magically show at the head of one new line when commenting.
   setl nosmartindent
   "This silent won't work, don't know why.
-  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Python . && pycscope -R -f .cscope .<CR>
+  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Python . && pycscope -R -f .cscope .<CR>
   silent source ~/.lotusvim/rcs/cscope.rc.vim
 endfunction
 
 function! Auto_SH()
   call SetTabWidth(2)
-  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=sh .<CR>
+  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=sh .<CR>
 endfunction
 
 function! Auto_VIM()
   call SetTabWidth(2)
-  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Vim .<CR>
+  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Vim .<CR>
+endfunction
+
+function! Auto_GO()
+  call SetTabWidth(4)
+  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=go .<CR>
 endfunction
 
 
@@ -70,4 +75,5 @@ augroup MyAutoCmd
   autocmd Filetype css silent call Auto_CSS()
   autocmd Filetype vim silent call Auto_VIM()
   autocmd Filetype php silent call Auto_PHP()
+  autocmd Filetype go silent call Auto_GO()
 augroup END
