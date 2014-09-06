@@ -8,18 +8,18 @@ endfunction
 function! Auto_C()
   setl fdm=syntax
   call SetTabWidth(4)
-  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=C,C++ . && cscope -R -f .cscope -b -q -s .<CR>
+  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=C,C++ . && cscope -R -f .cscope -b -q -s .<CR>
   silent source ~/.lotusvim/rcs/cscope.rc.vim
 endfunction
 
 function! Auto_CSS()
   call SetTabWidth(2)
-  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=HTML .<CR>
+  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=HTML .<CR>
 endfunction
 
 function! Auto_HTML()
   call SetTabWidth(2)
-  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=HTML .<CR>
+  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=HTML .<CR>
 endfunction
 
 function! Auto_JS()
@@ -27,13 +27,13 @@ function! Auto_JS()
   setl nocindent
   call JavaScriptFold()
   call SetTabWidth(4)
-  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Javascript .<CR>
+  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Javascript .<CR>
 endfunction
 
 function! Auto_PHP()
   setl fdm=syntax
   call SetTabWidth(4)
-  noremap <buffer> <silent> <leader>u :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=php .<CR>
+  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=php .<CR>
 endfunction
 
 function! Auto_PYTHON()
