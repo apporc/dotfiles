@@ -45,7 +45,7 @@ endfunction
 
 " Startup Commands
 function! Startup()
-  VimFilerExplorer
-  Tagbar
-  wincmd l
+"  VimFilerExplorer
+"  Tagbar
+"  wincmd l
 endfunction
