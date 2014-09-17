@@ -66,6 +66,8 @@ NeoBundle 'valloric/MatchTagAlways'
 NeoBundleLazy 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 
+" wordpress
+NeoBundle 'vim-scripts/VimRepress.git'
 filetype plugin indent on
 
 " Enable syntax color.
