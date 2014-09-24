@@ -14,18 +14,6 @@ usage () {
   echo "-i    Install vim-gnome automatically."
 }
 
-install_vim_gnome () {
-  if [ $os == 'ubuntu' -o $os == 'debian' ];then
-    sudo ${APT} -y install vim-gnome
-    #Use vim-tiny as vi
-    sudo update-alternatives --set vi /usr/bin/vim.tiny
-  elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
-    sudo ${YUM} install -y vim
-  elif [ $os == 'gentoo' ];then
-    sudo ${EMERGE} vim
-  fi
-}
-
 parse_opt () {
   while getopts "hio:" opt
   do
@@ -39,35 +27,28 @@ parse_opt () {
 
         cp  ${LOTUS_PWD}/lotusvim/configs/flake8 ~/.config/flake8
 
-install_cscope () {
+install_pack () {
+    PACK=$1
     if [ $os == 'ubuntu' -o $os == 'debian' ];then
-        sudo ${APT} -y install cscope
+        sudo ${APT} -y install $PACK
     elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
-        sudo ${YUM} install -y cscope
+        sudo ${YUM} install -y $PACK
     elif [ $os == 'gentoo' ];then
-        sudo ${EMERGE} cscope
+        sudo ${EMERGE} $PACK
     fi
+
 }
 
-install_setuptools () {
-    if [ $os == 'ubuntu' -o $os == 'debian' ];then
-        sudo ${APT} -y install python-setuptools
-    elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
-        sudo ${YUM} install -y python-setuptools
-    elif [ $os == 'gentoo' ];then
-        sudo ${EMERGE} python-setuptools
-    fi
-}
-
-install_pylint () {
-    if [ $os == 'ubuntu' -o $os == 'debian' ];then
-        sudo ${APT} -y install pylint
-    elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
-        sudo ${YUM} install -y pylint
-    elif [ $os == 'gentoo' ];then
-        sudo ${EMERGE} pylint
-    fi
-    cp  ${LOTUS_PWD}/lotusvim/configs/pylintrc ~/.pylintrc
+install_vim_gnome () {
+  if [ $os == 'ubuntu' -o $os == 'debian' ];then
+    sudo ${APT} -y install vim-gnome
+    #Use vim-tiny as vi
+    sudo update-alternatives --set vi /usr/bin/vim.tiny
+  elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
+    sudo ${YUM} install -y vim
+  elif [ $os == 'gentoo' ];then
+    sudo ${EMERGE} vim
+  fi
 }
 
 main () {
@@ -81,9 +62,11 @@ main () {
     ln -s ${LOTUS_PWD}/lotusvimrc ~/.vimrc
     ln -s ${LOTUS_PWD}/lotusvim ~/.lotusvim
 
-    install_setuptools
-    install_cscope
-    install_pylint
+    install_pack python-setuptools
+    install_pack cscope
+    install_pack pylint
+    cp  ${LOTUS_PWD}/lotusvim/configs/pylintrc ~/.pylintrc
+    install_pack ctags
 
     echo "======================================================="
     echo "Done."
