@@ -127,6 +127,7 @@ call neobundle#config('vimproc', {
       \     'cygwin' : 'make -f make_cygwin.mak',
       \     'mac' : 'make -f make_mac.mak',
       \     'unix' : 'make -f make_unix.mak',
+      \     'linux' : 'make',
       \    },
       \ })
 call neobundle#config('vimshell', {

@@ -1,8 +1,9 @@
-#Lotus vimrc installation script
+#!/bin/bash
 #Author: apporc
 
 LOTUS_PWD=$(pwd)
 os='ubuntu'
+gnome=n
 APT=apt-get
 YUM=yum
 EMERGE=emerge
@@ -26,12 +27,12 @@ install_vim_gnome () {
 }
 
 parse_opt () {
-  while getopts "hoi:" opt
+  while getopts "hio:" opt
   do
       case $opt in
           h) usage;exit 0;;
           o) os=$OPTARG;;
-    i) gnome=y;;
+          i) gnome=y;;
       esac
   done
 }
