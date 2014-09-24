@@ -1,0 +1,3 @@
+libvirt wget qemu-kvm git vim yum-utils gcc python-pip python-devel
+pip install -U pip
+pip install fabric
