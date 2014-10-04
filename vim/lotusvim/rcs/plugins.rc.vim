@@ -8,7 +8,6 @@
 let g:airline_powerline_fonts = 0
 
 " enable/disable enhanced tabline.
-" Use minibufexplorer now
 let g:airline#extensions#tabline#enabled = 1
 
 " enable/disable displaying tab number in tabs mode.
