@@ -67,7 +67,11 @@ NeoBundleLazy 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 
 " wordpress
-NeoBundle 'vim-scripts/VimRepress.git'
+NeoBundle 'apporc/VimRepress.git'
+
+" virtualenv
+NeoBundle 'jmcantrell/vim-virtualenv'
+
 filetype plugin indent on
 
 " Enable syntax color.
