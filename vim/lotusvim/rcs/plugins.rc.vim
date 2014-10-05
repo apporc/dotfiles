@@ -544,3 +544,9 @@ imap <C-k> <Plug>(neosnippet_expand_or_jump)
 " vim-go
 " ------------------
 let g:go_disable_autoinstall = 1
+
+
+" ------------------
+" syntastic
+" ------------------
+let g:syntastic_always_populate_loc_list = 1
