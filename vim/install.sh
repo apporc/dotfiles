@@ -1,8 +1,8 @@
 #!/bin/bash
 #Author: apporc
 
-LOTUS_PWD=$(pwd)
-os='ubuntu'
+SCRIPT=$(readlink -f "$0")
+LOTUS_PWD=$(dirname $SCRIPT)
 gnome=n
 APT=apt-get
 YUM=yum
@@ -24,9 +24,13 @@ parse_opt () {
           i) gnome=y;;
       esac
   done
+  if [ -z $os ];then
+    # must specify an os argument.
+    usage
+    exit 1
+  fi
 }
 
-        cp  ${LOTUS_PWD}/lotusvim/configs/flake8 ~/.config/flake8
 
 install_pack () {
     PACK=$1
@@ -56,6 +60,25 @@ install_vim_gnome () {
   fi
 }
 
+update_rc () {
+  dst=$1
+  src=$2
+  shift
+  shift
+  filenames=$@
+  for filename in $filenames
+  do
+    if [[ -e $dst/$filename ]];then
+      echo "Old $filename detected"
+      echo "Backing up old $filename to /tmp"
+      echo "Check that yourself"
+      cp -rf $dst/$filename /tmp
+      rm -rf $dst/$filename
+    fi
+    ln -sf $src/$filename $dst
+  done
+}
+
 main () {
     echo "Please input your password when you are asked to."
     echo "======================================================="
@@ -64,15 +87,18 @@ main () {
         install_vim_gnome
     fi
 
-    ln -s ${LOTUS_PWD}/lotusvimrc ~/.vimrc
-    ln -s ${LOTUS_PWD}/lotusvim ~/.lotusvim
-
     install_pack gcc
     install_pack make
     install_pack python-setuptools
     install_pack cscope
-    install_pack pylint
-    cp  ${LOTUS_PWD}/lotusvim/configs/pylintrc ~/.pylintrc
+    if [ "$os" == 'arch' ];then
+      install_pack python2-pylint
+    else
+      install_pack pylint
+    fi
+    update_rc $HOME ${LOTUS_PWD} .vimrc .lotusvim
+    update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .pylintrc .vimpressrc
+    update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
     install_pack ctags
 
     echo "======================================================="
