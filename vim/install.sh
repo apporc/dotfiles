@@ -7,10 +7,11 @@ gnome=n
 APT=apt-get
 YUM=yum
 EMERGE=emerge
+PACMAN=pacman
 
 usage () {
   echo "Usage: $0 [-h] [[-oi] [OS]]"
-  echo "-o    The operating system name, supported now including centos, ubuntu, fedora, redhat, debian, gentoo."
+  echo "-o    The operating system name, supported now including centos, ubuntu, fedora, redhat, debian, gentoo, arch."
   echo "-i    Install vim-gnome automatically."
 }
 
@@ -35,6 +36,8 @@ install_pack () {
         sudo ${YUM} install -y $PACK
     elif [ $os == 'gentoo' ];then
         sudo ${EMERGE} $PACK
+    elif [ $os == 'arch' ]; then
+        sudo ${PACMAN} --noconfirm -S $PACK
     fi
 
 }
@@ -48,6 +51,8 @@ install_vim_gnome () {
     sudo ${YUM} install -y vim
   elif [ $os == 'gentoo' ];then
     sudo ${EMERGE} vim
+  elif [ $os == 'arch' ]; then
+    sudo ${PACMAN} --noconfirm -S vim
   fi
 }
 
@@ -62,6 +67,8 @@ main () {
     ln -s ${LOTUS_PWD}/lotusvimrc ~/.vimrc
     ln -s ${LOTUS_PWD}/lotusvim ~/.lotusvim
 
+    install_pack gcc
+    install_pack make
     install_pack python-setuptools
     install_pack cscope
     install_pack pylint
