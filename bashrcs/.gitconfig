@@ -5,3 +5,5 @@
 	ui = auto
 [diff]
 	rename = true
+[push]
+	default = simple
