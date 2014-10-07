@@ -82,14 +82,15 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {
  names  = { 
-         '⌘ : ADMIN',
-         '☠ : VIM',
-         '⚡ : FILES', 
-         '♨ : CHROME', 
-         '☭ : IRC',  
-         '☃ : KVM',
-         '⌥ : MULTIMEDIA', 
-         -- '✇ : IDE',
+         '☣ADMIN  ',
+         '☠VIM'  ,
+         '☢FILES  ', 
+         '⚡CHROME  ', 
+         '⚔IRC  ',  
+         '☂IDE  ',
+         '⚛KVM  ',
+         '❆MULTIMEDIA  ', 
+         '☉MONITOR  ',
            },
  layout = {
       layouts[2],  -- 1:admin
@@ -97,9 +98,10 @@ tags = {
       layouts[5],  -- 3:files
       layouts[6],  -- 4:chrome
       layouts[6],  -- 5:irc
-      layouts[6],  -- 6:kvm
-      layouts[1],  -- 7:multimedia
-      -- layouts[8],  -- 8:ide
+      layouts[6],  -- 6:ide
+      layouts[6],  -- 7:kvm
+      layouts[1],  -- 8:multimedia
+      layouts[1],  -- 9:monitor
           }
        }
   for s = 1, screen.count() do
@@ -284,11 +286,16 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey },            "r",
+              function ()
+                  awful.prompt.run({ prompt = "⌨ : >" },
+                  mypromptbox[mouse.screen].widget,
+                  function (...) awful.util.spawn(...) end)
+              end),
 
     awful.key({ modkey }, "x",
               function ()
-                  awful.prompt.run({ prompt = "Run Lua code: " },
+                  awful.prompt.run({ prompt = "⌨ : >" },
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
