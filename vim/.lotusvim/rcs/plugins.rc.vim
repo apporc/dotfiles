@@ -36,18 +36,18 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
-noremap <c-n> :bn<CR>
-noremap <c-p> :bp<CR>
+noremap <c-n> :<c-u>bn<CR>
+noremap <c-p> :<c-u>bp<CR>
 
 " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
 " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
 for buffer_no in range(1, 9)
-  execute "nnoremap <Leader>" . buffer_no . " :b" . buffer_no . "<CR>"
+  execute "nnoremap <leader>" . buffer_no . " :<c-u>b" . buffer_no . "<CR>"
 endfor
 
 " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
 for buffer_no in range(10, 100)
-  execute "nnoremap <Leader>0" . buffer_no . " :b" . buffer_no . "<CR>"
+  execute "nnoremap <leader>0" . buffer_no . " :<c-u>b" . buffer_no . "<CR>"
 endfor
 
 " Refresh airline color while reloading vimrc
@@ -95,8 +95,8 @@ let g:tagbar_width=30
 autocmd MyAutoCmd FileType tagbar call s:tagbar_my_settings()
 function! s:tagbar_my_settings() "{{{
   nmap <buffer><c-w> <Nop>
-  nmap <buffer><c-i> <Nop>
-  nmap <buffer><c-t> <Nop>
+  nmap <buffer><c-x> <Nop>
+  nmap <buffer><leader>t <Nop>
 
   nmap <buffer><c-n> <Nop>
   nmap <buffer><c-p> <Nop>
@@ -333,7 +333,7 @@ let NERDSpaceDelims=1
 " Close conque buffer when program exits
 "let g:ConqueTerm_CloseOnEnd = 1
 " Use vimshell now
-"noremap <c-t> <ESC>:ConqueTermSplit bash<CR>
+"noremap <leader>t <ESC>:ConqueTermSplit bash<CR>
 
 
 " ------------------
@@ -430,7 +430,7 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " ------------------
 "
 "Open a shell splitwindow
-nnoremap <c-t> :VimShellPop <CR>
+nnoremap <leader>t :VimShellPop <CR>
 " Make shell window show below the current window.
 set splitbelow
 
@@ -451,8 +451,8 @@ autocmd MyAutoCmd FileType vimshell call s:vimshell_my_settings()
 function! s:vimshell_my_settings() "{{{
   imap <buffer><C-l> <Plug>(vimshell_clear)
   nmap <buffer><c-w> <Plug>(vimshell_exit)
-  nnoremap <buffer><c-i> <Nop>
-  nnoremap <buffer><c-t> <Nop>
+  nnoremap <buffer><c-x> <Nop>
+  nnoremap <buffer><leader>t <Nop>
   nnoremap <buffer><c-k> <c-w>k
   nnoremap <buffer><c-l> <c-w>l
 
@@ -513,8 +513,8 @@ function! s:vimfiler_my_settings() "{{{
   nmap <buffer><c-r> <Plug>(vimfiler_redraw_screen)
   nmap <buffer><C-l> <Plug>(vimfiler_switch_to_other_window)
   nmap <buffer><c-w> <Plug>(vimfiler_exit)
-  nnoremap <buffer><c-i> <Nop>
-  nnoremap <buffer><c-t> <Nop>
+  nnoremap <buffer><c-x> <Nop>
+  nnoremap <buffer><leader>t <Nop>
   nmap <buffer><c-j> <Plug>(vimfiler_switch_to_other_window)
 
   nnoremap <buffer><c-n> <Nop>
