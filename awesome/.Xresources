@@ -66,10 +66,10 @@
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
- URxvt*font:                           xft:DejaVu Sans Mono:size=12:style=Regular
- URxvt*boldFont:                       xft:DejaVu Sans Mono:size=12:style=Bold
- URxvt*italicFont:                     xft:DejaVu Sans Mono:size=12:style=Italic
- URxvt*boldItalicFont:                 xft:DejaVu Sans Mono:size=12:style=Bold Italic
+ URxvt*font:                           xft:DejaVu Sans Mono:size=12:style=Regular:antialias=false
+ URxvt*boldFont:                       xft:DejaVu Sans Mono:size=12:style=Bold:antialias=false
+ URxvt*italicFont:                     xft:DejaVu Sans Mono:size=12:style=Italic:antialias=false
+ URxvt*boldItalicFont:                 xft:DejaVu Sans Mono:size=12:style=Bold Italic:antialias=false
 ! URxvt*intensityStyles:                boolean
 ! URxvt*inputMethod:                    name
 ! URxvt*preeditType:                    style
@@ -101,12 +101,20 @@
 ! URxvt*secondaryScroll:                boolean
 ! URxvt*perl-lib:                       string
 ! URxvt*perl-eval:                      perl-eval
-! URxvt*perl-ext-common:                string
+ URxvt*perl-ext-common:                default,tabbedex,clipboard
 ! URxvt*perl-ext:                       string
 ! URxvt*iso14755:                       boolean
 ! URxvt*iso14755_52:                    boolean
 ! URxvt*xrm:                            string
 ! URxvt*keysym.sym:                     keysym
+ URXvt.tabbed.reopen-on-close: yes
+ URxvt.tabbed.autohide: true
+ URxvt.keysym.Control-t: perl:tabbedex:new_tab
+ URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+ URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+ URxvt.keysym.Control-Shift-Left: perl:tabbedex:move_tab_left
+ URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
+ URxvt.keysym.Control-Shift-R: perl:tabbedex:rename_tab
 ! URxvt*background.border:              boolean
 ! URxvt*background.expr:                string
 ! URxvt*background.interval:            seconds

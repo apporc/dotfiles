@@ -82,26 +82,26 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {
  names  = { 
-         '☣ADMIN  ',
-         '☠VIM'  ,
-         '☢FILES  ', 
-         '⚡CHROME  ', 
-         '⚔IRC  ',  
-         '☂IDE  ',
-         '⚛KVM  ',
-         '❆MULTIMEDIA  ', 
-         '☉MONITOR  ',
+         '☣ ',
+         '☠ '  ,
+         '☢ ', 
+         '⚡ ', 
+         '❆ ', 
+         '⚔ ',  
+         '☉ ',
+         --'☂ ',
+         --'⚛ ',
            },
  layout = {
-      layouts[2],  -- 1:admin
-      layouts[6],  -- 2:vim
-      layouts[5],  -- 3:files
-      layouts[6],  -- 4:chrome
-      layouts[6],  -- 5:irc
-      layouts[6],  -- 6:ide
-      layouts[6],  -- 7:kvm
-      layouts[1],  -- 8:multimedia
-      layouts[1],  -- 9:monitor
+      layouts[7],  -- 1:terminals
+      layouts[7],  -- 2:vim
+      layouts[1],  -- 3:files
+      layouts[7],  -- 4:chrome
+      layouts[1],  -- 5:multimedia
+      layouts[7],  -- 6:irc
+      layouts[1],  -- 7:stats
+      --layouts[6],  -- 8:ide
+      --layouts[6],  -- 9:kvm
           }
        }
   for s = 1, screen.count() do
@@ -288,7 +288,7 @@ globalkeys = awful.util.table.join(
     -- Prompt
     awful.key({ modkey },            "r",
               function ()
-                  awful.prompt.run({ prompt = "⌨ : >" },
+                  awful.prompt.run({ prompt = "⌨ : " },
                   mypromptbox[mouse.screen].widget,
                   function (...) awful.util.spawn(...) end)
               end),
