@@ -48,8 +48,11 @@ NeoBundle 'portante/pycscope.git', { 'build': {'unix': 'sudo python setup.py ins
 " File types
 NeoBundle 'fatih/vim-go.git'
 NeoBundle 'dart-lang/dart-vim-plugin.git'
-NeoBundle 'tpope/vim-markdown' "Markdown
-NeoBundle 'terryma/vim-instant-markdown' "Markdown
+
+" For markdown
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'isnowfy/python-vim-instant-markdown.git'
 
 " Code completion
 "NeoBundle 'Valloric/YouCompleteMe'
