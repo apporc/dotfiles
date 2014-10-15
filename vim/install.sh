@@ -33,7 +33,7 @@ parse_opt () {
 
 
 install_pack () {
-    PACK=$1
+    PACK=$@
     if [ $os == 'ubuntu' -o $os == 'debian' ];then
         sudo ${APT} -y install $PACK
     elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
@@ -87,10 +87,8 @@ main () {
         install_vim_gnome
     fi
 
-    install_pack gcc
-    install_pack make
-    install_pack python-setuptools
-    install_pack cscope
+    install_pack gcc make python-setuptools cscope ctags python-pygments python-markdown
+
     if [ "$os" == 'arch' ];then
       install_pack python2-pylint
     else
@@ -99,7 +97,6 @@ main () {
     update_rc $HOME ${LOTUS_PWD} .vimrc .lotusvim
     update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .pylintrc .vimpressrc
     update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
-    install_pack ctags
 
     echo "======================================================="
     echo "Done."
