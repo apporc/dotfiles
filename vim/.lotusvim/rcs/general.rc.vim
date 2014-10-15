@@ -197,8 +197,8 @@ set wrapscan
 " Longline settings
 " ------------------------------------------------------------------------------
 "
-" Do not wrap long line. TODO, later to determine whether wrap or not wrap
-set nowrap
+" Do not wrap long line.
+set wrap
 " wrap lines at 120 chars. 80 is somewhat antiquated with nowadays displays.
 set lbr
 set textwidth=120
