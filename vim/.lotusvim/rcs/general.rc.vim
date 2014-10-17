@@ -80,10 +80,12 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 " It should have +clipboard and +xterm_clipboard
 " With Ubuntu, you may need to install vim-gnome instead of the default vim package.
 " It made chinese garbled, give up at present.
+" unamed * register, terminal used
+" unamedplus + register, chrome used
 if has('unnamedplus')
-  set clipboard=unnamedplus
+  set clipboard^=unnamed,unnamedplus
 else
-  set clipboard=unnamed
+  set clipboard^=unnamed
 endif
 
 if v:version < 703 || (v:version == 7.3 && !has('patch336'))
