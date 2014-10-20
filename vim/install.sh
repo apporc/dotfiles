@@ -41,7 +41,7 @@ install_pack () {
     elif [ $os == 'gentoo' ];then
         sudo ${EMERGE} $PACK
     elif [ $os == 'arch' ]; then
-        sudo ${PACMAN} --noconfirm -S $PACK
+        sudo ${PACMAN} --noconfirm --needed -S $PACK
     fi
 
 }
@@ -56,7 +56,7 @@ install_vim_gnome () {
   elif [ $os == 'gentoo' ];then
     sudo ${EMERGE} vim
   elif [ $os == 'arch' ]; then
-    sudo ${PACMAN} --noconfirm -S vim
+    sudo ${PACMAN} --noconfirm --needed -S vim
   fi
 }
 
