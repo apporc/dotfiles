@@ -10,6 +10,9 @@ let g:airline_powerline_fonts = 0
 " enable/disable enhanced tabline.
 let g:airline#extensions#tabline#enabled = 1
 
+" virtualenv
+let g:airline#extensions#virtualenv#enabled = 1
+
 " enable/disable displaying tab number in tabs mode.
 let g:airline#extensions#tabline#show_tab_nr = 1
 
@@ -139,7 +142,8 @@ let g:vim_markdown_initial_foldlevel=1
 " ------------------
 
 let g:unite_prompt = 'Unite %'
-let g:unite_source_grep_default_opts = '-iRHn --exclude=.tags --exclude=.cscope --exclude=.libtags --exclude=.libcscope'
+let g:unite_source_grep_default_opts = '-iIHn --exclude=.* --exclude-dir=.*'
+let g:unite_source_grep_recursive_opt = '-r'
 
 " Use the fuzzy matcher for everything
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -550,3 +554,10 @@ let g:go_disable_autoinstall = 1
 " syntastic
 " ------------------
 let g:syntastic_always_populate_loc_list = 1
+
+
+" ------------------
+"  virtualenv
+" ------------------
+
+let g:virtualenv_directory = '.tox/'
