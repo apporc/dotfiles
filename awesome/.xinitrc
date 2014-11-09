@@ -11,4 +11,4 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 
 # Start window manager
-exec awesome
+exec awesome 2> ~/.awesome.log
