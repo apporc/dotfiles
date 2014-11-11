@@ -142,7 +142,7 @@ let g:vim_markdown_initial_foldlevel=1
 " ------------------
 
 let g:unite_prompt = 'Unite %'
-let g:unite_source_grep_default_opts = '-iIHn --exclude=.* --exclude-dir=.*'
+let g:unite_source_grep_default_opts = '-iHn --exclude=.* --exclude-dir=.[^.]*'
 let g:unite_source_grep_recursive_opt = '-r'
 
 " Use the fuzzy matcher for everything
