@@ -395,9 +395,21 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    -- Set Chromium to always map on tags number 2 of screen 1.
+    { rule = { class = "Urxvt" },
+      properties = { tag = tags[1][1] } },
+    { rule = { class = "Vim" },
+      properties = { tag = tags[1][2] } },
+    { rule = { class = "FileBrowser" },
+      properties = { tag = tags[1][3] } },
+    { rule = { class = "Chromium" },
+      properties = { tag = tags[1][4] } },
+    { rule = { class = "Gnome-mplayer" },
+      properties = { tag = tags[1][5] } },
+    { rule = { class = "Xchat" },
+      properties = { tag = tags[1][6] } },
+    { rule = { class = "Virt-manager" },
+      properties = { tag = tags[1][7] } },
 }
 -- }}}
 
@@ -476,3 +488,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostarts
 awful.util.spawn_with_shell("fcitx")
+awful.util.spawn_with_shell("urxvt -e tmux attach-session")
+awful.util.spawn_with_shell("chromium")
+awful.util.spawn_with_shell("xchat")
+awful.util.spawn_with_shell("virt-manager")
