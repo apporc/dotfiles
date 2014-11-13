@@ -23,8 +23,8 @@
 ! URxvt*fading:                         number
 ! URxvt*fadeColor:                      color
 ! URxvt*utmpInhibit:                    boolean
-! URxvt*urgentOnBell:                   boolean
-! URxvt*visualBell:                     boolean
+ URxvt*urgentOnBell:                   false
+ URxvt*visualBell:                     false
 ! URxvt*mapAlert:                       boolean
 ! URxvt*meta8:                          boolean
 ! URxvt*mouseWheelScrollPage:           boolean
