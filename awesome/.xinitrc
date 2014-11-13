@@ -10,5 +10,7 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 
+# Turn beep off
+xset -b
 # Start window manager
 exec awesome 2> ~/.awesome.log
