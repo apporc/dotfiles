@@ -33,8 +33,8 @@ set <m-0>=0
 
 " Use <Leader> in global plugin.
 " With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader=" "
+" Don't use leader key at present
+" let mapleader=" "
 
 " Treat long lines as break lines (useful when moving around in them)
 noremap j gj
