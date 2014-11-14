@@ -1,3 +1,35 @@
+function! Disable_window_shortcut() "{{{
+  nnoremap <buffer><m-x> <Nop>
+  nnoremap <buffer><m-t> <Nop>
+  nnoremap <buffer><m-i> <Nop>
+
+  nnoremap <buffer><m-n> <Nop>
+  nnoremap <buffer><m-p> <Nop>
+
+  " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
+  " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
+  "for buffer_no in range(1, 9)
+  "execute .nnoremap <buffer><Leader>. . buffer_no . . <Nop>.
+  "endfor
+
+  " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
+  "for buffer_no in range(10, 100)
+  "execute .nnoremap <buffer><Leader>0. . buffer_no . . <Nop>.
+  "endfor
+
+    map <buffer><m-1> <Nop>
+    map <buffer><m-2> <Nop>
+    map <buffer><m-3> <Nop>
+    map <buffer><m-4> <Nop>
+    map <buffer><m-5> <Nop>
+    map <buffer><m-6> <Nop>
+    map <buffer><m-7> <Nop>
+    map <buffer><m-8> <Nop>
+    map <buffer><m-9> <Nop>
+    map <buffer><m-0> <Nop>
+
+endfunction
+
 " Configure Plugins
 " ==============================================================================
 "
@@ -39,19 +71,31 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
-noremap <c-n> :<c-u>bn<CR>
-noremap <c-p> :<c-u>bp<CR>
+nnoremap <m-n> :<c-u>bn<CR>
+nnoremap <m-p> :<c-u>bp<CR>
 
 " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
 " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
-for buffer_no in range(1, 9)
-  execute "nnoremap <leader>" . buffer_no . " :<c-u>b" . buffer_no . "<CR>"
-endfor
+"for buffer_no in range(1, 9)
+"  execute 'map <leader>' . buffer_no . ' :<c-u>b' . buffer_no . '<CR>'
+"endfor
 
 " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
-for buffer_no in range(10, 100)
-  execute "nnoremap <leader>0" . buffer_no . " :<c-u>b" . buffer_no . "<CR>"
-endfor
+"for buffer_no in range(10, 100)
+"  execute 'nnoremap <leader>0' . buffer_no . ' :<c-u>b' . buffer_no . '<CR>'
+"endfor
+
+" Use alt key to switch between buffers, can't switch to buffer numbers large than 10 by now
+nnoremap <m-1> :b1<CR>
+nnoremap <m-2> :b2<CR>
+nnoremap <m-3> :b3<CR>
+nnoremap <m-4> :b4<CR>
+nnoremap <m-5> :b5<CR>
+nnoremap <m-6> :b6<CR>
+nnoremap <m-7> :b7<CR>
+nnoremap <m-8> :b8<CR>
+nnoremap <m-9> :b9<CR>
+nnoremap <m-0> :b10<CR>
 
 " Refresh airline color while reloading vimrc
 if exists(":AirlineRefresh")
@@ -63,13 +107,13 @@ endif
 "  vim-bbye
 " ------------------
 " Close current buffer, but preserve the window.
-nnoremap <c-w> :Bdelete<CR>
+nnoremap <m-x> :Bdelete<CR>
 
 " ------------------
 "  BufOnly
 " ------------------
 " Close all buffers but the current one.
-nnoremap <c-x> :BufOnly<CR>
+nnoremap <m-i> :BufOnly<CR>
 
 " ------------------
 "" Nerdtree
@@ -92,29 +136,12 @@ let NERDTreeIgnore=['\~$', '\.swp$', '\.git', '\.svn', '\.hg', '\.o$','\.bak$','
 "  Tagbar
 " ------------------
 "
-nnoremap <c-a> :TagbarToggle<CR>
+nnoremap <m-a> :TagbarToggle<CR>
 let g:tagbar_width=30
 
 autocmd MyAutoCmd FileType tagbar call s:tagbar_my_settings()
 function! s:tagbar_my_settings() "{{{
-  nmap <buffer><c-w> <Nop>
-  nmap <buffer><c-x> <Nop>
-  nmap <buffer><leader>t <Nop>
-
-  nmap <buffer><c-n> <Nop>
-  nmap <buffer><c-p> <Nop>
-
-  " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
-  " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
-  for buffer_no in range(1, 9)
-  execute "nmap <buffer><Leader>" . buffer_no . " <Nop>"
-  endfor
-
-  " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
-  for buffer_no in range(10, 100)
-  execute "nmap <buffer><Leader>0" . buffer_no . " <Nop>"
-  endfor
-
+  call Disable_window_shortcut()
 endfunction
 "}}}
 
@@ -366,12 +393,12 @@ let NERDSpaceDelims=1
 "
 """ switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
 "for buffer_no in range(1, 9)
-"  execute "noremap <Leader>" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
+"  execute 'noremap <Leader>' . buffer_no . ' <ESC>:b' . buffer_no . '\<CR>'
 "endfor
 "
 "" switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
 "for buffer_no in range(10, 100)
-"  execute "noremap <Leader>0" . buffer_no . " <ESC>:b" . buffer_no . "\<CR>"
+"  execute 'noremap <Leader>0' . buffer_no . ' <ESC>:b' . buffer_no . '\<CR>'
 "endfor
 
 " ------------------
@@ -434,7 +461,7 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " ------------------
 "
 "Open a shell splitwindow
-nnoremap <leader>t :VimShellPop <CR>
+nnoremap <m-t> :VimShellPop <CR>
 " Make shell window show below the current window.
 set splitbelow
 
@@ -454,26 +481,11 @@ let g:vimshell_force_overwrite_statusline = 1
 autocmd MyAutoCmd FileType vimshell call s:vimshell_my_settings()
 function! s:vimshell_my_settings() "{{{
   imap <buffer><C-l> <Plug>(vimshell_clear)
-  nmap <buffer><c-w> <Plug>(vimshell_exit)
-  nnoremap <buffer><c-x> <Nop>
-  nnoremap <buffer><leader>t <Nop>
-  nnoremap <buffer><c-k> <c-w>k
-  nnoremap <buffer><c-l> <c-w>l
-
-  nnoremap <buffer><c-n> <Nop>
-  nnoremap <buffer><c-p> <Nop>
-
-  " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
-  " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
-  for buffer_no in range(1, 9)
-  execute "nnoremap <buffer><Leader>" . buffer_no . " <Nop>"
-  endfor
-
-  " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
-  for buffer_no in range(10, 100)
-  execute "nnoremap <buffer><Leader>0" . buffer_no . " <Nop>"
-  endfor
-
+  "The only way to exit vimshell is to type exit
+  "nmap <buffer><C-w> <Plug>(vimshell_exit)
+  nnoremap <buffer><m-k> <c-w>k
+  nnoremap <buffer><m-l> <c-w>l
+  call Disable_window_shortcut()
 endfunction
 "}}}
 
@@ -494,7 +506,7 @@ let g:vimfiler_safe_mode_by_default = 0
 
 let g:vimfiler_as_default_explorer = 1
 
-nnoremap <c-e> :VimFilerExplorer<CR>
+nnoremap <m-e> :VimFilerExplorer<CR>
 " %p : full path
 " %d : current directory
 " %f : filename
@@ -515,25 +527,11 @@ function! s:vimfiler_my_settings() "{{{
   call vimfiler#set_execute_file('txt', 'vim')
   nmap <buffer><expr><CR>  vimfiler#smart_cursor_map("\<PLUG>(vimfiler_expand_tree)", "e")
   nmap <buffer><c-r> <Plug>(vimfiler_redraw_screen)
-  nmap <buffer><C-l> <Plug>(vimfiler_switch_to_other_window)
-  nmap <buffer><c-w> <Plug>(vimfiler_exit)
-  nnoremap <buffer><c-x> <Nop>
-  nnoremap <buffer><leader>t <Nop>
-  nmap <buffer><c-j> <Plug>(vimfiler_switch_to_other_window)
+  nmap <buffer><m-l> <Plug>(vimfiler_switch_to_other_window)
+  nmap <buffer><m-j> <Plug>(vimfiler_switch_to_other_window)
+  "nmap <buffer><c-w> <Plug>(vimfiler_exit)
 
-  nnoremap <buffer><c-n> <Nop>
-  nnoremap <buffer><c-p> <Nop>
-
-  " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
-  " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
-  for buffer_no in range(1, 9)
-  execute "nnoremap <buffer><Leader>" . buffer_no . " <Nop>"
-  endfor
-
-  " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
-  for buffer_no in range(10, 100)
-  execute "nnoremap <buffer><Leader>0" . buffer_no . " <Nop>"
-  endfor
+  call Disable_window_shortcut()
 
 endfunction
 "}}}

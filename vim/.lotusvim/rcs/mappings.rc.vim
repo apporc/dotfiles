@@ -5,6 +5,32 @@
 noremap <F1> <Esc>
 inoremap <F1> <Esc>"
 
+" Set alt keys here
+set <m-h>=h
+set <m-j>=j
+set <m-k>=k
+set <m-l>=l
+set <m-w>=w
+set <m-e>=e
+set <m-a>=a
+set <m-t>=t
+set <m-v>=v
+set <m-g>=g
+set <m-n>=n
+set <m-p>=p
+set <m-x>=x
+set <m-i>=i
+set <m-1>=1
+set <m-2>=2
+set <m-3>=3
+set <m-4>=4
+set <m-5>=5
+set <m-6>=6
+set <m-7>=7
+set <m-8>=8
+set <m-9>=9
+set <m-0>=0
+
 " Use <Leader> in global plugin.
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -21,10 +47,11 @@ vnoremap <tab> >gv
 vnoremap <s-tab> <gv
 
 " Smart way to move between windows
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-h> <C-W>h
-nnoremap <C-l> <C-W>l
+"
+nnoremap <m-h> <C-w>h
+nnoremap <m-j> <C-w>j
+nnoremap <m-k> <C-w>k
+nnoremap <m-l> <C-w>l
 
 " command line key shortcut
 cnoremap    <c-a>   <home>
@@ -41,27 +68,26 @@ cnoremap    <esc><c-f> <s-right>
 "noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Toggle paste mode on and off
-" Can't map this in imap, because when paste option is on, imap is disabled.
-nnoremap <leader>p :setlocal paste!<CR>
+nnoremap <m-v> :setlocal paste!<CR>
 
-" use <leader>w to save file
-nnoremap <leader>w :w<CR>
+" use alt+w to save file
+nnoremap <m-w> :<c-u>w<CR>
 
-" use <leader>g to jump to definition
-nnoremap <silent> <leader>g <C-]>
+" use alt+g to jump to definition
+nnoremap <silent> <m-g> <C-]>
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 
-" <Leader>s: Spell checking shortcuts
-nnoremap <Leader>ss :setlocal spell!<cr>
-nnoremap <Leader>sj ]s
-nnoremap <Leader>sk [s
-nnoremap <Leader>sa zg]s
-nnoremap <Leader>sd 1z=
-nnoremap <Leader>sf z=
+" <Leader>s: Spell checking shortcuts, don't use this by now.
+"nnoremap <Leader>ss :setlocal spell!<cr>
+"nnoremap <Leader>sj ]s
+"nnoremap <Leader>sk [s
+"nnoremap <Leader>sa zg]s
+"nnoremap <Leader>sd 1z=
+"nnoremap <Leader>sf z=
 
 " F11 to delete trailing spaces.
 nnoremap <F9> :call DeleteTrailingWS()<CR>
