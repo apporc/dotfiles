@@ -52,7 +52,8 @@ NeoBundle 'dart-lang/dart-vim-plugin.git'
 " For markdown
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'isnowfy/python-vim-instant-markdown.git'
+"NeoBundle 'isnowfy/python-vim-instant-markdown.git'
+"NeoBundle 'suan/vim-instant-markdown'
 
 " Code completion
 "NeoBundle 'Valloric/YouCompleteMe'

@@ -87,7 +87,7 @@ main () {
         install_vim_gnome
     fi
 
-    install_pack gcc make python-setuptools cscope ctags python-pygments python-markdown
+    install_pack gcc make python-setuptools cscope ctags python-pygments
 
     if [ "$os" == 'arch' ];then
       install_pack python2-pylint
