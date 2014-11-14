@@ -558,4 +558,5 @@ let g:syntastic_always_populate_loc_list = 1
 "  virtualenv
 " ------------------
 
+"TODO now is checking openstack's code, use this at present.
 let g:virtualenv_directory = '.tox/'
