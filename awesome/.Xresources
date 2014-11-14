@@ -106,9 +106,17 @@
  URxvt*iso14755:                       false
  URxvt*iso14755_52:                    false
 ! URxvt*xrm:                            string
+ URxvt*keysym.Control-1:                \033[27;5;49~
+ URxvt*keysym.Control-2:                \033[27;5;50~
+ URxvt*keysym.Control-3:                \033[27;5;51~
+ URxvt*keysym.Control-4:                \033[27;5;52~
+ URxvt*keysym.Control-5:                \033[27;5;53~
+ URxvt*keysym.Control-6:                \033[27;5;54~
+ URxvt*keysym.Control-7:                \033[27;5;55~
+ URxvt*keysym.Control-8:                \033[27;5;56~
+ URxvt*keysym.Control-9:                \033[27;5;57~
+ URxvt*keysym.Control-0:                \033[27;5;48~
 ! URxvt*keysym.sym:                     keysym
-! URxvt.keysym.Meta-1:                   \0331
-! URxvt.keysym.Meta-2:                   \0332
 ! URXvt.tabbed.reopen-on-close: yes
 ! URxvt.tabbed.autohide: true
 ! URxvt.keysym.Control-t: perl:tabbedex:new_tab
