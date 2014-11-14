@@ -26,7 +26,7 @@
  URxvt*urgentOnBell:                   false
  URxvt*visualBell:                     false
 ! URxvt*mapAlert:                       boolean
-! URxvt*meta8:                          boolean
+! URxvt*meta8:                          true
 ! URxvt*mouseWheelScrollPage:           boolean
 ! URxvt*tripleclickwords:               boolean
 ! URxvt*insecure:                       boolean
