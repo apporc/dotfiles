@@ -20,6 +20,7 @@ set <m-n>=n
 set <m-p>=p
 set <m-x>=x
 set <m-i>=i
+set <m-b>=b
 set <m-1>=1
 set <m-2>=2
 set <m-3>=3
@@ -91,3 +92,12 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 " F11 to delete trailing spaces.
 nnoremap <F9> :call DeleteTrailingWS()<CR>
+
+" function to run shell command silently
+" http://vim.wikia.com/wiki/Avoiding_the_%22Hit_ENTER_to_continue%22_prompts
+command! -nargs=1 Silent
+      \ | execute ':silent !'.<q-args>
+      \ | execute ':redraw!'
+
+" open chromium to see markdown
+nnoremap <silent> <m-b> :Silent chromium "%:p"<CR>
