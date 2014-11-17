@@ -72,7 +72,8 @@ set scrolloff=10
 set scrolljump=3
 
 " Keymapping timeout, timeoutlen, time out time in milliseconds
-set timeout timeoutlen=3000 ttimeoutlen=100
+" http://vim.wikia.com/wiki/Mapping_fast_keycodes_in_terminal_Vim
+set timeout timeoutlen=1000 ttimeoutlen=0
 
 " Use system clipboard, not vim's buffer
 " With this you can copy/paste from/to system clipboard

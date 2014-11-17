@@ -3,7 +3,7 @@
 "
 " Disable built-in F1 help key
 noremap <F1> <Esc>
-inoremap <F1> <Esc>"
+inoremap <F1> <Esc>
 
 " Set alt keys here
 set <m-h>=h

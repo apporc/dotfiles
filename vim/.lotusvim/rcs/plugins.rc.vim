@@ -17,16 +17,16 @@ function! Disable_window_shortcut() "{{{
   "execute .nnoremap <buffer><Leader>0. . buffer_no . . <Nop>.
   "endfor
 
-    map <buffer><m-1> <Nop>
-    map <buffer><m-2> <Nop>
-    map <buffer><m-3> <Nop>
-    map <buffer><m-4> <Nop>
-    map <buffer><m-5> <Nop>
-    map <buffer><m-6> <Nop>
-    map <buffer><m-7> <Nop>
-    map <buffer><m-8> <Nop>
-    map <buffer><m-9> <Nop>
-    map <buffer><m-0> <Nop>
+    nnoremap <buffer><m-1> <Nop>
+    nnoremap <buffer><m-2> <Nop>
+    nnoremap <buffer><m-3> <Nop>
+    nnoremap <buffer><m-4> <Nop>
+    nnoremap <buffer><m-5> <Nop>
+    nnoremap <buffer><m-6> <Nop>
+    nnoremap <buffer><m-7> <Nop>
+    nnoremap <buffer><m-8> <Nop>
+    nnoremap <buffer><m-9> <Nop>
+    nnoremap <buffer><m-0> <Nop>
 
 endfunction
 
