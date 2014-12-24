@@ -76,6 +76,9 @@ NeoBundle 'apporc/VimRepress.git'
 " virtualenv
 NeoBundle 'jmcantrell/vim-virtualenv'
 
+" drawit
+NeoBundle 'vim-scripts/DrawIt.git'
+
 filetype plugin indent on
 
 " Enable syntax color.
