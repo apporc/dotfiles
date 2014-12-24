@@ -101,7 +101,7 @@
 ! URxvt*secondaryScroll:                boolean
 ! URxvt*perl-lib:                       string
 ! URxvt*perl-eval:                      perl-eval
- URxvt*perl-ext-common:                default,clipboard
+ URxvt*perl-ext-common:                default,clipboard,tabbedex
 ! URxvt*perl-ext:                       string
  URxvt*iso14755:                       false
  URxvt*iso14755_52:                    false
@@ -117,10 +117,10 @@
  URxvt*keysym.Control-9:                \033[27;5;57~
  URxvt*keysym.Control-0:                \033[27;5;48~
 ! URxvt*keysym.sym:                     keysym
-! URXvt.tabbed.reopen-on-close: yes
-! URxvt.tabbed.autohide: true
-! URxvt.keysym.Control-t: perl:tabbedex:new_tab
-! URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+ URXvt.tabbed.reopen-on-close: yes
+ URxvt.tabbed.autohide: true
+ URxvt.keysym.Control-M-t: perl:tabbedex:new_tab
+ URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
 ! URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 ! URxvt.keysym.Control-Shift-Left: perl:tabbedex:move_tab_left
 ! URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
