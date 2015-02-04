@@ -43,4 +43,5 @@ if has('vim_starting') "{{{
 endif
 "}}}
 
-call neobundle#rc(s:neobundle_dir)
+call neobundle#begin(s:neobundle_dir)
+call neobundle#end()
