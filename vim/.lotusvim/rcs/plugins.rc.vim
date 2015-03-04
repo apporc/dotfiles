@@ -360,11 +360,10 @@ let NERDSpaceDelims=1
 " ------------------
 "
 " Keep updating conque buffer after switching to other buffer
-"let g:ConqueTerm_ReadUnfocused = 1
+let g:ConqueTerm_ReadUnfocused = 1
 " Close conque buffer when program exits
-"let g:ConqueTerm_CloseOnEnd = 1
-" Use vimshell now
-"noremap <leader>t <ESC>:ConqueTermSplit bash<CR>
+let g:ConqueTerm_CloseOnEnd = 1
+nnoremap <m-t> <ESC>:ConqueTermSplit bash<CR>
 
 
 " ------------------
@@ -420,7 +419,6 @@ let g:neocomplete#enable_insert_char_pre = 1
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions'
         \ }
 
@@ -463,33 +461,33 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " ------------------
 "
 "Open a shell splitwindow
-nnoremap <m-t> :VimShellPop <CR>
-" Make shell window show below the current window.
-set splitbelow
-
-" Use default key mappings
-let g:vimshell_no_default_keymappings = 0
-let g:vimshell_no_save_history_commands = {}
-let g:vimshell_interactive_no_save_history_commands = {}
-
-let g:vimshell_prompt_expr =
-    \ 'escape($USER . ":". fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
-let g:vimshell_prompt_pattern = '^\%(\f\)\+\:\%(\f\|\\.\)\+% '
-" let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_split_command = ''
-let g:vimshell_enable_transient_user_prompt = 1
-let g:vimshell_force_overwrite_statusline = 1
-
-autocmd MyAutoCmd FileType vimshell call s:vimshell_my_settings()
-function! s:vimshell_my_settings() "{{{
-  imap <buffer><C-l> <Plug>(vimshell_clear)
-  "The only way to exit vimshell is to type exit
-  "nmap <buffer><C-w> <Plug>(vimshell_exit)
-  nnoremap <buffer><m-k> <c-w>k
-  nnoremap <buffer><m-l> <c-w>l
-  call Disable_window_shortcut()
-endfunction
-"}}}
+" nnoremap <m-t> :VimShellPop <CR>
+" " Make shell window show below the current window.
+" set splitbelow
+" 
+" " Use default key mappings
+" let g:vimshell_no_default_keymappings = 0
+" let g:vimshell_no_save_history_commands = {}
+" let g:vimshell_interactive_no_save_history_commands = {}
+" 
+" let g:vimshell_prompt_expr =
+"     \ 'escape($USER . ":". fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
+" let g:vimshell_prompt_pattern = '^\%(\f\)\+\:\%(\f\|\\.\)\+% '
+" " let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+" let g:vimshell_split_command = ''
+" let g:vimshell_enable_transient_user_prompt = 1
+" let g:vimshell_force_overwrite_statusline = 1
+" 
+" autocmd MyAutoCmd FileType vimshell call s:vimshell_my_settings()
+" function! s:vimshell_my_settings() "{{{
+"   imap <buffer><C-l> <Plug>(vimshell_clear)
+"   "The only way to exit vimshell is to type exit
+"   "nmap <buffer><C-w> <Plug>(vimshell_exit)
+"   nnoremap <buffer><m-k> <c-w>k
+"   nnoremap <buffer><m-l> <c-w>l
+"   call Disable_window_shortcut()
+" endfunction
+" "}}}
 
 " ------------------
 " echodoc

@@ -38,8 +38,8 @@ NeoBundle 'apporc/flake8.git', { 'build': {'unix': 'sudo python setup.py install
 NeoBundle 'scrooloose/syntastic.git'
 
 " Shell inside vim
-"NeoBundle 'apporc/Conque-Shell.git'
-NeoBundle 'Shougo/vimshell'
+NeoBundle 'apporc/Conque-Shell.git'
+"NeoBundle 'Shougo/vimshell'
 
 " cscope and pycscope, for code jumping
 NeoBundle 'vim-scripts/cscope.vim.git'
@@ -141,16 +141,16 @@ call neobundle#config('vimproc', {
       \     'linux' : 'make',
       \    },
       \ })
-call neobundle#config('vimshell', {
-      \ 'lazy' : 1,
-      \ 'autoload' : {
-      \   'commands' : [{ 'name' : 'VimShell',
-      \                   'complete' : 'customlist,vimshell#complete'},
-      \                 'VimShellExecute', 'VimShellInteractive',
-      \                 'VimShellCreate',
-      \                 'VimShellTerminal', 'VimShellPop'],
-      \   'mappings' : '<Plug>(vimshell_'
-      \ }})
+" call neobundle#config('vimshell', {
+"       \ 'lazy' : 1,
+"       \ 'autoload' : {
+"       \   'commands' : [{ 'name' : 'VimShell',
+"       \                   'complete' : 'customlist,vimshell#complete'},
+"       \                 'VimShellExecute', 'VimShellInteractive',
+"       \                 'VimShellCreate',
+"       \                 'VimShellTerminal', 'VimShellPop'],
+"       \   'mappings' : '<Plug>(vimshell_'
+"       \ }})
 
 call neobundle#config('unite-outline', {
       \ 'lazy' : 1,
