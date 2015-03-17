@@ -52,7 +52,7 @@ install_vim_gnome () {
     #Use vim-tiny as vi
     sudo update-alternatives --set vi /usr/bin/vim.tiny
   elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
-    sudo ${YUM} install -y vim
+    sudo ${YUM} install -y vim-X11
   elif [ $os == 'gentoo' ];then
     sudo ${EMERGE} vim
   elif [ $os == 'arch' ]; then
