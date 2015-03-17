@@ -8,6 +8,7 @@
 alias tmux='tmux attach-session'
 
 alias ls='ls --color=auto'
+alias xmind='XMind'
 alias startx='startx &> ~/.xlog'
 PS1='[\u@\h \W] > '
 export EDITOR='vim'
