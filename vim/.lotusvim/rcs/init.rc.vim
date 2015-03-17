@@ -43,5 +43,6 @@ if has('vim_starting') "{{{
 endif
 "}}}
 
+let g:neobundle#install_process_timeout=300
 call neobundle#begin(s:neobundle_dir)
 call neobundle#end()
