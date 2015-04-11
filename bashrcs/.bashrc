@@ -1,7 +1,9 @@
 alias rm='rm -i'
-export PATH=${PATH}:/home/apporc/Projects/dart
-export PATH=${PATH}:/home/apporc/Projects/adt-bundle-linux-x86_64-20140321/sdk/platform-tools:/home/apporc/Project/adt-bundle-linux-x86_64-20140321/sdk/tools
+export PATH=${PATH}:${HOME}/Projects/dart
+
+export PATH=${PATH}:${HOME}/Projects/go/bin
+export GOROOT=${HOME}/Projects/go
+export PATH=${PATH}:${GOROOT}/bin
+
+export PATH=${PATH}:/home/apporc/Software/devtool/adt-bundle-linux-x86_64-20140702/sdk/platform-tools
 export PATH=${PATH}:/usr/local/bin/apporc
-export EDITOR='vim'
-# For arch
-alias startx='startx &> ~/.xlog'
