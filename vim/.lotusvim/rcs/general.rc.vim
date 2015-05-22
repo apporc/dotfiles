@@ -200,10 +200,9 @@ set wrapscan
 " Longline settings
 " ------------------------------------------------------------------------------
 "
-" Do not wrap long line.
+" Wrap long line.
 set wrap
 " wrap lines at 120 chars. 80 is somewhat antiquated with nowadays displays.
-set lbr
 set textwidth=120
 
 " Allow to move to right even on the end of the line, and move to left even on the begging of the line

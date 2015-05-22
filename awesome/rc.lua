@@ -93,12 +93,12 @@ tags = {
          --'⚛ ',
            },
  layout = {
-      layouts[7],  -- 1:terminals
-      layouts[7],  -- 2:vim
+      layouts[2],  -- 1:terminals
+      layouts[6],  -- 2:vim
       layouts[1],  -- 3:files
-      layouts[7],  -- 4:chrome
+      layouts[6],  -- 4:chrome
       layouts[1],  -- 5:multimedia
-      layouts[7],  -- 6:irc
+      layouts[6],  -- 6:irc
       layouts[1],  -- 7:stats
       --layouts[6],  -- 8:ide
       --layouts[6],  -- 9:kvm
@@ -203,7 +203,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "bottom", screen = s })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -388,6 +388,7 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
+                     size_hints_honor = false,
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
@@ -395,11 +396,6 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    -- Set Chromium to always map on tags number 2 of screen 1.
-    { rule = { class = "Urxvt" },
-      properties = { tag = tags[1][1] } },
-    { rule = { class = "Vim" },
-      properties = { tag = tags[1][2] } },
     { rule = { class = "FileBrowser" },
       properties = { tag = tags[1][3] } },
     { rule = { class = "Chromium" },
@@ -487,8 +483,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostarts
-awful.util.spawn_with_shell("fcitx")
-awful.util.spawn_with_shell("urxvt -e tmux attach-session")
-awful.util.spawn_with_shell("chromium")
-awful.util.spawn_with_shell("xchat")
-awful.util.spawn_with_shell("virt-manager")
+awful.util.spawn_with_shell("if [ $(ps -ef | grep fcitx | grep -v grep | wc -l) -eq 0 ]; then fcitx; fi")
+-- awful.util.spawn_with_shell("if [ $(ps -ef | grep urxvt | grep -v grep | wc -l) -eq 0 ]; then urxvt -e tmux attach-session; fi")
+awful.util.spawn_with_shell("if [ $(ps -ef | grep chromium | grep -v grep | wc -l) -eq 0 ]; then chromium; fi")
+awful.util.spawn_with_shell("if [ $(ps -ef | grep xchat | grep -v grep | wc -l) -eq 0 ]; then xchat; fi")
+awful.util.spawn_with_shell("if [ $(ps -ef | grep virt-manager | grep -v grep | wc -l) -eq 0 ]; then virt-manager; fi")

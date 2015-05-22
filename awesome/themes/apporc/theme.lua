@@ -8,7 +8,7 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper = "~/.config/awesome/themes/apporc/bg.jpg"
+theme.wallpaper = "~/.config/awesome/themes/apporc/bg.png"
 -- }}}
 
 -- {{{ Styles

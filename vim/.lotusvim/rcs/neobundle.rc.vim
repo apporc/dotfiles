@@ -1,6 +1,7 @@
 "===============================================================================
 " NeoBundle
 "===============================================================================
+"
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -49,6 +50,7 @@ NeoBundle 'portante/pycscope.git', { 'build': {'unix': 'sudo python setup.py ins
 NeoBundle 'fatih/vim-go.git'
 NeoBundle 'dart-lang/dart-vim-plugin.git'
 NeoBundle 'rodjek/vim-puppet.git'
+NeoBundle 'vim-scripts/po.vim.git'
 
 " For markdown
 NeoBundle 'godlygeek/tabular'
