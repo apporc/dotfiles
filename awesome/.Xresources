@@ -111,6 +111,7 @@
  URxvt.tabbed.autohide: true
  URxvt.keysym.Control-M-t: perl:tabbedex:new_tab
  URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+ URxvt.keysym.Control-ISO_Left_Tab: perl:tabbedex:prev_tab
 ! URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 ! URxvt.keysym.Control-Shift-Left: perl:tabbedex:move_tab_left
 ! URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
