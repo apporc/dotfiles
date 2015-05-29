@@ -47,7 +47,8 @@ if has("cscope")
 
     " Don't show msg in vim, espacially that duplicate database msg.
     set nocscopeverbose
-	set cscopequickfix=s+,c+,d+,i+,t+,e+
+    " If we set this, quickfix window fails. And cscope.vim set this value, we unset it here.
+    set cscopequickfix=
 
     """"""""""""" My cscope/vim key mappings
     "
