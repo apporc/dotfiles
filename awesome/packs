@@ -15,7 +15,6 @@ opendesktop-fonts for chromium chinese
 [BUG]binutils as pptpsetup's dependencies
 gvim to support +clipboard
 pacman -Sii show dependencies
-sxiv to see images
 rxvt-unicode
 xorg-xrandr to see resolution
 xorg-xrdb to merge ./Xresources
