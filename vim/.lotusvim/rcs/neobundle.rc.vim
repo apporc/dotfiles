@@ -34,8 +34,6 @@ NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'Shougo/neomru.vim'
 
 " Syntax Checker
-NeoBundle 'kevinw/pyflakes.git', { 'build': {'unix': 'sudo python setup.py install',} }
-NeoBundle 'apporc/flake8.git', { 'build': {'unix': 'sudo python setup.py install',} }
 NeoBundle 'scrooloose/syntastic.git'
 
 " Shell inside vim
