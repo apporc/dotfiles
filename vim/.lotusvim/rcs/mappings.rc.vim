@@ -16,7 +16,6 @@ set <m-a>=a
 set <m-t>=t
 set <m-v>=v
 set <m-g>=g
-set <m-s>=^[s
 set <m-n>=n
 set <m-p>=p
 set <m-x>=x
@@ -77,9 +76,6 @@ nnoremap <m-w> :<c-u>w<CR>
 
 " use alt+g to jump to definition
 nnoremap <silent> <m-g> <C-]>
-
-" use alt+f to jump to where this used
-nnoremap <silent> <m-s> :cs find s <C-R>=expand("<cword>")<CR><CR>
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
