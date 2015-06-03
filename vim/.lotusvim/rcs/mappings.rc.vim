@@ -42,10 +42,10 @@ noremap j gj
 noremap k gk
 
 " tab to indent line
-nnoremap <tab> v>
-nnoremap <s-tab> v<
-vnoremap <tab> >gv
-vnoremap <s-tab> <gv
+"nnoremap <tab> v>
+"nnoremap <s-tab> v<
+"vnoremap <tab> >gv
+"vnoremap <s-tab> <gv
 
 " Smart way to move between windows
 "
