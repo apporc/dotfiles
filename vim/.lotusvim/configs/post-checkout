@@ -1,36 +1,39 @@
-#!/bin/bash                                                                      
+#!/bin/bash
 
-set -e                                                                           
+set -e
 
-prevHEAD=$1                                                                      
-newHEAD=$2                                                                       
-checkoutType=$3                                                                  
+prevHEAD=$1
+newHEAD=$2
+checkoutType=$3
 
-[[ $checkoutType == 1 ]] && checkoutType='branch' ||                             
-                            checkoutType='file' ;                                
+[[ $checkoutType == 1 ]] && checkoutType='branch' ||
+                            checkoutType='file' ;
+
+oldbranch=`git name-rev --name-only $prevHEAD`
+newbranch=`git name-rev --name-only $newHEAD`
+
 echo ''
-echo 'Checkout type: '$checkoutType                                              
-echo '    prev HEAD: '`git name-rev --name-only $prevHEAD`                       
-echo '     new HEAD: '`git name-rev --name-only $newHEAD`
+echo 'Checkout type: '$checkoutType
+echo '    prev HEAD: '$oldbranch
+echo '     new HEAD: '$newbranch
 
 if [ $checkoutType == 'branch' ]
 then
-  branch=$(git status | head -1 | awk '{print $3}')
   root=$(git rev-parse --show-toplevel)
   updated=0
   echo -n 'Updating tags: '
-  if [ -e ${root}/.${branch}_tags ];then
-    cp -a ${root}/.${branch}_tags ${root}/.tags
+  if [ -e ${root}/.${newbranch}_tags ];then
+    cp -a ${root}/.${newbranch}_tags ${root}/.tags
     updated=1
   else
     echo -ne "\n"
-    echo "         WARN:  no tags file for branch ${branch}"
+    echo "         WARN:  no tags file for branch ${newbranch}"
   fi
-  if [ -e ${root}/.${branch}_cscope ];then
-    cp -a ${root}/.${branch}_cscope ${root}/.cscope
+  if [ -e ${root}/.${newbranch}_cscope ];then
+    cp -a ${root}/.${newbranch}_cscope ${root}/.cscope
     updated=2
   else
-    echo "         WARN:  no cscope file for branch ${branch}"
+    echo "         WARN:  no cscope file for newbranch ${newbranch}"
   fi
   if [ $updated -ne 0 ];then
     echo 'Done'
