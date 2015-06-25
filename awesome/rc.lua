@@ -301,7 +301,15 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+
+    -- Volume Controll
+   awful.key({ }, "XF86AudioRaiseVolume", function ()
+       awful.util.spawn("amixer set Master 9%+") end),
+   awful.key({ }, "XF86AudioLowerVolume", function ()
+       awful.util.spawn("amixer set Master 9%-") end),
+   awful.key({ }, "XF86AudioMute", function ()
+       awful.util.spawn("amixer sset Master toggle") end)
 )
 
 clientkeys = awful.util.table.join(
@@ -402,7 +410,7 @@ awful.rules.rules = {
       properties = { tag = tags[1][4] } },
     { rule = { class = "Gnome-mplayer" },
       properties = { tag = tags[1][5] } },
-    { rule = { class = "Xchat" },
+    { rule = { class = "Wechat" },
       properties = { tag = tags[1][6] } },
     { rule = { class = "Virt-manager" },
       properties = { tag = tags[1][7] } },
@@ -486,5 +494,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.util.spawn_with_shell("if [ $(ps -ef | grep fcitx | grep -v grep | wc -l) -eq 0 ]; then fcitx; fi")
 -- awful.util.spawn_with_shell("if [ $(ps -ef | grep urxvt | grep -v grep | wc -l) -eq 0 ]; then urxvt -e tmux attach-session; fi")
 awful.util.spawn_with_shell("if [ $(ps -ef | grep chromium | grep -v grep | wc -l) -eq 0 ]; then chromium; fi")
-awful.util.spawn_with_shell("if [ $(ps -ef | grep xchat | grep -v grep | wc -l) -eq 0 ]; then xchat; fi")
+awful.util.spawn_with_shell("if [ $(ps -ef | grep wechat | grep -v grep | wc -l) -eq 0 ]; then wechat; fi")
 awful.util.spawn_with_shell("if [ $(ps -ef | grep virt-manager | grep -v grep | wc -l) -eq 0 ]; then virt-manager; fi")
