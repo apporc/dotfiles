@@ -3,6 +3,8 @@
 "===============================================================================
 "
 
+call neobundle#begin(g:neobundle_dir)
+
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc'
@@ -157,3 +159,4 @@ call neobundle#config('unite-outline', {
       \ 'lazy' : 1,
       \ })
 
+call neobundle#end()
