@@ -36,6 +36,10 @@ endfunction
 " ------------------
 "" vim-airline
 " ------------------
+
+
+let g:airline#extensions#tabline#excludes = ['__Tagbar__', 'vimfiler:explorer']
+
 " Use powerline fonts TODO get back font patcher in install.sh
 let g:airline_powerline_fonts = 0
 
