@@ -259,3 +259,8 @@ if has("gui_running")
     set guioptions-=e
     set guitablabel=%M\ %t
 endif
+
+filetype plugin indent on
+
+" Enable syntax color.
+syntax enable

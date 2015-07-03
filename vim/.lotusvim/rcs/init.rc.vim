@@ -1,7 +1,8 @@
 "---------------------------------------------------------------------------
+
 " Initialize:
-"
-"
+" ==============================================================================
+
 " Default home directory.
 let t:cwd = getcwd()
 
@@ -23,6 +24,10 @@ if filereadable(expand('~/.secret_vimrc'))
   execute 'source' expand('~/.secret_vimrc')
 endif
 
+" Neobundle:
+" ==============================================================================
+
+" neobundle dir
 let g:neobundle_dir = expand('~/.cache/neobundle')
 
 if has('vim_starting') "{{{

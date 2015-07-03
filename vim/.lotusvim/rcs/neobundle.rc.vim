@@ -5,9 +5,17 @@
 
 call neobundle#begin(g:neobundle_dir)
 
+if neobundle#load_cache()
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc.vim', {
+    \ 'build' : {
+    \     'windows' : 'tools\\update-dll-mingw',
+    \     'cygwin' : 'make -f make_cygwin.mak',
+    \     'mac' : 'make -f make_mac.mak',
+    \     'unix' : 'make -f make_unix.mak',
+    \    }
+    \ }
 
 " Color Scheme
 NeoBundle 'apporc/grb256'
@@ -82,13 +90,11 @@ NeoBundle 'jmcantrell/vim-virtualenv'
 " drawit
 NeoBundle 'vim-scripts/DrawIt.git'
 
-filetype plugin indent on
-
-" Enable syntax color.
-syntax enable
-
 " Installation check.
 NeoBundleCheck
+NeoBundleSaveCache
+
+endif
 
 call neobundle#config(['echodoc.vim', 'neocomplete.vim'], {
       \ 'lazy' : 1,
@@ -135,7 +141,7 @@ call neobundle#config('vimfiler.vim', {
       \ }
       \ })
 
-call neobundle#config('vimproc', {
+call neobundle#config('vimproc.vim', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
       \     'cygwin' : 'make -f make_cygwin.mak',

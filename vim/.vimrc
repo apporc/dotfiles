@@ -1,16 +1,10 @@
 " Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-" Functions
-" ==============================================================================
-"
 " Function to source vim configuration files.
 function! s:source_rc(path)
   execute 'source' fnameescape(expand('~/.lotusvim/rcs/' . a:path))
 endfunction
-
-"Other functions
-call s:source_rc('func.rc.vim')
 
 " Configurations
 " ==============================================================================
@@ -19,6 +13,8 @@ call s:source_rc('func.rc.vim')
 call s:source_rc('init.rc.vim')
 " Neobundle:
 call s:source_rc('neobundle.rc.vim')
+" Functions:
+call s:source_rc('func.rc.vim')
 " Basic:
 call s:source_rc('general.rc.vim')
 " Encoding:
