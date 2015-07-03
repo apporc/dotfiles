@@ -29,5 +29,5 @@ update_rc () {
   done
 }
 
-update_rc ~ $BASEDIR .xinitrc .Xresources .irssi .bashrc .tmux.conf .inputrc
+update_rc ~ $BASEDIR .xinitrc .Xresources .irssi .bashrc .tmux.conf .inputrc .gitconfig .pypirc .bashrc
 update_rc ~/.config/awesome $BASEDIR rc.lua themes
