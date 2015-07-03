@@ -189,70 +189,65 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '.sass-cache',
       \ ], '\|'))
 
-" Map , to the prefix for Unite
-nnoremap , <Nop>
-nnoremap [unite] <Nop>
-nmap , [unite]
-
 " General fuzzy search
-nnoremap <silent> [unite]s :<C-u>Unite
+nnoremap <silent> <leader>s :<C-u>Unite
       \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
 
 " Quick registers
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=register register<CR>
 
 " Quick buffer and mru
-nnoremap <silent> [unite]u :<C-u>Unite -buffer-name=buffers buffer file_mru<CR>
+nnoremap <silent> <leader>u :<C-u>Unite -buffer-name=buffers buffer file_mru<CR>
 
 " Quick yank history
-nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<CR>
+nnoremap <silent> <leader>y :<C-u>Unite -buffer-name=yanks history/yank<CR>
 
 " Quick outline
-nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -vertical outline<CR>
+nnoremap <silent> <leader>o :<C-u>Unite -buffer-name=outline -vertical outline<CR>
 
 " Quick sessions (projects)
-nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=sessions session<CR>
+nnoremap <silent> <leader>p :<C-u>Unite -buffer-name=sessions session<CR>
 
 " Quick sources
-nnoremap <silent> [unite]a :<C-u>Unite -buffer-name=sources source<CR>
+nnoremap <silent> <leader>a :<C-u>Unite -buffer-name=sources source<CR>
 
 " Quick snippet
-"nnoremap <silent> [unite]s :<C-u>Unite -buffer-name=snippets snippet<CR>
+"nnoremap <silent> <leader>s :<C-u>Unite -buffer-name=snippets snippet<CR>
 
 " Quickly switch lcd
-nnoremap <silent> [unite]d
+nnoremap <silent> <leader>d
       \ :<C-u>Unite -buffer-name=change-cwd -default-action=lcd directory_mru<CR>
 
 " Quick file search
-nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
+nnoremap <silent> <leader>f :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
 
 " Quick grep from cwd with the word under cursor
-nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
+nnoremap <silent> <leader>g :<C-u>Unite -buffer-name=grep grep:.<CR>
 
 " Quick help
-nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
+nnoremap <silent> <leader>h :<C-u>Unite -buffer-name=help help<CR>
 
 " Quick line using the word under cursor
-nnoremap <silent> [unite]l :<C-u>UniteWithCursorWord -buffer-name=search_file line<CR>
+nnoremap <silent> <leader>l :<C-u>UniteWithCursorWord -buffer-name=search_file line<CR>
 
 " Quick MRU search
-nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mru file_mru<CR>
+nnoremap <silent> <leader>m :<C-u>Unite -buffer-name=mru file_mru<CR>
 
 " Quick find
-nnoremap <silent> [unite]n :<C-u>Unite -buffer-name=find find:.<CR>
+nnoremap <silent> <leader>n :<C-u>Unite -buffer-name=find find:.<CR>
 
 " Quick commands
-nnoremap <silent> [unite]c :<C-u>Unite -buffer-name=commands command<CR>
+nnoremap <silent> <leader>c :<C-u>Unite -buffer-name=commands command<CR>
 
 " Quick bookmarks
-nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
+nnoremap <silent> <leader>b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
 
 " Fuzzy search from current buffer
-" nnoremap <silent> [unite]b :<C-u>UniteWithBufferDir
+" nnoremap <silent> <leader>b :<C-u>UniteWithBufferDir
       " \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
 
 " Quick history commands
-nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
+nnoremap <silent> <leader>; :<C-u>Unite -buffer-name=history history/command command<CR>
 
 " Custom Unite settings
 autocmd MyAutoCmd FileType unite call s:unite_settings()
@@ -552,6 +547,10 @@ let g:go_disable_autoinstall = 1
 " syntastic
 " ------------------
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_enable_highlighting = 0
+let g:syntastic_python_checkers = ['pyflakes', 'flake8', 'pep8', 'python']
+nnoremap <Leader>j :lnext<CR>
+nnoremap <Leader>k :lprevious<CR>
 
 
 " ------------------

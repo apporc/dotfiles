@@ -1,6 +1,7 @@
 " Mappings
 " ---------------------------
 "
+let mapleader = ','
 " Disable built-in F1 help key
 noremap <F1> <Esc>
 inoremap <F1> <Esc>
