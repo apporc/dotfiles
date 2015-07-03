@@ -459,12 +459,12 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " nnoremap <m-t> :VimShellPop <CR>
 " " Make shell window show below the current window.
 " set splitbelow
-" 
+"
 " " Use default key mappings
 " let g:vimshell_no_default_keymappings = 0
 " let g:vimshell_no_save_history_commands = {}
 " let g:vimshell_interactive_no_save_history_commands = {}
-" 
+"
 " let g:vimshell_prompt_expr =
 "     \ 'escape($USER . ":". fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
 " let g:vimshell_prompt_pattern = '^\%(\f\)\+\:\%(\f\|\\.\)\+% '
@@ -472,7 +472,7 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " let g:vimshell_split_command = ''
 " let g:vimshell_enable_transient_user_prompt = 1
 " let g:vimshell_force_overwrite_statusline = 1
-" 
+"
 " autocmd MyAutoCmd FileType vimshell call s:vimshell_my_settings()
 " function! s:vimshell_my_settings() "{{{
 "   imap <buffer><C-l> <Plug>(vimshell_clear)
