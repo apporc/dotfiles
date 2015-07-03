@@ -27,6 +27,8 @@ function! Disable_window_shortcut() "{{{
     nnoremap <buffer><m-8> <Nop>
     nnoremap <buffer><m-9> <Nop>
     nnoremap <buffer><m-0> <Nop>
+    nnoremap <buffer><c-o> <Nop>
+    nnoremap <buffer><c-i> <Nop>
 
 endfunction
 
