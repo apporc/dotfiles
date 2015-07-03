@@ -58,6 +58,9 @@ endfunction
 
 function! Auto_GO()
   call SetTabWidth(4)
+  " not use ctags/cscop for golang for now.
+  map <m-g> <Nop>
+  nnoremap <m-g> :GoDef<CR>
   noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=go .<CR>
 endfunction
 
