@@ -90,12 +90,14 @@ main () {
     install_pack gcc make python-setuptools cscope ctags python-pygments
 
     if [ "$os" == 'arch' ];then
+      install_pack python2-pylint
       install_pack python2-flake8
     else
+      install_pack pylint
       install_pack python-flake8
     fi
     update_rc $HOME ${LOTUS_PWD} .vimrc .lotusvim
-    update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .vimpressrc
+    update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .pylintrc .vimpressrc
     update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
 
     echo "======================================================="
