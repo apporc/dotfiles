@@ -98,7 +98,8 @@ main () {
     fi
     update_rc $HOME ${LOTUS_PWD} .vimrc .lotusvim
     update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .pylintrc .vimpressrc
-    update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
+    # Use project options in tox.ini or setup.cfg
+    # update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
 
     echo "======================================================="
     echo "Done."

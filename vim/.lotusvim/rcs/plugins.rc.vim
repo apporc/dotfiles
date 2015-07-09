@@ -552,9 +552,15 @@ let g:go_disable_autoinstall = 1
 " ------------------
 " syntastic
 " ------------------
+let g:syntastic_echo_current_error = 1
+let g:syntastic_cursor_column = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_enable_highlighting = 0
-let g:syntastic_python_checkers = ['pyflakes', 'flake8', 'pep8', 'python']
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+
 nnoremap <Leader>j :lnext<CR>
 nnoremap <Leader>k :lprevious<CR>
 
