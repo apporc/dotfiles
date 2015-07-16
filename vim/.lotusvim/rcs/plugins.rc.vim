@@ -175,8 +175,6 @@ let g:vim_markdown_initial_foldlevel=1
 " ------------------
 
 let g:unite_prompt = 'Unite %'
-let g:unite_source_grep_default_opts = '-iHn --exclude=.* --exclude-dir=.[^.]*'
-let g:unite_source_grep_recursive_opt = '-r'
 
 " Use the fuzzy matcher for everything
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -194,6 +192,8 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'tmp/',
       \ '.sass-cache',
       \ ], '\|'))
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'max_candidates', 1000)
 
 " General fuzzy search
 nnoremap <silent> <leader>s :<C-u>Unite
@@ -321,17 +321,8 @@ let g:unite_cursor_line_highlight = 'TabLineSel'
 let g:unite_source_file_mru_filename_format = ':~:.'
 let g:unite_source_file_mru_time_format = ''
 
-" For ack.
-if executable('ack-grep')
-  let g:unite_source_grep_command = 'ack-grep'
-  " Match whole word only. This might/might not be a good idea
-  let g:unite_source_grep_default_opts = '--no-heading --no-color -a -w'
-  let g:unite_source_grep_recursive_opt = ''
-elseif executable('ack')
-  let g:unite_source_grep_command = 'ack'
-  let g:unite_source_grep_default_opts = '--no-heading --no-color -a -w'
-  let g:unite_source_grep_recursive_opt = ''
-endif
+let g:unite_source_grep_default_opts = '-iHn --exclude=.* --exclude-dir=.[^.]*'
+let g:unite_source_grep_recursive_opt = '-r'
 
 " ------------------
 " Unite Sessions
