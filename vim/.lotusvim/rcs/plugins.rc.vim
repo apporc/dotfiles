@@ -228,7 +228,7 @@ nnoremap <silent> <leader>d
 nnoremap <silent> <leader>f :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
 
 " Quick grep from cwd with the word under cursor
-nnoremap <silent> <leader>g :<C-u>Unite -buffer-name=grep grep:.<CR>
+nnoremap <silent> <leader>g :<C-u>UniteWithCursorWord -buffer-name=grep grep:.<CR>
 
 " Quick help
 nnoremap <silent> <leader>h :<C-u>Unite -buffer-name=help help<CR>
@@ -268,6 +268,8 @@ function! s:unite_settings()
   imap <buffer> <c-a> <Plug>(unite_choose_action)
   imap <buffer> <Tab> <Plug>(unite_exit_insert)
   imap <buffer> kk <Plug>(unite_insert_leave)
+  imap <buffer> jj <Plug>(unite_insert_leave)
+  imap <buffer> gg <Plug>(unite_insert_leave)
   imap <buffer> <C-w> <Plug>(unite_delete_backward_word)
   imap <buffer> <C-u> <Plug>(unite_delete_backward_path)
   imap <buffer> '     <Plug>(unite_quick_match_default_action)
