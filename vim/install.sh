@@ -31,7 +31,6 @@ parse_opt () {
   fi
 }
 
-
 install_pack () {
     PACK=$@
     if [ $os == 'ubuntu' -o $os == 'debian' ];then
@@ -43,7 +42,16 @@ install_pack () {
     elif [ $os == 'arch' ]; then
         sudo ${PACMAN} --noconfirm --needed -S $PACK
     fi
+}
 
+npm_config () {
+  # fuck gfw
+  sudo npm config -g set registry="http://r.cnpmjs.org"
+}
+
+npm_pack () {
+  PACK=$@
+  sudo npm install -g -d $PACK
 }
 
 install_vim_gnome () {
@@ -87,7 +95,7 @@ main () {
         install_vim_gnome
     fi
 
-    install_pack gcc make python-setuptools cscope ctags python-pygments
+    install_pack gcc make python-setuptools cscope ctags python-pygments npm
 
     if [ "$os" == 'arch' ];then
       install_pack python2-pylint
@@ -101,6 +109,9 @@ main () {
     # Use project options in tox.ini or setup.cfg
     # update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
 
+    # javascript rules.
+    npm_config
+    npm_pack jslint
     echo "======================================================="
     echo "Done."
     exit 0
