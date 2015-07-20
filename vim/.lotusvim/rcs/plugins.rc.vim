@@ -40,7 +40,13 @@ endfunction
 " ------------------
 
 
-let g:airline#extensions#tabline#excludes = ['__Tagbar__', 'vimfiler:explorer']
+" Every time opening a ConqueTerm window, it will have a new name like 'bash - xx'
+let bash_buf_names = []
+for bash_no in range(1, 100)
+    let bash_buf_names = bash_buf_names + ["bash - " . bash_no]
+endfor
+
+let g:airline#extensions#tabline#excludes = ['__Tagbar__', 'vimfiler:explorer'] + bash_buf_names
 
 " Use powerline fonts TODO get back font patcher in install.sh
 let g:airline_powerline_fonts = 0
