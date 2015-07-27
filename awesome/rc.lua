@@ -309,7 +309,10 @@ globalkeys = awful.util.table.join(
    awful.key({ }, "XF86AudioLowerVolume", function ()
        awful.util.spawn("amixer set Master 9%-") end),
    awful.key({ }, "XF86AudioMute", function ()
-       awful.util.spawn("amixer sset Master toggle") end)
+       awful.util.spawn("amixer sset Master toggle") end),
+
+    -- ScreenLock
+    awful.key({ modkey }, "l", function () awful.util.spawn("xlock") end)
 )
 
 clientkeys = awful.util.table.join(
