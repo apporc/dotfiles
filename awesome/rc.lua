@@ -410,10 +410,13 @@ awful.rules.rules = {
       properties = { tag = tags[1][4] } },
     { rule = { class = "Gnome-mplayer" },
       properties = { tag = tags[1][5] } },
-    { rule = { class = "Wechat" },
+    { rule = { name = "weechat" },
       properties = { tag = tags[1][6] } },
     { rule = { class = "Virt-manager" },
       properties = { tag = tags[1][7] } },
+    { rule = { name = "tmux" },
+      properties = { tag = tags[1][2] } },
+
 }
 -- }}}
 
@@ -492,7 +495,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostarts
 awful.util.spawn_with_shell("if [ $(ps -ef | grep fcitx | grep -v grep | wc -l) -eq 0 ]; then fcitx; fi")
--- awful.util.spawn_with_shell("if [ $(ps -ef | grep urxvt | grep -v grep | wc -l) -eq 0 ]; then urxvt -e tmux attach-session; fi")
+awful.util.spawn_with_shell("if [ $(ps -ef | grep urxvt | grep -v grep | wc -l) -eq 0 ]; then urxvt -e tmux attach; fi")
 awful.util.spawn_with_shell("if [ $(ps -ef | grep chromium | grep -v grep | wc -l) -eq 0 ]; then chromium; fi")
-awful.util.spawn_with_shell("if [ $(ps -ef | grep wechat | grep -v grep | wc -l) -eq 0 ]; then wechat; fi")
+awful.util.spawn_with_shell("if [ $(ps -ef | grep weechat | grep -v grep | wc -l) -eq 0 ]; then urxvt -e weechat; fi")
 awful.util.spawn_with_shell("if [ $(ps -ef | grep virt-manager | grep -v grep | wc -l) -eq 0 ]; then virt-manager; fi")
