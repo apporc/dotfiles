@@ -2,7 +2,7 @@ grub
 iwconfig
 wpa_supplicant
 wireless_tools
-dialog
+#dialog
 sudo
 awesome
 xf86-video-ati
@@ -25,7 +25,7 @@ fcitx-configtool to config fcitx, because locale is en_us.
 fcitx-gtk2 to use fcitx in chromium/firefox, because locale is en_us.
 urxvt-tabbedex
 urxvt-clipboard
-xsel
+#xsel
 alas-utils
 alas-plugins
 xchat
@@ -34,3 +34,19 @@ openjre
 wget
 curl
 ari2a
+pptpclient
+tmux
+weechat
+virt-manager
+openssh
+shadowsocks
+net-tools
+python2-tox
+python2
+lvm2
+fakeroot
+make
+automake
+autoconf
+patch
+imagemagick
