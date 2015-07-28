@@ -5,6 +5,10 @@ function! SetTabWidth(width)
   execute 'setl softtabstop='. a:width
 endfunction
 
+function! Auto_Dart()
+  call SetTabWidth(2)
+endfunction
+
 function! Auto_C()
   setl fdm=syntax
   call SetTabWidth(4)
@@ -79,4 +83,5 @@ augroup MyAutoCmd
   autocmd Filetype vim silent call Auto_VIM()
   autocmd Filetype php silent call Auto_PHP()
   autocmd Filetype go silent call Auto_GO()
+  autocmd Filetype dart silent call Auto_Dart()
 augroup END
