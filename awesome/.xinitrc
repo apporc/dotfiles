@@ -12,5 +12,7 @@ export XMODIFIERS="@im=fcitx"
 
 # Turn beep off
 xset -b
+# Turn screen saver off
+xset s off
 # Start window manager
 exec awesome 2> ~/.awesome.log
