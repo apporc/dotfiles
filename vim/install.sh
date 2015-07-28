@@ -111,7 +111,7 @@ main () {
 
     # javascript rules.
     npm_config
-    npm_pack jslint
+    npm_pack jslint bower
     echo "======================================================="
     echo "Done."
     exit 0
