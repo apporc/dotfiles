@@ -31,5 +31,7 @@ export PATH=${PATH}:/usr/local/bin/apporc
 # ruby
 export PATH=${PATH}:${HOME}/.gem/ruby/2.1.0/bin
 
+# chromiumos dev, repo cmd
+export PATH=${HOME}/Projects/depot_tools:${PATH}
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
