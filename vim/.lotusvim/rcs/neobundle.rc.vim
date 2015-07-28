@@ -5,7 +5,6 @@
 
 call neobundle#begin(g:neobundle_dir)
 
-if neobundle#load_cache()
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc.vim', {
@@ -93,8 +92,6 @@ NeoBundle 'vim-scripts/DrawIt.git'
 " Installation check.
 NeoBundleCheck
 NeoBundleSaveCache
-
-endif
 
 call neobundle#config(['echodoc.vim', 'neocomplete.vim'], {
       \ 'lazy' : 1,
