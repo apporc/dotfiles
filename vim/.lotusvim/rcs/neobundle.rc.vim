@@ -51,7 +51,7 @@ NeoBundle 'apporc/Conque-Shell.git'
 
 " cscope and pycscope, for code jumping
 NeoBundle 'vim-scripts/cscope.vim.git'
-NeoBundle 'portante/pycscope.git', { 'build': {'unix': 'sudo python setup.py install',} }
+NeoBundle 'portante/pycscope.git'
 
 " File types
 NeoBundle 'fatih/vim-go.git'
@@ -157,6 +157,12 @@ call neobundle#config('vimproc.vim', {
 "       \                 'VimShellTerminal', 'VimShellPop'],
 "       \   'mappings' : '<Plug>(vimshell_'
 "       \ }})
+
+call neobundle#config('pycscope', {
+      \ 'build': {
+      \     'unix': 'sudo python setup.py install',
+      \     },
+      \ })
 
 call neobundle#config('unite-outline', {
       \ 'lazy' : 1,
