@@ -73,6 +73,10 @@ NeoBundle 'Shougo/echodoc.vim'
 " Git
 NeoBundle 'tpope/vim-fugitive'
 
+" Code Review
+NeoBundle 'junkblocker/patchreview-vim.git'
+NeoBundle 'codegram/vim-codereview.git'
+
 " Match Tags for HTML/XML...
 NeoBundle 'valloric/MatchTagAlways'
 
