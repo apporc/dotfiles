@@ -48,7 +48,6 @@ endfor
 
 let g:airline#extensions#tabline#excludes = ['__Tagbar__', 'vimfiler:explorer'] + bash_buf_names
 
-" Use powerline fonts TODO get back font patcher in install.sh
 let g:airline_powerline_fonts = 0
 
 " enable/disable enhanced tabline.
@@ -56,6 +55,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 " virtualenv
 let g:airline#extensions#virtualenv#enabled = 1
+
+let g:airline#extensions#tabline#show_tabs = 1
 
 " enable/disable displaying tab number in tabs mode.
 let g:airline#extensions#tabline#show_tab_nr = 1
@@ -501,6 +502,12 @@ unlet bundle
 " ------------------
 " vimfiler
 " ------------------
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_marked_file_icon = '*'
+
 let g:vimfiler_enable_clipboard = 0
 let g:vimfiler_safe_mode_by_default = 0
 
@@ -520,6 +527,11 @@ let g:vimfiler_sendto = {
       \ 'GIMP' : 'gimp %*',
       \ 'gedit' : 'gedit',
       \ }
+
+"call vimfiler#custom#profile('default', 'context', {
+"      \ 'safe' : 0,
+"      \ 'edit_action' : 'tabopen',
+"      \ })
 
 autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()
 function! s:vimfiler_my_settings() "{{{
