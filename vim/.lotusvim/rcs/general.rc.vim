@@ -63,6 +63,10 @@ set matchpairs+=<:>
 " Show filename as window title
 set title
 
+
+" split to below adn right
+set splitbelow
+set splitright
 " Minimal number of screen lines to keep above and below the cursor.
 " This will make your cursor not go to the edge of the screen, and
 " you can always see 10 lines above and below the cursor line, it's
