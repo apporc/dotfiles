@@ -33,7 +33,7 @@ openjdk
 openjre
 wget
 curl
-ari2a
+aria2
 pptpclient
 tmux
 weechat
