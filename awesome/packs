@@ -50,3 +50,6 @@ automake
 autoconf
 patch
 imagemagick
+package-query
+yaourt
+docker
