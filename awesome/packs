@@ -53,3 +53,6 @@ imagemagick
 package-query
 yaourt
 docker
+pkgfile
+tcpdump
+tree
