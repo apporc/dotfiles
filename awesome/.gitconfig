@@ -7,3 +7,7 @@
 	rename = true
 [push]
 	default = simple
+[gitreview]
+	scheme = https
+	port = 443
+	username = apporc
