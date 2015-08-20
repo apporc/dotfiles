@@ -6,6 +6,8 @@
 [[ $- != *i* ]] && return
 
 PS1='[\u@\h \W] > '
+# delete duplicate history lines
+export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='vim'
 export BROWSER='chromium'
 
