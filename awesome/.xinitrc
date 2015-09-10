@@ -14,5 +14,8 @@ export XMODIFIERS="@im=fcitx"
 xset -b
 # Turn screen saver off
 xset s off
+xset -dpms
+xset s noblank
+
 # Start window manager
 exec awesome 2> ~/.awesome.log
