@@ -1,0 +1,12 @@
+[Unit]
+Description=pdnsdcontainer
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a pdnsd
+ExecStop=/usr/bin/docker stop -t 2 pdnsd
+
+[Install]
+WantedBy=multi-user.target
