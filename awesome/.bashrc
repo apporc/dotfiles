@@ -21,10 +21,10 @@ export PATH=${HOME}/.cabal/bin/:${PATH}
 # dart lang
 export PATH=${PATH}:${HOME}/Projects/dart
 
-# go lang
-export GOROOT=${HOME}/Projects/go/root
-export PATH=${PATH}:${GOROOT}/bin
-export GOPATH=${HOME}/Projects/go/tools
+# go lang, arch linux go package need GOROOT to be /usr/lib/go
+# export GOROOT=/usr/lib/go
+export GOPATH=${HOME}/Projects/go
+export PATH=${PATH}:${GOPATH}/bin
 
 # adt
 export PATH=${PATH}:/home/apporc/Software/devtool/adt-bundle-linux-x86_64-20140702/sdk/platform-tools
