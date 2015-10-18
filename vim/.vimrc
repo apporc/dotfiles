@@ -11,8 +11,8 @@ endfunction
 "
 " Initialization:
 call s:source_rc('init.rc.vim')
-" Neobundle:
-call s:source_rc('neobundle.rc.vim')
+" Vundle:
+call s:source_rc('vundle.rc.vim')
 " Functions:
 call s:source_rc('func.rc.vim')
 " Basic:
@@ -30,5 +30,4 @@ call s:source_rc('my_configs.rc.vim')
 
 " Others
 " ==============================================================================
-call neobundle#call_hook('on_source')
 set secure

@@ -24,28 +24,19 @@ if filereadable(expand('~/.secret_vimrc'))
   execute 'source' expand('~/.secret_vimrc')
 endif
 
-" Neobundle:
+" Vundle:
 " ==============================================================================
 
-" neobundle dir
-let g:neobundle_dir = expand('~/.cache/neobundle')
+" vundle dir
+let g:vundle_dir = expand('~/.cache/vundle')
 
 if has('vim_starting') "{{{
-  " Load neobundle.
-  if isdirectory('neobundle.vim')
-    set runtimepath^=neobundle.vim
-  elseif finddir('neobundle.vim', '.;') != ''
-    execute 'set runtimepath^=' . finddir('neobundle.vim', '.;')
-  elseif &runtimepath !~ '/neobundle.vim'
-    if !isdirectory(g:neobundle_dir.'/neobundle.vim')
-      execute printf('!git clone %s://github.com/Shougo/neobundle.vim.git',
+    if !isdirectory(g:vundle_dir.'/Vundle.vim')
+      execute printf('!git clone %s://github.com/VundleVim/Vundle.vim',
             \ (exists('$http_proxy') ? 'https' : 'git'))
-            \ g:neobundle_dir.'/neobundle.vim'
+            \ g:vundle_dir.'/Vundle.vim'
     endif
 
-    execute 'set runtimepath^=' . g:neobundle_dir.'/neobundle.vim'
-  endif
+    execute 'set runtimepath^=' . g:vundle_dir.'/Vundle.vim'
 endif
 "}}}
-
-let g:neobundle#install_process_timeout=300
