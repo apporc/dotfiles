@@ -231,8 +231,7 @@ nnoremap <m-t> <ESC>:ConqueTermSplit bash<CR>
 " ------------------
 " vim-go
 " ------------------
-let g:go_disable_autoinstall = 1
-
+let g:go_fmt_autosave = 0
 
 " ------------------
 " syntastic
@@ -245,6 +244,7 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
 
 nnoremap <Leader>j :lnext<CR>
 nnoremap <Leader>k :lprevious<CR>
