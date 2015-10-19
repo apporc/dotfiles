@@ -248,6 +248,7 @@ let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
 
 nnoremap <Leader>j :lnext<CR>
 nnoremap <Leader>k :lprevious<CR>
+nnoremap <Leader>el :Errors<CR>
 
 
 " ------------------
