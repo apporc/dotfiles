@@ -409,7 +409,7 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "FileBrowser" },
       properties = { tag = tags[1][3] } },
-    { rule = { class = "Chromium" },
+    { rule = { class = "chromium" },
       properties = { tag = tags[1][4] } },
     { rule = { class = "Gnome-mplayer" },
       properties = { tag = tags[1][5] } },
