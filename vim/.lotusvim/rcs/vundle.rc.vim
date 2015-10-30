@@ -43,8 +43,8 @@ Plugin 'plasticboy/vim-markdown'
 "Plugin 'isnowfy/python-vim-instant-markdown.git'
 "Plugin 'suan/vim-instant-markdown'
 
-" Code completion
-Plugin 'Valloric/YouCompleteMe'
+" Code completion, a bug of YouComleteMe to eat memory
+" Plugin 'Valloric/YouCompleteMe'
 
 " Git
 Plugin 'tpope/vim-fugitive'
