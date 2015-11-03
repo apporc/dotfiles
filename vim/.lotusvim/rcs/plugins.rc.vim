@@ -273,3 +273,5 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " ----------------
 let g:pymode_rope_goto_definition_bind = "<m-g>"
 let g:pymode_rope_goto_definition_cmd = 'e'
+let g:pymode_options_colorcolumn = 0
+let g:pymode_options_max_line_length = 80
