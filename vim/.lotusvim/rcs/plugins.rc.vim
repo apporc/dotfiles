@@ -262,3 +262,14 @@ nnoremap <Leader>el :Errors<CR>
 
 "TODO now is checking openstack's code, use this at present.
 let g:virtualenv_directory = '.tox/'
+
+" -----------------
+"  supertab
+" -----------------
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+" ----------------
+"  python-mode
+" ----------------
+let g:pymode_rope_goto_definition_bind = "<m-g>"
+let g:pymode_rope_goto_definition_cmd = 'e'

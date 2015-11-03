@@ -35,6 +35,7 @@ Plugin 'fatih/vim-go.git'
 Plugin 'dart-lang/dart-vim-plugin.git'
 Plugin 'rodjek/vim-puppet.git'
 Plugin 'vim-scripts/po.vim.git'
+Plugin 'klen/python-mode'
 
 " For markdown
 Plugin 'godlygeek/tabular'
@@ -44,6 +45,7 @@ Plugin 'plasticboy/vim-markdown'
 
 " Code completion, a bug of YouComleteMe to eat memory
 " Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
 
 " Git
 Plugin 'tpope/vim-fugitive'
