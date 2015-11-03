@@ -29,7 +29,6 @@ Plugin 'apporc/Conque-Shell.git'
 
 " cscope and pycscope, for code jumping
 Plugin 'vim-scripts/cscope.vim.git'
-Plugin 'portante/pycscope.git'
 
 " File types
 Plugin 'fatih/vim-go.git'
@@ -59,8 +58,8 @@ Plugin 'valloric/MatchTagAlways'
 " wordpress
 Plugin 'apporc/VimRepress.git'
 
-" virtualenv
-Plugin 'jmcantrell/vim-virtualenv'
+" virtualenv, supported from python-mode
+" Plugin 'jmcantrell/vim-virtualenv'
 
 " drawit
 Plugin 'vim-scripts/DrawIt.git'
