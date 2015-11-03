@@ -168,14 +168,14 @@ let g:vim_markdown_initial_foldlevel=1
 "  YouCompleteMe
 "  -----------------
 " YCM's identifier completer will also collect identifiers from tags files.
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_filetype_blacklist = {
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'text' : 1,
-      \ 'unite' : 1
-      \}
-
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_filetype_blacklist = {
+"       \ 'notes' : 1,
+"       \ 'markdown' : 1,
+"       \ 'text' : 1,
+"       \ 'unite' : 1
+"       \}
+" 
 " ------------------
 " NERDCommenter
 " ------------------
