@@ -14,6 +14,8 @@ export BROWSER='chromium'
 alias rm='rm -i'
 alias xmind='XMind'
 alias ls='ls --color=auto'
+alias less='less -R'
+alias grep='grep --color=always'
 
 # cabal
 export PATH=${HOME}/.cabal/bin/:${PATH}
