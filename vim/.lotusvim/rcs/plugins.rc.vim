@@ -175,7 +175,7 @@ let g:vim_markdown_initial_foldlevel=1
 "       \ 'text' : 1,
 "       \ 'unite' : 1
 "       \}
-" 
+"
 " ------------------
 " NERDCommenter
 " ------------------
@@ -275,3 +275,4 @@ let g:pymode_rope_goto_definition_bind = "<m-g>"
 let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_options_colorcolumn = 0
 let g:pymode_options_max_line_length = 80
+let g:pymode_virtualenv = 1
