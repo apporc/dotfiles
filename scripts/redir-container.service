@@ -1,0 +1,12 @@
+[Unit]
+Description=routercontainer
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a redir
+ExecStop=/usr/bin/docker stop -t 2 redir
+
+[Install]
+WantedBy=multi-user.target
