@@ -413,7 +413,7 @@ awful.rules.rules = {
       properties = { tag = tags[1][4] } },
     { rule = { class = "Gnome-mplayer" },
       properties = { tag = tags[1][5] } },
-    { rule = { name = "xchat" },
+    { rule = { name = "XChat" },
       properties = { tag = tags[1][6] } },
     { rule = { class = "Virt-manager" },
       properties = { tag = tags[1][7] } },
@@ -500,5 +500,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.util.spawn_with_shell("if [ $(ps -ef | grep fcitx | grep -v grep | wc -l) -eq 0 ]; then fcitx; fi")
 awful.util.spawn_with_shell("if [ $(ps -ef | grep urxvt | grep -v grep | wc -l) -eq 0 ]; then urxvt -e tmux attach; fi")
 awful.util.spawn_with_shell("if [ $(ps -ef | grep chromium | grep -v grep | wc -l) -eq 0 ]; then chromium; fi")
-awful.util.spawn_with_shell("if [ $(ps -ef | grep xchat | grep -v grep | wc -l) -eq 0 ]; then urxvt -e xchat; fi")
+awful.util.spawn_with_shell("if [ $(ps -ef | grep xchat | grep -v grep | wc -l) -eq 0 ]; then xchat; fi")
 awful.util.spawn_with_shell("if [ $(ps -ef | grep virt-manager | grep -v grep | wc -l) -eq 0 ]; then virt-manager; fi")
