@@ -23,5 +23,5 @@ let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_options_colorcolumn = 0
 let g:pymode_options_max_line_length = 80
 let g:pymode_virtualenv = 1
-
-
+let g:pymode_run = 0
+let g:pymode_run_bind = ''
