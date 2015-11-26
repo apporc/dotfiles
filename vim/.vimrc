@@ -11,21 +11,19 @@ endfunction
 "
 " Initialization:
 call s:source_rc('init.rc.vim')
-" Vundle:
+" Vundle Plugin:
 call s:source_rc('vundle.rc.vim')
-" Functions:
-call s:source_rc('func.rc.vim')
-" Basic:
-call s:source_rc('general.rc.vim')
+" Utils:
+call s:source_rc('utils.rc.vim')
 " Encoding:
 call s:source_rc('encoding.rc.vim')
 " Keymappings:
 call s:source_rc('mappings.rc.vim')
-" Plugin:
-call s:source_rc('plugins.rc.vim')
+" Windows:
+call s:source_rc('windows.rc.vim')
 " FileType:
 call s:source_rc('filetype.rc.vim')
-" Custom configs
+" Customconfigs:
 call s:source_rc('my_configs.rc.vim')
 
 " Others

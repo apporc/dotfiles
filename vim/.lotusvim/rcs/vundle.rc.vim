@@ -2,6 +2,20 @@
 " Vundle
 "===============================================================================
 "
+" vundle dir
+let g:vundle_dir = expand('~/.cache/vundle')
+
+if has('vim_starting') "{{{
+    if !isdirectory(g:vundle_dir.'/Vundle.vim')
+      execute printf('!git clone %s://github.com/VundleVim/Vundle.vim',
+            \ (exists('$http_proxy') ? 'https' : 'git'))
+            \ g:vundle_dir.'/Vundle.vim'
+    endif
+
+    execute 'set runtimepath^=' . g:vundle_dir.'/Vundle.vim'
+endif
+"}}}
+
 
 call vundle#begin(g:vundle_dir)
 
@@ -15,7 +29,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree.git'
 
 " Buffer Explorer
-"Plugin 'fholgado/minibufexpl.vim.git'
 Plugin 'bling/vim-airline'
 Plugin 'moll/vim-bbye'  " Preserve the window when closing buffer.
 Plugin 'vim-scripts/BufOnly.vim'
@@ -25,7 +38,6 @@ Plugin 'scrooloose/syntastic.git'
 
 " Shell inside vim
 Plugin 'apporc/Conque-Shell.git'
-"Plugin 'Shougo/vimshell'
 
 " cscope and pycscope, for code jumping
 Plugin 'vim-scripts/cscope.vim.git'
@@ -37,12 +49,11 @@ Plugin 'dart-lang/dart-vim-plugin.git'
 Plugin 'rodjek/vim-puppet.git'
 Plugin 'vim-scripts/po.vim.git'
 Plugin 'klen/python-mode'
+Plugin 'moll/vim-node'
 
 " For markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-"Plugin 'isnowfy/python-vim-instant-markdown.git'
-"Plugin 'suan/vim-instant-markdown'
 
 " Code completion, a bug of YouComleteMe to eat memory
 " Plugin 'Valloric/YouCompleteMe'
@@ -51,15 +62,8 @@ Plugin 'ervandew/supertab'
 " Git
 Plugin 'tpope/vim-fugitive'
 
-" Code Review
-Plugin 'junkblocker/patchreview-vim.git'
-Plugin 'codegram/vim-codereview.git'
-
 " Match Tags for HTML/XML...
 Plugin 'valloric/MatchTagAlways'
-
-" wordpress
-Plugin 'apporc/VimRepress.git'
 
 Plugin 'jmcantrell/vim-virtualenv'
 

@@ -1,85 +1,28 @@
-" Setting tabwidth, width normally is 2 or 4
-function! SetTabWidth(width)
-  execute 'setl shiftwidth=' . a:width
-  execute 'setl tabstop=' . a:width
-  execute 'setl softtabstop='. a:width
+filetype plugin indent on
+
+" Enable syntax color.
+syntax enable
+
+" Function to source vim configuration files.
+function! s:source_filerc(path)
+  execute 'source' fnameescape(expand('~/.lotusvim/rcs/filetypes/' . a:path))
 endfunction
 
-function! Auto_Dart()
-  call SetTabWidth(2)
-endfunction
-
-function! Auto_C()
-  setl fdm=syntax
-  call SetTabWidth(4)
-  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=C,C++ . && cscope -R -f .cscope -b -q -s .<CR>
-  silent source ~/.lotusvim/rcs/cscope.rc.vim
-endfunction
-
-function! Auto_CSS()
-  call SetTabWidth(2)
-  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=HTML .<CR>
-endfunction
-
-function! Auto_HTML()
-  call SetTabWidth(2)
-  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=HTML .<CR>
-endfunction
-
-function! Auto_JS()
-  setl fen
-  setl nocindent
-  call JavaScriptFold()
-  call SetTabWidth(4)
-  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Javascript .<CR>
-endfunction
-
-function! Auto_PHP()
-  setl fdm=syntax
-  call SetTabWidth(4)
-  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=php .<CR>
-endfunction
-
-function! Auto_PYTHON()
-  call SetTabWidth(4)
-  setl fdm=indent
-  " disable intelligent indentation for python, or the cursor magically show at the head of one new line when commenting.
-  setl nosmartindent
-  "This silent won't work, don't know why.
-  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Python . && pycscope -R -f .cscope .<CR>
-  silent source ~/.lotusvim/rcs/cscope.rc.vim
-endfunction
-
-function! Auto_SH()
-  call SetTabWidth(2)
-  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=sh .<CR>
-endfunction
-
-function! Auto_VIM()
-  call SetTabWidth(2)
-  noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Vim .<CR>
-endfunction
-
-function! Auto_GO()
-  call SetTabWidth(4)
-  " not use ctags/cscop for golang for now.
-  map <m-g> <Nop>
-  nnoremap <m-g> :GoDef<CR>
-  " noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=go .<CR>
-  map <leader>d <Nop>
-  nmap <leader>r <Plug>(go-run)
-  nmap <leader>b <Plug>(go-build)
-  nmap <leader>t <Plug>(go-test)
-  nmap <leader>c <Plug>(go-coverage)
-  nmap <Leader>ds <Plug>(go-def-split)
-  nmap <Leader>dv <Plug>(go-def-vertical)
-  nmap <Leader>dt <Plug>(go-def-tab)
-  nmap <Leader>gd <Plug>(go-doc)
-  nmap <Leader>gv <Plug>(go-doc-vertical)
-  nmap <Leader>s <Plug>(go-implements)
-  nmap <Leader>i <Plug>(go-info)
-  nmap <Leader>e <Plug>(go-rename)
-endfunction
+" Import filetypes setting
+for i in ['general.rc.vim',
+      \'bash.rc.vim',
+      \'c.rc.vim',
+      \'css.rc.vim',
+      \'dart.rc.vim',
+      \'go.rc.vim',
+      \'html.rc.vim',
+      \'javascript.rc.vim',
+      \'markdown.rc.vim',
+      \'php.rc.vim',
+      \'python.rc.vim',
+      \'vimscript.rc.vim']
+  call s:source_filerc(i)
+endfor
 
 "Identify languge types
 "----------------------------
