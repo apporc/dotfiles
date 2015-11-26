@@ -33,6 +33,13 @@ Plugin 'bling/vim-airline'
 Plugin 'moll/vim-bbye'  " Preserve the window when closing buffer.
 Plugin 'vim-scripts/BufOnly.vim'
 
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/neoyank.vim'
+Plugin 'tsukkee/unite-tag'
+Plugin 'Shougo/neoinclude.vim'
+
 " Syntax Checker
 Plugin 'scrooloose/syntastic.git'
 
@@ -48,15 +55,18 @@ Plugin 'fatih/vim-go.git'
 Plugin 'dart-lang/dart-vim-plugin.git'
 Plugin 'rodjek/vim-puppet.git'
 Plugin 'vim-scripts/po.vim.git'
+
+" python autocomplete and definition
 Plugin 'klen/python-mode'
-Plugin 'moll/vim-node'
+
+" javascript autocomplete and definition
+Plugin 'ternjs/tern_for_vim'
 
 " For markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
-" Code completion, a bug of YouComleteMe to eat memory
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'ervandew/supertab'
 
 " Git
