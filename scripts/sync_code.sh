@@ -1,12 +1,28 @@
 #!/bin/bash
 
-REPO_PATH="/home/apporc/Projects/openstack"
+REPO_PATH="${HOME}/Projects/openstack"
 
 ORIGIN="origin"
 REMOTES="upstream eayunstack"
 UPSTREAM_BRANCH="master juno kilo"
 EAYUNSTACK_BRANCH="eayunstack-1.0 eayunstack-1.1"
 REPOS="nova neutron cinder oslo.messaging"
+
+
+function usage () {
+  echo "./sync_code.sh to sync local repo with github;"
+  echo "./sync_code.sh -p to sync local repo and push to origin remote repo;"
+}
+
+function parse_opt () {
+  while getopts "p" opt
+  do
+      case $opt in
+          p) push='y';;
+          h) usage;exit 0;;
+      esac
+  done
+}
 
 function fetch_objects () {
   repo=${1}
@@ -47,7 +63,10 @@ function sync_from_upstream () {
       upstream_branch="upstream/stable/${branch}"
     fi
     git merge ${upstream_branch}
-    git push origin ${branch}
+    if [ ${push} == 'y' ]
+    then
+      git push origin ${branch}
+    fi
     #TODO unable to push to eayunstack, because of authentication
     generate_tags
   done
@@ -66,6 +85,10 @@ function sync_from_eayunstack () {
     git checkout ${branch}
     #TODO check this configuration
     git pull eayunstack ${branch}
+    if [ ${push} == 'y' ]
+    then
+      git push origin ${branch}
+    fi
     generate_tags
   done
 
@@ -81,4 +104,5 @@ function sync_src () {
   done
 }
 
+parse_opt
 sync_src
