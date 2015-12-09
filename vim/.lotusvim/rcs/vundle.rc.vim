@@ -19,6 +19,9 @@ endif
 
 call vundle#begin(g:vundle_dir)
 
+" Vundle itself
+Plugin 'VundleVim/Vundle.vim'
+
 " Color Scheme
 Plugin 'apporc/grb256'
 
