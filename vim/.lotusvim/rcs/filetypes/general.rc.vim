@@ -21,7 +21,8 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 nnoremap <Leader>j :lnext<CR>
 nnoremap <Leader>k :lprevious<CR>
