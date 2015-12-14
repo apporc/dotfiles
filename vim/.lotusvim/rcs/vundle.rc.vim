@@ -70,7 +70,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab'
 
 " Git
 Plugin 'tpope/vim-fugitive'

@@ -27,10 +27,3 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 nnoremap <Leader>j :lnext<CR>
 nnoremap <Leader>k :lprevious<CR>
 nnoremap <Leader>el :Errors<CR>
-
-" -----------------
-"  supertab
-" -----------------
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
-
