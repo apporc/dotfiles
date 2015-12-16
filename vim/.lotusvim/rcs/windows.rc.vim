@@ -151,6 +151,7 @@ nnoremap <m-e> :NERDTreeToggle<CR>
 "
 nnoremap <m-a> :TagbarToggle<CR>
 let g:tagbar_width=30
+let g:tagbar_sort = 0
 
 autocmd MyAutoCmd FileType tagbar call s:tagbar_my_settings()
 function! s:tagbar_my_settings() "{{{
