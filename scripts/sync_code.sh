@@ -63,7 +63,7 @@ function sync_from_upstream () {
       upstream_branch="upstream/stable/${branch}"
     fi
     git merge ${upstream_branch}
-    if [ ${push} == 'y' ]
+    if [ "i${push}" == "iy" ]
     then
       git push origin ${branch}
     fi
@@ -85,7 +85,7 @@ function sync_from_eayunstack () {
     git checkout ${branch}
     #TODO check this configuration
     git pull eayunstack ${branch}
-    if [ ${push} == 'y' ]
+    if [ "i${push}" == "iy" ]
     then
       git push origin ${branch}
     fi
