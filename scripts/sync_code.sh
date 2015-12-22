@@ -68,7 +68,7 @@ function sync_from_upstream () {
       git push origin ${branch}
     fi
     #TODO unable to push to eayunstack, because of authentication
-    generate_tags
+    generate_tags ${branch}
   done
 
   cd ${OLDPATH}
@@ -89,7 +89,7 @@ function sync_from_eayunstack () {
     then
       git push origin ${branch}
     fi
-    generate_tags
+    generate_tags ${branch}
   done
 
   cd ${OLDPATH}
