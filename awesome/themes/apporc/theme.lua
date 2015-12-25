@@ -12,7 +12,7 @@ theme.wallpaper = "~/.config/awesome/themes/apporc/bg.png"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "ubuntu mono 14"
+theme.font      = "WenQuanYi Zen Hei Mono 14"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"
