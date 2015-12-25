@@ -33,8 +33,10 @@
 ! URxvt*cursorUnderline:                boolean
 ! URxvt*cursorBlink:                    boolean
 ! URxvt*pointerBlank:                   boolean
- URxvt*background:                     #2E3436
- URxvt*foreground:                     #BDC3C7
+! URxvt*background:                     #2E3436
+ URxvt*background:                     black
+! URxvt*foreground:                     #BDC3C7
+ URxvt*foreground:                     white
  URxvt*color0:                         #2E3436
  URxvt*color1:                         #C0392B
  URxvt*color2:                         #27AE60
@@ -66,10 +68,14 @@
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
- URxvt*font:                           xft:DejaVu Sans Mono:size=12:style=Regular:antialias=false
- URxvt*boldFont:                       xft:DejaVu Sans Mono:size=12:style=Bold:antialias=false
- URxvt*italicFont:                     xft:DejaVu Sans Mono:size=12:style=Italic:antialias=false
- URxvt*boldItalicFont:                 xft:DejaVu Sans Mono:size=12:style=Bold Italic:antialias=false
+! URxvt*font:                           xft:Deja Vu Sans Mono:size=12:style=Regular
+! URxvt*boldFont:                       xft:Deja Vu Sans Mono:size=12:style=Bold
+! URxvt*italicFont:                     xft:Deja Vu Sans Mono:size=12:style=Italic
+! URxvt*boldItalicFont:                 xft:Deja Vu Sans Mono:size=12:style=Bold Italic
+ URxvt*font:                           xft:WenQuanYi Zen Hei Mono:size=12:style=Regular
+ URxvt*boldFont:                       xft:WenQuanYi Zen Hei Mono:size=12:style=Bold
+ URxvt*italicFont:                     xft:WenQuanYi Zen Hei Mono:size=12:style=Italic
+ URxvt*boldItalicFont:                 xft:WenQuanYi Zen Hei Mono:size=12:style=Bold Italic
 ! URxvt*intensityStyles:                boolean
 ! URxvt*inputMethod:                    name
 ! URxvt*preeditType:                    style
