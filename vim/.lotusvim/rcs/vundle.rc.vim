@@ -81,5 +81,7 @@ Plugin 'jmcantrell/vim-virtualenv'
 
 " drawit
 Plugin 'vim-scripts/DrawIt.git'
+" graphviz
+Plugin 'wannesm/wmgraphviz.vim'
 
 call vundle#end()
