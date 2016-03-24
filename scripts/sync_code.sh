@@ -6,7 +6,7 @@ ORIGIN="origin"
 REMOTES="upstream eayunstack"
 UPSTREAM_BRANCH="master juno kilo"
 EAYUNSTACK_BRANCH="eayunstack-1.0 eayunstack-1.1"
-REPOS="nova neutron cinder oslo.messaging"
+REPOS="nova neutron cinder oslo.messaging heat ceilometer"
 
 
 function usage () {
