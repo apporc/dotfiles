@@ -203,15 +203,15 @@ set hlsearch
 " Make search act like search in modern browsers
 set incsearch
 " Searches wrap around the end of the file.
-set wrapscan
+" set wrapscan
 
 " Longline settings
 " ------------------------------------------------------------------------------
 "
 " Wrap long line.
-set wrap
+set nowrap
 " wrap lines at 120 chars. 80 is somewhat antiquated with nowadays displays.
-set textwidth=120
+" set textwidth=120
 
 " Allow to move to right even on the end of the line, and move to left even on the begging of the line
 set whichwrap+=h,l,<,>,[,],b,s,~
