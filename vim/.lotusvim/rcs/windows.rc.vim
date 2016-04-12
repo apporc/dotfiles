@@ -201,6 +201,8 @@ endfunction
 let g:ConqueTerm_ReadUnfocused = 1
 " Close conque buffer when program exits
 let g:ConqueTerm_CloseOnEnd = 1
+" suppress warning message
+let g:ConqueTerm_StartMessages = 0
 nnoremap <m-t> <ESC>:ConqueTermSplit bash<CR>
 
 autocmd MyAutoCmd FileType conque_term call s:conque_term_my_settings()
