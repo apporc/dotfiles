@@ -161,14 +161,13 @@ set autoindent
 " Mouse settings
 " ------------------------------------------------------------------------------
 " Using the mouse on a terminal.
-if has('mouse')
-  set mouse=a
-  if has('mouse_sgr') || v:version > 703 ||
-        \ v:version == 703 && has('patch632')
-    set ttymouse=sgr
-  else
-    set ttymouse=xterm2
-  endif
+if has('mouse') && !has('nvim')
+    set mouse=a
+    if has('mouse_sgr') 
+        set ttymouse=sgr
+    else
+        set ttymouse=xterm2
+    endif
 
     " Paste.
     nnoremap <RightMouse> "+p

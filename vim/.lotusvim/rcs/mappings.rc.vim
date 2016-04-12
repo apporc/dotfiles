@@ -7,31 +7,34 @@ noremap <F1> <Esc>
 inoremap <F1> <Esc>
 
 " Set alt keys here
-set <m-h>=h
-set <m-j>=j
-set <m-k>=k
-set <m-l>=l
-set <m-w>=w
-set <m-e>=e
-set <m-a>=a
-set <m-t>=t
-set <m-v>=v
-set <m-g>=g
-set <m-n>=n
-set <m-p>=p
-set <m-x>=x
-set <m-i>=i
-set <m-b>=b
-set <m-1>=1
-set <m-2>=2
-set <m-3>=3
-set <m-4>=4
-set <m-5>=5
-set <m-6>=6
-set <m-7>=7
-set <m-8>=8
-set <m-9>=9
-set <m-0>=0
+
+if !has('nvim')
+  set <m-h>=h
+  set <m-j>=j
+  set <m-k>=k
+  set <m-l>=l
+  set <m-w>=w
+  set <m-e>=e
+  set <m-a>=a
+  set <m-t>=t
+  set <m-v>=v
+  set <m-g>=g
+  set <m-n>=n
+  set <m-p>=p
+  set <m-x>=x
+  set <m-i>=i
+  set <m-b>=b
+  set <m-1>=1
+  set <m-2>=2
+  set <m-3>=3
+  set <m-4>=4
+  set <m-5>=5
+  set <m-6>=6
+  set <m-7>=7
+  set <m-8>=8
+  set <m-9>=9
+  set <m-0>=0
+endif
 
 " Use <Leader> in global plugin.
 " With a map leader it's possible to do extra key combinations
