@@ -80,8 +80,43 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
-nnoremap <m-n> :<c-u>bn<CR>
-nnoremap <m-p> :<c-u>bp<CR>
+
+function! SwitchToNextBuffer(incr)
+    let current = bufnr("%")
+    let last = bufnr("$")
+    let new = current + a:incr
+    while 1
+        if new < 1
+            let new = last
+        elseif new > last
+            let new = 1
+        endif
+        if new != 0 && bufexists(new) && buflisted(new)
+            if new == current
+                break
+            else
+                execute ":buffer ".new
+                break
+            endif
+        endif
+        let new = new + a:incr
+    endwhile
+endfunction
+
+function! SwitchToBuffer(number)
+    let current = bufnr("%")
+    let new = a:number
+    if new != 0 && bufexists(new) && buflisted(new) && (getbufvar(new, "&filetype") != 'help')
+        if new == current
+            break
+        else
+            execute ":buffer ".new
+        endif
+    endif
+endfunction
+
+nnoremap  <m-n> :call SwitchToNextBuffer(1)<CR>
+nnoremap  <m-p> :call SwitchToNextBuffer(-1)<CR>
 
 " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
 " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
@@ -95,16 +130,15 @@ nnoremap <m-p> :<c-u>bp<CR>
 "endfor
 
 " Use alt key to switch between buffers, can't switch to buffer numbers large than 10 by now
-nnoremap <m-1> :b1<CR>
-nnoremap <m-2> :b2<CR>
-nnoremap <m-3> :b3<CR>
-nnoremap <m-4> :b4<CR>
-nnoremap <m-5> :b5<CR>
-nnoremap <m-6> :b6<CR>
-nnoremap <m-7> :b7<CR>
-nnoremap <m-8> :b8<CR>
-nnoremap <m-9> :b9<CR>
-nnoremap <m-0> :b10<CR>
+nnoremap <m-1> :call SwitchToBuffer(1)<CR>
+nnoremap <m-2> :call SwitchToBuffer(2)<CR>
+nnoremap <m-3> :call SwitchToBuffer(3)<CR>
+nnoremap <m-4> :call SwitchToBuffer(4)<CR>
+nnoremap <m-5> :call SwitchToBuffer(5)<CR>
+nnoremap <m-6> :call SwitchToBuffer(6)<CR>
+nnoremap <m-7> :call SwitchToBuffer(7)<CR>
+nnoremap <m-8> :call SwitchToBuffer(8)<CR>
+nnoremap <m-9> :call SwitchToBuffer(9)<CR>
 
 " Refresh airline color while reloading vimrc
 if exists(":AirlineRefresh")
@@ -168,6 +202,12 @@ let g:ConqueTerm_ReadUnfocused = 1
 " Close conque buffer when program exits
 let g:ConqueTerm_CloseOnEnd = 1
 nnoremap <m-t> <ESC>:ConqueTermSplit bash<CR>
+
+autocmd MyAutoCmd FileType conque_term call s:conque_term_my_settings()
+function! s:conque_term_my_settings() "{{{
+    call Disable_window_shortcut()
+endfunction
+"}}}
 
 " ------------------
 "  Unite
