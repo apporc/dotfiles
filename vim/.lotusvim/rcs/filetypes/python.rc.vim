@@ -27,4 +27,4 @@ let g:pymode_run = 0
 let g:pymode_run_bind = ''
 let g:pymode_rope_regenerate_on_write = 0
 let g:pymode_rope_lookup_project = 0
-let g:pymode_lint_ignore = "E121,E122,E123,E124,E125,E126,E127,E128,E129,E131,E251,H405,H803,H904"
+let g:pymode_lint_ignore = "E121,E122,E123,E124,E125,E126,E127,E128,E129,E131,E251,H405,H803,H904,C901,W503"
