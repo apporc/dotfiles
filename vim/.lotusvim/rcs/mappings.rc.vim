@@ -67,7 +67,7 @@ cnoremap    <esc><c-b> <s-left>
 cnoremap    <esc><c-f> <s-right>
 
 " Remove the Windows ^M - when the encodings gets messed up
-"noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Toggle paste mode on and off
 nnoremap <m-v> :setlocal paste!<CR>
