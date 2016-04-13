@@ -102,7 +102,7 @@ set timeout timeoutlen=1000 ttimeoutlen=0
 " It made chinese garbled, give up at present.
 " unamed * register, terminal used
 " unamedplus + register, chrome used
-if has('unnamedplus')
+if has('nvim') || has('unnamedplus')
   set clipboard^=unnamed,unnamedplus
 else
   set clipboard^=unnamed
