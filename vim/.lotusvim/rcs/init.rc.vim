@@ -163,7 +163,7 @@ set autoindent
 " Using the mouse on a terminal.
 if has('mouse') && !has('nvim')
     set mouse=a
-    if has('mouse_sgr') 
+    if has('mouse_sgr')
         set ttymouse=sgr
     else
         set ttymouse=xterm2
