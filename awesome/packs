@@ -54,6 +54,7 @@ package-query
 yaourt
 docker
 pkgfile
+pkg-config
 tcpdump
 tree
 scrot
