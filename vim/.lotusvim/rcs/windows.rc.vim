@@ -150,7 +150,7 @@ endif
 "  vim-bbye
 " ------------------
 " Close current buffer, but preserve the window.
-nnoremap <m-x> :Bdelete<CR>
+nnoremap <m-x> :Bdelete!<CR>
 
 " ------------------
 "  BufOnly
@@ -194,7 +194,7 @@ endfunction
 "}}}
 
 " ------------------
-" Conque Shell
+" Terminal && Conque Shell
 " ------------------
 "
 " Keep updating conque buffer after switching to other buffer
@@ -203,13 +203,22 @@ let g:ConqueTerm_ReadUnfocused = 1
 let g:ConqueTerm_CloseOnEnd = 1
 " suppress warning message
 let g:ConqueTerm_StartMessages = 0
-nnoremap <m-t> <ESC>:ConqueTermSplit bash<CR>
+if has('nvim')
+    " use neovim's own terminal
+    tnoremap <Esc> <C-\><C-n>
+    nnoremap <m-t> :vsplit term://bash<CR>
+    nnoremap <m-s-t> :split term://bash<CR>
+else
+    nnoremap <m-t> :ConqueTermVSplit bash<CR>
+    nnoremap <m-s-t> :ConqueTermSplit bash<CR>
+endif
 
 autocmd MyAutoCmd FileType conque_term call s:conque_term_my_settings()
 function! s:conque_term_my_settings() "{{{
     call Disable_window_shortcut()
 endfunction
 "}}}
+"
 
 " ------------------
 "  Unite
