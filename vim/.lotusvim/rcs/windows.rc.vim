@@ -81,7 +81,7 @@ let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
 
-function! SwitchToNextBuffer(incr)
+function! SwitchToNextBuffer(incr, split)
     let current = bufnr("%")
     let last = bufnr("$")
     let new = current + a:incr
@@ -95,6 +95,11 @@ function! SwitchToNextBuffer(incr)
             if new == current
                 break
             else
+                if a:split == "vsplit"
+                    execute ":vsplit"
+                elseif a:split == "split"
+                    execute ":split"
+                endif
                 execute ":buffer ".new
                 break
             endif
@@ -103,20 +108,25 @@ function! SwitchToNextBuffer(incr)
     endwhile
 endfunction
 
-function! SwitchToBuffer(number)
+function! SwitchToBuffer(number, split)
     let current = bufnr("%")
     let new = a:number
     if new != 0 && bufexists(new) && buflisted(new) && (getbufvar(new, "&filetype") != 'help')
-        if new == current
-            break
-        else
+        if new != current
+            if a:split == "vsplit"
+                execute ":vsplit"
+            elseif a:split == "split"
+                execute ":split"
+            endif
             execute ":buffer ".new
         endif
     endif
 endfunction
 
-nnoremap  <m-n> :call SwitchToNextBuffer(1)<CR>
-nnoremap  <m-p> :call SwitchToNextBuffer(-1)<CR>
+nnoremap  <m-n> :call SwitchToNextBuffer(1, "nosplit")<CR>
+nnoremap  <m-s-n> :call SwitchToNextBuffer(1, "vsplit")<CR>
+nnoremap  <m-p> :call SwitchToNextBuffer(-1, "nosplit")<CR>
+nnoremap  <m-s-p> :call SwitchToNextBuffer(-1, "vsplit")<CR>
 
 " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
 " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
@@ -130,20 +140,25 @@ nnoremap  <m-p> :call SwitchToNextBuffer(-1)<CR>
 "endfor
 
 " Use alt key to switch between buffers, can't switch to buffer numbers large than 10 by now
-nnoremap <m-1> :call SwitchToBuffer(1)<CR>
-nnoremap <m-2> :call SwitchToBuffer(2)<CR>
-nnoremap <m-3> :call SwitchToBuffer(3)<CR>
-nnoremap <m-4> :call SwitchToBuffer(4)<CR>
-nnoremap <m-5> :call SwitchToBuffer(5)<CR>
-nnoremap <m-6> :call SwitchToBuffer(6)<CR>
-nnoremap <m-7> :call SwitchToBuffer(7)<CR>
-nnoremap <m-8> :call SwitchToBuffer(8)<CR>
-nnoremap <m-9> :call SwitchToBuffer(9)<CR>
+nnoremap <m-1> :call SwitchToBuffer(1, "nosplit")<CR>
+nnoremap <m-2> :call SwitchToBuffer(2, "nosplit")<CR>
+nnoremap <m-3> :call SwitchToBuffer(3, "nosplit")<CR>
+nnoremap <m-4> :call SwitchToBuffer(4, "nosplit")<CR>
+nnoremap <m-5> :call SwitchToBuffer(5, "nosplit")<CR>
+nnoremap <m-6> :call SwitchToBuffer(6, "nosplit")<CR>
+nnoremap <m-7> :call SwitchToBuffer(7, "nosplit")<CR>
+nnoremap <m-8> :call SwitchToBuffer(8, "nosplit")<CR>
+nnoremap <m-9> :call SwitchToBuffer(9, "nosplit")<CR>
 
-" Refresh airline color while reloading vimrc
-if exists(":AirlineRefresh")
-    AirlineRefresh
-endif
+nnoremap <m-!> :call SwitchToBuffer(1, "vsplit")<CR>
+nnoremap <m-@> :call SwitchToBuffer(2, "vsplit")<CR>
+nnoremap <m-#> :call SwitchToBuffer(3, "vsplit")<CR>
+nnoremap <m-$> :call SwitchToBuffer(4, "vsplit")<CR>
+nnoremap <m-%> :call SwitchToBuffer(5, "vsplit")<CR>
+nnoremap <m-^> :call SwitchToBuffer(6, "vsplit")<CR>
+nnoremap <m-&> :call SwitchToBuffer(7, "vsplit")<CR>
+nnoremap <m-*> :call SwitchToBuffer(8, "vsplit")<CR>
+nnoremap <m-(> :call SwitchToBuffer(9, "vsplit")<CR>
 
 
 " ------------------
