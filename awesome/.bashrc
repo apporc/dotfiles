@@ -8,7 +8,7 @@
 PS1='[\u@\h \W] > '
 # delete duplicate history lines
 export HISTCONTROL=ignoreboth:erasedups
-export EDITOR='vim'
+export EDITOR='nvim'
 export BROWSER='chromium'
 
 alias rm='rm -i'
@@ -16,6 +16,7 @@ alias xmind='XMind'
 alias ls='ls --color=auto'
 alias less='less -R'
 alias grep='grep --color=always'
+alias vim='nvim'
 
 # cabal
 export PATH=${HOME}/.cabal/bin/:${PATH}
