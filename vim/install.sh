@@ -4,24 +4,28 @@
 SCRIPT=$(readlink -f "$0")
 LOTUS_PWD=$(dirname $SCRIPT)
 gnome=n
+javascript=n
 APT=apt-get
 YUM=yum
 EMERGE=emerge
 PACMAN=pacman
 
 usage () {
-  echo "Usage: $0 [-h] [[-oi] [OS]]"
+  echo "Usage: $0 [-hij] [-o OS]"
+  echo "-h    Show this help."
   echo "-o    The operating system name, supported now including centos, ubuntu, fedora, redhat, debian, gentoo, arch."
   echo "-i    Install vim-gnome automatically."
+  echo "-j    Prepare for javascript(install npm, eg), default no."
 }
 
 parse_opt () {
-  while getopts "hio:" opt
+  while getopts "hijo:" opt
   do
       case $opt in
           h) usage;exit 0;;
           o) os=$OPTARG;;
           i) gnome=y;;
+          j) javascript=y;;
       esac
   done
   if [ -z $os ];then
@@ -87,6 +91,11 @@ update_rc () {
   done
 }
 
+setting_neovim () {
+    ln -sf ${LOTUS_PWD}/.vimrc ${HOME}/.config/nvim/init.vim
+    install_pack python2-neovim xsel
+}
+
 main () {
     echo "Please input your password when you are asked to."
     echo "======================================================="
@@ -110,8 +119,14 @@ main () {
     # update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
 
     # javascript rules.
-    npm_config
-    npm_pack jslint bower gulp
+    if [ $javascript == 'y' ]
+    then
+      npm_config
+      npm_pack jslint bower gulp
+    fi
+
+    # neovim
+    setting_neovim
     echo "======================================================="
     echo "Done."
     exit 0
