@@ -26,6 +26,7 @@ let g:pymode_options_colorcolumn = 0
 let g:pymode_options_max_line_length = 79
 let g:pymode_virtualenv = 1
 let g:pymode_run = 0
+let g:pymode_syntax = 0
 let g:pymode_run_bind = ''
 let g:pymode_rope_regenerate_on_write = 0
 let g:pymode_rope_lookup_project = 0
