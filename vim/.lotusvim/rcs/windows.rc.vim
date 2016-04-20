@@ -220,7 +220,6 @@ let g:ConqueTerm_CloseOnEnd = 1
 let g:ConqueTerm_StartMessages = 0
 if has('nvim')
     " use neovim's own terminal
-    tnoremap <Esc> <C-\><C-n>
     nnoremap <m-t> :vsplit term://bash<CR>
     nnoremap <m-s-t> :split term://bash<CR>
 else
