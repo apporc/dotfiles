@@ -9,6 +9,9 @@ inoremap <F1> <Esc>
 " Set alt keys here
 
 if !has('nvim')
+  " This h like character is not ^+[+h.
+  " You should type this to produce the code:
+  " in insert mode, ctrl-v first and then type alt+h
   set <m-h>=h
   set <m-j>=j
   set <m-k>=k
