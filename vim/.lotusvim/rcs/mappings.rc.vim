@@ -60,6 +60,12 @@ nnoremap <m-h> <C-w>h
 nnoremap <m-j> <C-w>j
 nnoremap <m-k> <C-w>k
 nnoremap <m-l> <C-w>l
+if has('nvim')
+    tnoremap <m-h> <C-\><C-n><C-w>h
+    tnoremap <m-j> <C-\><C-n><C-w>j
+    tnoremap <m-k> <C-\><C-n><C-w>k
+    tnoremap <m-l> <C-\><C-n><C-w>l
+endif
 
 " command line key shortcut
 cnoremap    <c-a>   <home>
