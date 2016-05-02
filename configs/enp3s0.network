@@ -1,0 +1,4 @@
+[Match]
+Name=enp3s0
+[Network]
+Bridge=linuxbr0
