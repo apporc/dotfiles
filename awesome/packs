@@ -1,31 +1,23 @@
-grub
-iwconfig
-wpa_supplicant
-wireless_tools
-#dialog
-sudo
 awesome
-xf86-video-ati
+xf86-video-nouveau
 xorg-server
 xorg-xinit
 vim
 chromium
 chromium-pepper-flash
-opendesktop-fonts for chromium chinese
-[BUG]binutils as pptpsetup's dependencies
-gvim to support +clipboard
-pacman -Sii show dependencies
+opendesktop-fonts
+binutils
+gvim
 rxvt-unicode
-xorg-xrandr to see resolution
-xorg-xrdb to merge ./Xresources
-ttf-dejavu for fonts
+xorg-xrandr
+xorg-xrdb
+ttf-dejavu
 fcitx
 fcitx-googlepinyin
-fcitx-configtool to config fcitx, because locale is en_us.
-fcitx-gtk2 to use fcitx in chromium/firefox, because locale is en_us.
+fcitx-configtool
+fcitx-gtk2
 urxvt-tabbedex
 urxvt-clipboard
-#xsel
 alas-utils
 alas-plugins
 xchat
@@ -138,4 +130,3 @@ xchat
 xlockmore
 xmind
 zip
-
