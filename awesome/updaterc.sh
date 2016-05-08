@@ -29,7 +29,7 @@ update_rc () {
   done
 }
 
-update_rc ${HOME} $BASEDIR .xinitrc .Xresources .irssi .bashrc .tmux.conf .inputrc .gitconfig .pypirc .bashrc
+update_rc ${HOME} $BASEDIR .xinitrc .Xresources .irssi .bashrc .tmux.conf .inputrc .gitconfig .pypirc .bashrc .tmux
 if [ ! -d ${HOME}/.config/awesome ]
 then
   mkdir -p ${HOME}/.config/awesome

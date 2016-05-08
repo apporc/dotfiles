@@ -18,6 +18,14 @@ alias less='less -R'
 alias grep='grep --color=always'
 alias vim='nvim'
 
+# tmux workspace alias
+alias oslo="tmux_apporc oslo"
+alias algo="tmux_apporc algorithm"
+alias golang="tmux_apporc golang"
+
+# scripts of myself
+export PATH=${PATH}:${HOME}/Projects/dotfiles/scripts
+
 # cabal
 export PATH=${HOME}/.cabal/bin/:${PATH}
 
