@@ -127,6 +127,12 @@ nnoremap  <m-n> :call SwitchToNextBuffer(1, "nosplit")<CR>
 nnoremap  <m-s-n> :call SwitchToNextBuffer(1, "vsplit")<CR>
 nnoremap  <m-p> :call SwitchToNextBuffer(-1, "nosplit")<CR>
 nnoremap  <m-s-p> :call SwitchToNextBuffer(-1, "vsplit")<CR>
+if has('nvim')
+  tnoremap  <m-n> :<C-\><C-n>call SwitchToNextBuffer(1, "nosplit")<CR>
+  tnoremap  <m-s-n> :<C-\><C-n>call SwitchToNextBuffer(1, "vsplit")<CR>
+  tnoremap  <m-p> :<C-\><C-n>call SwitchToNextBuffer(-1, "nosplit")<CR>
+  tnoremap  <m-s-p> :<C-\><C-n>call SwitchToNextBuffer(-1, "vsplit")<CR>
+endif
 
 " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
 " <ESC> used to be here, it made alarm, and my leader key <space> is not working in insert mode.
