@@ -11,7 +11,7 @@
 #
 # Use `exportfs -arv` to reload.
 
-/srv/nfs4	*(rw,sync,no_subtree_check,sec=krb5i,fsid=0)
-/srv/nfs4/Projects	*(rw,sync,no_subtree_check,nohide)
-/srv/nfs4/Media		*(rw,sync,no_subtree_check,nohide)
-/srv/nfs4/Windows	*(rw,sync,no_subtree_check,nohide)
+/srv/nfs4	*(rw,sync,no_subtree_check,fsid=0,no_root_squash)
+/srv/nfs4/Projects	*(rw,sync,no_subtree_check,nohide,no_root_squash)
+/srv/nfs4/Media		*(rw,sync,no_subtree_check,nohide,no_root_squash)
+/srv/nfs4/Windows	*(rw,sync,no_subtree_check,nohide,no_root_squash)
