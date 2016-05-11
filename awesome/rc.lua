@@ -312,7 +312,7 @@ globalkeys = awful.util.table.join(
        awful.util.spawn("amixer sset Master toggle") end),
 
     -- ScreenLock
-    awful.key({ modkey }, "l", function () awful.util.spawn("xlock -mode rain") end),
+    awful.key({ modkey }, "l", function () awful.util.spawn("xlock") end),
     awful.key({ modkey, "Shift" }, "p", function () awful.util.spawn("shutdown -h now") end),
     awful.key({ modkey, "Shift" }, "s", function () awful.util.spawn("systemctl suspend") end)
 )

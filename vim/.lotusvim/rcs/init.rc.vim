@@ -28,12 +28,15 @@ augroup END
 set history=1024
 "disable vi compatibility (emulation of old bugs)
 set nocompatible
+" cursorline
+set cursorline
 " Write the contents of the file, if it has been modified.
 set autowriteall
 " Set to auto read when a file is changed from the outside
 set autoread
 " show line number
 set number
+set relativenumber
 " get off the default mode indicator, let airline do this.
 set noshowmode
 "Always show current position
@@ -223,9 +226,10 @@ set breakat=\ \	;:,!?
 " Swap file settings
 " ------------------------------------------------------------------------------
 "
-" TODO whether use swap or not.
 " Set swap directory.
-set directory-=.
+set directory=~/.local/share/nvim/swap//
+" Enable swapfile for safety.
+set swapfile
 
 if v:version >= 703
   " Set undofile.
@@ -236,5 +240,4 @@ endif
 " Turn backup off
 set nobackup
 set nowritebackup
-set noswapfile
-set backupdir-=.
+" set backupdir-=.

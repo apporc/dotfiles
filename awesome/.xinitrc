@@ -2,6 +2,11 @@
 #
 # User's .xinitrc file
 
+if [ -s ~/.Xmodmap ];
+then
+    xmodmap ~/.Xmodmap
+fi
+
 # Merge custom X resources
 [[ -f ~/.Xresources ]] && xrdb -merge "${HOME}/.Xresources"
 

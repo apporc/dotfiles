@@ -12,6 +12,7 @@ if !has('nvim')
   " This h like character is not ^+[+h.
   " You should type this to produce the code:
   " in insert mode, ctrl-v first and then type alt+h
+  set <m-o>=o
   set <m-h>=h
   set <m-j>=j
   set <m-k>=k
@@ -19,6 +20,9 @@ if !has('nvim')
   set <m-w>=w
   set <m-e>=e
   set <m-a>=a
+  set <m-f>=f
+  set <m-b>=b
+  set <m-r>=r
   set <m-t>=t
   set <m-v>=v
   set <m-g>=g
@@ -26,7 +30,7 @@ if !has('nvim')
   set <m-p>=p
   set <m-x>=x
   set <m-i>=i
-  set <m-b>=b
+  set <m-c>=c
   set <m-1>=1
   set <m-2>=2
   set <m-3>=3
@@ -39,10 +43,44 @@ if !has('nvim')
   set <m-0>=0
 endif
 
+" Set alt-o as esc, because being tired of esc.
+"
+inoremap <m-o> <ESC>
+nnoremap <m-o> <ESC>
+
 " Use <Leader> in global plugin.
 " With a map leader it's possible to do extra key combinations
 " Don't use leader key at present
 " let mapleader=" "
+"
+" Leave insert mode quickly
+inoremap <leader>j <ESC>
+inoremap <leader>k <ESC>
+inoremap <leader>h <ESC>
+inoremap <leader>l <ESC>
+
+inoremap <leader>a <ESC>la
+inoremap <leader>i <ESC>a
+inoremap <leader>A <ESC>A
+inoremap <leader>I <ESC>I
+inoremap <leader>o <ESC>o
+inoremap <leader>O <ESC>O
+inoremap <leader>v <ESC>v
+inoremap <leader>x <ESC>xi
+inoremap <leader>dd <ESC>dd
+
+inoremap <leader>e <ESC>e
+inoremap <leader>w <ESC>w
+inoremap <leader>b <ESC>b
+inoremap <leader>0 <ESC>0
+inoremap <leader>f <ESC>f
+inoremap <leader>t <ESC>t
+inoremap <leader>? <ESC>?
+inoremap <leader>n <ESC>n
+
+inoremap <leader>y <ESC>Y
+inoremap <leader>p <ESC>p
+inoremap <leader>u <ESC>u
 
 " Treat long lines as break lines (useful when moving around in them)
 noremap j gj
@@ -60,6 +98,10 @@ nnoremap <m-h> <C-w>h
 nnoremap <m-j> <C-w>j
 nnoremap <m-k> <C-w>k
 nnoremap <m-l> <C-w>l
+inoremap <m-h> <ESC><C-w>h
+inoremap <m-j> <ESC><C-w>j
+inoremap <m-k> <ESC><C-w>k
+inoremap <m-l> <ESC><C-w>l
 if has('nvim')
     tnoremap <m-h> <C-\><C-n><C-w>h
     tnoremap <m-j> <C-\><C-n><C-w>j
@@ -85,7 +127,8 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 nnoremap <m-v> :setlocal paste!<CR>
 
 " use alt+w to save file
-nnoremap <m-w> :<c-u>w<CR>
+nnoremap <m-w> <ESC>:<c-u>w<CR>
+inoremap <m-w> <ESC>:<c-u>w<CR>
 
 " use alt+g to jump to definition
 nnoremap <silent> <m-g> <C-]>
@@ -113,4 +156,4 @@ command! -nargs=1 Silent
       \ | execute ':redraw!'
 
 " open chromium to see markdown
-nnoremap <silent> <m-b> :Silent chromium "%:p"<CR>
+nnoremap <silent> <m-c> :Silent chromium "%:p"<CR>

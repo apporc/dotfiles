@@ -36,13 +36,13 @@ set cmdheight=2
 " ------------------
 
 
-" Every time opening a ConqueTerm window, it will have a new name like 'bash - xx'
-let bash_buf_names = []
-for bash_no in range(1, 100)
-    let bash_buf_names = bash_buf_names + ["bash - " . bash_no]
+" Every time opening a ConqueTerm window, it will have a new name like 'zsh - xx'
+let zsh_buf_names = []
+for zsh_no in range(1, 100)
+    let zsh_buf_names = zsh_buf_names + ["zsh - " . zsh_no]
 endfor
 
-let g:airline#extensions#tabline#excludes = ['__Tagbar__', 'vimfiler:explorer'] + bash_buf_names
+let g:airline#extensions#tabline#excludes = ['__Tagbar__', 'vimfiler:explorer'] + zsh_buf_names
 
 let g:airline_powerline_fonts = 0
 
@@ -91,7 +91,7 @@ function! SwitchToNextBuffer(incr, split)
         elseif new > last
             let new = 1
         endif
-        if new != 0 && bufexists(new) && buflisted(new)
+        if new != 0 && bufexists(new) && buflisted(new) && (getbufvar(new, "&filetype") != 'help')
             if new == current
                 break
             else
@@ -127,11 +127,15 @@ nnoremap  <m-n> :call SwitchToNextBuffer(1, "nosplit")<CR>
 nnoremap  <m-s-n> :call SwitchToNextBuffer(1, "vsplit")<CR>
 nnoremap  <m-p> :call SwitchToNextBuffer(-1, "nosplit")<CR>
 nnoremap  <m-s-p> :call SwitchToNextBuffer(-1, "vsplit")<CR>
+inoremap  <m-n> <ESC>:call SwitchToNextBuffer(1, "nosplit")<CR>
+inoremap  <m-s-n> <ESC>:call SwitchToNextBuffer(1, "vsplit")<CR>
+inoremap  <m-p> <ESC>:call SwitchToNextBuffer(-1, "nosplit")<CR>
+inoremap  <m-s-p> <ESC>:call SwitchToNextBuffer(-1, "vsplit")<CR>
 if has('nvim')
-  tnoremap  <m-n> :<C-\><C-n>call SwitchToNextBuffer(1, "nosplit")<CR>
-  tnoremap  <m-s-n> :<C-\><C-n>call SwitchToNextBuffer(1, "vsplit")<CR>
-  tnoremap  <m-p> :<C-\><C-n>call SwitchToNextBuffer(-1, "nosplit")<CR>
-  tnoremap  <m-s-p> :<C-\><C-n>call SwitchToNextBuffer(-1, "vsplit")<CR>
+  tnoremap  <m-n> <C-\><C-n>:call SwitchToNextBuffer(1, "nosplit")<CR>
+  tnoremap  <m-s-n> <C-\><C-n>:call SwitchToNextBuffer(1, "vsplit")<CR>
+  tnoremap  <m-p> <C-\><C-n>:call SwitchToNextBuffer(-1, "nosplit")<CR>
+  tnoremap  <m-s-p> <C-\><C-n>:call SwitchToNextBuffer(-1, "vsplit")<CR>
 endif
 
 " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
@@ -226,11 +230,15 @@ let g:ConqueTerm_CloseOnEnd = 1
 let g:ConqueTerm_StartMessages = 0
 if has('nvim')
     " use neovim's own terminal
-    nnoremap <m-t> :vsplit term://bash<CR>
-    nnoremap <m-s-t> :split term://bash<CR>
+    nnoremap <m-t> :vsplit term://zsh<CR>
+    nnoremap <m-s-t> :split term://zsh<CR>
+    " automatically go to insert mode
+    autocmd BufWinEnter,WinEnter term://* startinsert
+    " automatically go to normal mode
+    autocmd BufLeave term://* stopinsert
 else
-    nnoremap <m-t> :ConqueTermVSplit bash<CR>
-    nnoremap <m-s-t> :ConqueTermSplit bash<CR>
+    nnoremap <m-t> :ConqueTermVSplit zsh<CR>
+    nnoremap <m-s-t> :ConqueTermSplit zsh<CR>
 endif
 
 autocmd MyAutoCmd FileType conque_term call s:conque_term_my_settings()
@@ -261,6 +269,10 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'google/obj/',
       \ 'tmp/',
       \ '.sass-cache',
+      \ '.tox/',
+      \ 'build/',
+      \ 'dist/',
+      \ '.eggs/',
       \ ], '\|'))
 call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'max_candidates', 1000)
@@ -309,8 +321,7 @@ function! s:unite_settings()
   imap <buffer> <C-u> <Plug>(unite_delete_backward_path)
   imap <buffer> '     <Plug>(unite_quick_match_default_action)
   nmap <buffer> '     <Plug>(unite_quick_match_default_action)
-  nmap <buffer> <C-r> <Plug>(unite_redraw)
-  imap <buffer> <C-r> <Plug>(unite_redraw)
+  nmap <buffer> <C-l> <Plug>(unite_redraw)
   inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
   nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
   inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')

@@ -44,13 +44,14 @@ Plugin 'tsukkee/unite-tag'
 Plugin 'Shougo/neoinclude.vim'
 
 " Syntax Checker
-Plugin 'scrooloose/syntastic.git'
+" Plugin 'scrooloose/syntastic.git'
+Plugin 'neomake/neomake'
 
 " Shell inside vim
 Plugin 'apporc/Conque-Shell.git'
 
 " cscope and pycscope, for code jumping
-Plugin 'vim-scripts/cscope.vim.git'
+" Plugin 'vim-scripts/cscope.vim.git'
 Plugin 'portante/pycscope.git'
 
 " File types
@@ -69,7 +70,15 @@ Plugin 'ternjs/tern_for_vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
+" general autocompletion
 Plugin 'Valloric/YouCompleteMe'
+
+" integrate ultisnips with vim-snippets.
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+" auto close brackets
+Plugin 'Raimondi/delimitMate'
 
 " Git
 Plugin 'tpope/vim-fugitive'

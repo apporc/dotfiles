@@ -1,0 +1,106 @@
+# delete duplicate history lines
+export HISTCONTROL=ignoreboth:erasedups
+export EDITOR='nvim'
+export BROWSER='chromium'
+
+alias rm='rm -i'
+alias xmind='XMind'
+alias ls='ls --color=auto'
+alias less='less -R'
+alias grep='grep --color=always'
+alias vim='nvim'
+
+# tmux workspace alias
+alias oslo="tmux_apporc oslo"
+alias algo="tmux_apporc algorithm"
+alias golang="tmux_apporc golang"
+
+# alias for git
+#
+alias gtad='git add'
+alias gtap='git apply'
+alias gtbi='git bisect'
+alias gtbr='git branch'
+alias gtci='git commit'
+alias gtcf='git config'
+alias gtcl='git clone'
+alias gtco='git checkout'
+alias gtcp='git cherry-pick'
+alias gtcr='git cherry'
+alias gtde='git describe'
+alias gtdi='git diff'
+alias gtdis='git diff --stat'
+alias gtfe='git fetch'
+alias gtfp='git format-patch'
+alias gtgc='git gc'
+alias gtlg='git log'
+alias gtlg1='git log --pretty=oneline'                                                                                                                                                         
+alias gtlgp='git log -p'
+alias gtlgs='git log --stat'
+alias gtlgfp='git log --first-parent'
+alias gtlglr='git log --pretty=oneline --left-right'
+
+alias gtmg='git merge'
+alias gtmv='git mv'
+alias gtps='git push'
+alias gtpl='git pull'
+alias gtrb='git rebase'
+alias gtrl='git reflog'
+alias gtrm='git rm'
+alias gtrs='git reset'
+alias gtrmt='git remote'
+alias gtsbr='git show-branch'
+alias gtsh='git show'
+alias gtslg='git shortlog'
+alias gtsm='git submodule'
+alias gtss='git stash'
+alias gtst='git status'
+alias gttg='git tag'
+alias gtnw='git new-workdir'
+
+
+# ssh-agent configuration
+SSH_AGENT_DIR="${HOME}/.cache/ssh-agent"
+SSH_AGENT_SOCK="ssh-agent.socket"
+SSH_AGENT_PID="ssh-agent.pid"
+export SSH_AUTH_SOCK=${SSH_AGENT_DIR}/${SSH_AGENT_SOCK}
+if [ ! -d $SSH_AGENT_DIR ]
+then
+  mkdir -p $SSH_AGENT_DIR
+fi
+if ! pgrep -u $USER ssh-agent > /dev/null; then
+    ssh-agent -a $SSH_AUTH_SOCK > ${SSH_AGENT_DIR}/${SSH_AGENT_PID}
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval $(<${SSH_AGENT_DIR}/${SSH_AGENT_PID})
+fi
+
+# scripts of myself
+
+export PATH=${PATH}:${HOME}/Projects/dotfiles/scripts
+
+# cabal
+export PATH=${PATH}:${HOME}/.cabal/bin/
+
+# dart lang
+export PATH=${PATH}:${HOME}/Projects/dart
+
+# go lang, arch linux go package need GOROOT to be /usr/lib/go
+# export GOROOT=/usr/lib/go
+export GOPATH=${HOME}/Projects/go
+export PATH=${PATH}:${GOPATH}/bin
+
+# adt
+export PATH=${PATH}:/home/apporc/Software/devtool/adt-bundle-linux-x86_64-20140702/sdk/platform-tools
+export PATH=${PATH}:/usr/local/bin/apporc
+
+# ruby
+export PATH=${PATH}:${HOME}/.gem/ruby/2.1.0/bin
+
+# chromiumos dev, repo cmd
+export PATH=${PATH}:${HOME}/Projects/depot_tools
+
+# android dev, repo cmd
+export PATH=${PATH}:${HOME}/Projects/android_repo
+
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx

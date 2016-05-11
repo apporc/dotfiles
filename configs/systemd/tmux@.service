@@ -4,7 +4,9 @@ Description=Start tmux in detached session
 [Service]
 Type=forking
 User=%I
+Environment=DISPLAY=:0
 Restart=always
+TasksMax=infinity
 ExecStart=/usr/bin/tmux new-session -s %I -n %I -c /home/%I/ -d
 ExecStop=/usr/bin/tmux kill-server
 

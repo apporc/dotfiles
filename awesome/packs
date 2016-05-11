@@ -98,6 +98,9 @@ nodejs
 npm
 openssl
 pandoc
+# for pandoc pdf
+texlive-bin
+texlive-core
 parted
 patch
 ppp

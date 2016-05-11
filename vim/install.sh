@@ -115,8 +115,7 @@ main () {
     fi
     update_rc $HOME ${LOTUS_PWD} .vimrc .lotusvim
     update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .pylintrc .vimpressrc
-    # Use project options in tox.ini or setup.cfg
-    # update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
+    update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
 
     # javascript rules.
     if [ $javascript == 'y' ]
