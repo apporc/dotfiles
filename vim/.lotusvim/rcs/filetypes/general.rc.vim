@@ -32,8 +32,10 @@ let g:neomake_python_enabled_makers = ['pylint']
 let g:neomake_go_enabled_makers = ['golint', 'govet', 'errcheck']
 
 
-autocmd! BufWritePost * Neomake
+" disable neomake automatic behaviour.
+" autocmd! BufWritePost * Neomake
 
+nnoremap <Leader>c :Neomake<CR>
 nnoremap <Leader>j :lnext<CR>
 nnoremap <Leader>k :lprevious<CR>
 nnoremap <Leader>a :lfirst<CR>
