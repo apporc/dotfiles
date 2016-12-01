@@ -369,5 +369,5 @@ let g:unite_cursor_line_highlight = 'TabLineSel'
 let g:unite_source_file_mru_filename_format = ':~:.'
 let g:unite_source_file_mru_time_format = ''
 
-let g:unite_source_grep_default_opts = '-iHn --exclude=.* --exclude-dir=.[^.]*'
+let g:unite_source_grep_default_opts = '-iHn --exclude=.* --exclude-dir=.[^.]* --exclude=*.pyc'
 let g:unite_source_grep_recursive_opt = '-r'
