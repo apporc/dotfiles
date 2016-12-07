@@ -1,0 +1,8 @@
+[Unit]
+Description=backup mobiledisk on openwrt
+
+[Service]
+Type=oneshot
+User=apporc
+Group=apporc
+ExecStart=/usr/bin/rsync -a --delete -e ssh root@openwrt:/mnt/mobiledisk/ /home/apporc/Storage/Media/Pictures/mobiledisk

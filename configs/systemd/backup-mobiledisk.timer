@@ -1,0 +1,10 @@
+[Unit]
+Description=Run backup hourly
+
+[Timer]
+OnBootSec=120
+OnCalendar=hourly
+Persistent=true    
+ 
+[Install]
+WantedBy=timers.target
