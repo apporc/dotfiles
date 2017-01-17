@@ -1,7 +1,12 @@
 #!/bin/bash
 #Author: apporc
 
-SCRIPT=$(readlink -f "$0")
+OS=$(uname)
+if [ "$OS" == "Darwin" ];then
+  SCRIPT=$(greadlink -f "$0")
+else
+  SCRIPT=$(readlink -f "$0")
+fi
 LOTUS_PWD=$(dirname $SCRIPT)
 gnome=n
 javascript=n
@@ -10,11 +15,12 @@ YUM=yum
 EMERGE=emerge
 PACMAN=pacman
 
+
 usage () {
   echo "Usage: $0 [-hij] [-o OS]"
   echo "-h    Show this help."
   echo "-o    The operating system name, supported now including centos, ubuntu, fedora, redhat, debian, gentoo, arch."
-  echo "-i    Install vim-gnome automatically."
+  echo "-i    Install graphic vim automatically."
   echo "-j    Prepare for javascript(install npm, eg), default no."
 }
 
@@ -24,7 +30,7 @@ parse_opt () {
       case $opt in
           h) usage;exit 0;;
           o) os=$OPTARG;;
-          i) gnome=y;;
+          i) graphic_vim=y;;
           j) javascript=y;;
       esac
   done
@@ -34,6 +40,7 @@ parse_opt () {
     exit 1
   fi
 }
+
 
 install_pack () {
     PACK=$@
@@ -45,12 +52,15 @@ install_pack () {
         sudo ${EMERGE} $PACK
     elif [ $os == 'arch' ]; then
         sudo ${PACMAN} --noconfirm --needed -S $PACK
+    elif [ $os == 'macos' ]; then
+        brew install $PACK
     fi
 }
 
 npm_config () {
   # fuck gfw
-  sudo npm config -g set registry="http://r.cnpmjs.org"
+  sudo npm config set registry https://registry.npm.taobao.org --global
+  sudo npm config set disturl https://npm.taobao.org/dist --global
 }
 
 npm_pack () {
@@ -58,7 +68,7 @@ npm_pack () {
   sudo npm install -g -d $PACK
 }
 
-install_vim_gnome () {
+install_graphic_vim () {
   if [ $os == 'ubuntu' -o $os == 'debian' ];then
     sudo ${APT} -y install vim-gnome
     #Use vim-tiny as vi
@@ -69,6 +79,8 @@ install_vim_gnome () {
     sudo ${EMERGE} vim
   elif [ $os == 'arch' ]; then
     sudo ${PACMAN} --noconfirm --needed -S vim
+  elif [ $os == 'macos' ]; then
+    brew install macvim vim
   fi
 }
 
@@ -92,6 +104,7 @@ update_rc () {
 }
 
 setting_neovim () {
+    mkdir -p ${HOME}/.config/nvim
     ln -sf ${LOTUS_PWD}/.vimrc ${HOME}/.config/nvim/init.vim
     install_pack python2-neovim xsel
 }
@@ -100,18 +113,27 @@ main () {
     echo "Please input your password when you are asked to."
     echo "======================================================="
 
-    if [ -z "$gnome" -o "$gnome" == 'y' -o "$gnome" == 'Y' ];then
-        install_vim_gnome
+    if [ -z "$graphic_vim" -o "$graphic_vim" == 'y' -o "$graphic_vim" == 'Y' ];then
+        install_graphic_vim
     fi
 
-    install_pack gcc make python-setuptools cscope ctags python-pygments npm
+    if [ "$os" != "macos" ];then
+      install_pack gcc make python-setuptools cscope ctags python-pygments npm
 
-    if [ "$os" == 'arch' ];then
-      install_pack python2-pylint
-      install_pack python2-flake8
+      if [ "$os" == 'arch' ];then
+        install_pack python2-pylint
+        install_pack python2-flake8
+      else
+        install_pack pylint
+        install_pack python-flake8
+      fi
     else
-      install_pack pylint
-      install_pack python-flake8
+      # for macos
+      install_pack python cscope ctags-exuberant npm
+      pip install pygments
+      # install neovim
+      brew tap neovim/neovim
+      brew install neovim
     fi
     update_rc $HOME ${LOTUS_PWD} .vimrc .lotusvim
     update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .pylintrc .vimpressrc

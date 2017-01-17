@@ -1,6 +1,9 @@
 #!/bin/bash
 
-SCRIPT=$(readlink -f "$0")
+# install coreutils to enable greadlink
+brew install coreutils
+
+SCRIPT=$(greadlink -f "$0")
 BASEDIR=$(dirname $SCRIPT)
 CONFIGDIR=$BASEDIR/../configs
 
@@ -30,10 +33,6 @@ update_rc () {
   done
 }
 
-update_rc ${HOME} $BASEDIR .xinitrc .Xresources .irssi .inputrc .Xmodmap
 update_rc ${HOME} $CONFIGDIR .bashrc .tmux.conf .gitconfig .pypirc .tmux .zshrc .apporcrc
-if [ ! -d ${HOME}/.config/awesome ]
-then
-  mkdir -p ${HOME}/.config/awesome
-fi
-update_rc ${HOME}/.config/awesome $BASEDIR rc.lua themes
+
+echo 'source ~/.bashrc' > ~/.bash_profile

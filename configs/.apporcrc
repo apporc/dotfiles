@@ -1,11 +1,18 @@
 # delete duplicate history lines
+OS=$(uname)
+
 export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='nvim'
 export BROWSER='chromium'
 
+if [[ "$OS" == 'Darwin' ]];then
+  alias ls='ls -G'
+elif [[ "$OS" == 'Linux' ]];then
+  alias ls='ls --color=auto'
+fi
+
 alias rm='rm -i'
 alias xmind='XMind'
-alias ls='ls --color=auto'
 alias less='less -R'
 alias grep='grep --color=always'
 alias vim='nvim'
@@ -60,19 +67,23 @@ alias gtnw='git new-workdir'
 
 
 # ssh-agent configuration
-SSH_AGENT_DIR="${HOME}/.cache/ssh-agent"
-SSH_AGENT_SOCK="ssh-agent.socket"
-SSH_AGENT_PID="ssh-agent.pid"
-export SSH_AUTH_SOCK=${SSH_AGENT_DIR}/${SSH_AGENT_SOCK}
-if [ ! -d $SSH_AGENT_DIR ]
-then
-  mkdir -p $SSH_AGENT_DIR
-fi
-if ! pgrep -u $USER ssh-agent > /dev/null; then
-    ssh-agent -a $SSH_AUTH_SOCK > ${SSH_AGENT_DIR}/${SSH_AGENT_PID}
-fi
-if [[ "$SSH_AGENT_PID" == "" ]]; then
-    eval $(<${SSH_AGENT_DIR}/${SSH_AGENT_PID})
+
+if [[ "$OS" != 'Darwin' ]];then
+
+    SSH_AGENT_DIR="${HOME}/.cache/ssh-agent"
+    SSH_AGENT_SOCK="ssh-agent.socket"
+    SSH_AGENT_PID="ssh-agent.pid"
+    export SSH_AUTH_SOCK=${SSH_AGENT_DIR}/${SSH_AGENT_SOCK}
+    if [ ! -d $SSH_AGENT_DIR ]
+    then
+    mkdir -p $SSH_AGENT_DIR
+    fi
+    if ! pgrep -u $USER ssh-agent > /dev/null; then
+        ssh-agent -a $SSH_AUTH_SOCK > ${SSH_AGENT_DIR}/${SSH_AGENT_PID}
+    fi
+    if [[ "$SSH_AGENT_PID" == "" ]]; then
+        eval $(<${SSH_AGENT_DIR}/${SSH_AGENT_PID})
+    fi
 fi
 
 # scripts of myself
@@ -96,6 +107,9 @@ export PATH=${PATH}:/usr/local/bin/apporc
 
 # ruby
 export PATH=${PATH}:${HOME}/.gem/ruby/2.1.0/bin
+
+# android studio sdk
+export ANDROID_HOME=~/Library/Android/sdk
 
 # chromiumos dev, repo cmd
 export PATH=${PATH}:${HOME}/Projects/depot_tools
