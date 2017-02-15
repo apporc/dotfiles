@@ -110,6 +110,8 @@ export PATH=${PATH}:${HOME}/.gem/ruby/2.1.0/bin
 
 # android studio sdk
 export ANDROID_HOME=~/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 # chromiumos dev, repo cmd
 export PATH=${PATH}:${HOME}/Projects/depot_tools
