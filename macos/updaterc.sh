@@ -32,7 +32,7 @@ update_rc () {
     ln -sf $src/$filename $dst
   done
 }
-
-update_rc ${HOME} $CONFIGDIR .bashrc .tmux.conf .gitconfig .pypirc .tmux .zshrc .apporcrc
+update_rc ${HOME} $BASEDIR .tmux.conf
+update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf
 
 echo 'source ~/.bashrc' > ~/.bash_profile

@@ -127,7 +127,7 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 nnoremap <m-v> :setlocal paste!<CR>
 
 " use alt+w to save file
-nnoremap <m-w> <ESC>:<c-u>w<CR>
+nnoremap <m-w> :<c-u>w<CR>
 inoremap <m-w> <ESC>:<c-u>w<CR>
 
 " use alt+g to jump to definition

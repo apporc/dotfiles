@@ -30,8 +30,8 @@ update_rc () {
   done
 }
 
-update_rc ${HOME} $BASEDIR .xinitrc .Xresources .irssi .inputrc .Xmodmap
-update_rc ${HOME} $CONFIGDIR .bashrc .tmux.conf .gitconfig .pypirc .tmux .zshrc .apporcrc
+update_rc ${HOME} $BASEDIR .xinitrc .Xresources .irssi .inputrc .Xmodmap .tmux.conf
+update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf
 if [ ! -d ${HOME}/.config/awesome ]
 then
   mkdir -p ${HOME}/.config/awesome

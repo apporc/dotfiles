@@ -502,5 +502,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.util.spawn_with_shell("if [ $(ps -ef | grep fcitx | grep -v grep | wc -l) -eq 0 ]; then fcitx; fi")
 awful.util.spawn_with_shell("if [ $(tmux ls 2>&1 | grep apporc |wc -l) -eq 1 ]; then urxvt -e tmux source-file /home/apporc/.tmux/apporc.conf; fi")
 awful.util.spawn_with_shell("if [ $(ps -ef | grep chromium | grep -v grep | wc -l) -eq 0 ]; then chromium; fi")
-awful.util.spawn_with_shell("if [ $(ps -ef | grep xchat | grep -v grep | wc -l) -eq 0 ]; then xchat; fi")
+-- awful.util.spawn_with_shell("if [ $(ps -ef | grep xchat | grep -v grep | wc -l) -eq 0 ]; then xchat; fi")
 awful.util.spawn_with_shell("if [ $(ps -ef | grep virt-manager | grep -v grep | wc -l) -eq 0 ]; then virt-manager; fi")
