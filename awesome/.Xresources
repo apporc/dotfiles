@@ -1,3 +1,5 @@
+! For centos/redhat: yum install rxvt-unicode
+! or scp /usr/share/terminfo/r/rxvt-unicode-256color user@server.com:.terminfo/r
 URxvt*termName:                       rxvt-unicode-256color
 ! URxvt*geometry:                       geometry
 ! URxvt*chdir:                          string
