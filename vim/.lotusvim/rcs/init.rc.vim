@@ -28,8 +28,9 @@ augroup END
 set history=1024
 "disable vi compatibility (emulation of old bugs)
 set nocompatible
-" cursorline
+" highlight cursor line
 set cursorline
+set cursorcolumn
 " Write the contents of the file, if it has been modified.
 set autowriteall
 " Set to auto read when a file is changed from the outside

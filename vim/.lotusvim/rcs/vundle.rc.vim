@@ -23,7 +23,7 @@ call vundle#begin(g:vundle_dir)
 Plugin 'VundleVim/Vundle.vim'
 
 " Color Scheme
-Plugin 'flazz/vim-colorschemes'
+Plugin 'apporc/vim-colorschemes'
 
 " Tagbar
 Plugin 'majutsushi/tagbar'
