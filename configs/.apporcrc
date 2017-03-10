@@ -119,4 +119,7 @@ export PATH=${PATH}:${HOME}/Projects/depot_tools
 # android dev, repo cmd
 export PATH=${PATH}:${HOME}/Projects/android_repo
 
+# arcanist
+export PATH=${PATH}:${HOME}/Projects/arcanist/bin
+
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
