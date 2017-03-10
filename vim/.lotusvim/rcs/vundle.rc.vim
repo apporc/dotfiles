@@ -36,11 +36,9 @@ Plugin 'bling/vim-airline'
 Plugin 'moll/vim-bbye'  " Preserve the window when closing buffer.
 Plugin 'vim-scripts/BufOnly.vim'
 
-Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/denite.nvim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/neoyank.vim'
-Plugin 'tsukkee/unite-tag'
 Plugin 'Shougo/neoinclude.vim'
 
 " Syntax Checker
