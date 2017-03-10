@@ -254,6 +254,8 @@ endfunction
 " Set up some custom ignores
 call denite#custom#source('file_rec,file_rec,file_mru,file,buffer,grep',
       \ 'ignore_pattern', join([
+      \ '.*',
+      \ '*.pyc',
       \ '\.git/',
       \ 'git5/.*/review/',
       \ 'google/obj/',
@@ -267,12 +269,37 @@ call denite#custom#source('file_rec,file_rec,file_mru,file,buffer,grep',
 call denite#custom#source('file_rec,file_rec,file_mru,file,buffer,grep',
       \ 'max_candidates', 1000)
 
+" custom grep
 call denite#custom#var('grep', 'command', ['grep'])
 call denite#custom#var('grep', 'default_opts', ['-inH'])
 call denite#custom#var('grep', 'recursive_opts', ['-r'])
 call denite#custom#var('grep', 'pattern_opt', ['-e'])
 call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', ['--exclude=.* --exclude-dir=.[^.]* --exclude=*.pyc .'])
+call denite#custom#var('grep', 'final_opts', ['.'])
+
+" Change mappings.
+call denite#custom#map(
+        \ 'insert',
+        \ '<C-j>',
+        \ '<denite:move_to_next_line>',
+        \ 'noremap'
+        \)
+call denite#custom#map(
+        \ 'insert',
+        \ '<C-k>',
+        \ '<denite:move_to_previous_line>',
+        \ 'noremap'
+        \)
+
+  " insert mode key mappings
+call denite#custom#map('insert', '<C-a>', '<denite:move_caret_to_head>', 'noremap')
+call denite#custom#map('insert', '<C-v>', '<denite:paste_from_register>', 'noremap')
+call denite#custom#map('insert', '<M-k>', '<denite:enter_mode:normal>', 'noremap')
+call denite#custom#map('insert', '<M-q>', '<denite:quit>', 'noremap')
+call denite#custom#map('insert', '<M-b>', '<denite:move_caret_to_one_word_left>', 'noremap')
+call denite#custom#map('insert', '<M-f>', '<denite:move_caret_to_one_word_right>', 'noremap')
+call denite#custom#map('insert', '<M-d>', '<denite:delete_word_under_caret>', 'noremap')
+call denite#custom#map('insert', '<M-c>', '<denite:delete_entire_text>', 'noremap')
 
 " General fuzzy search
 nnoremap <silent> <leader>s :<C-u>Denite
@@ -288,7 +315,7 @@ nnoremap <silent> <leader>u :<C-u>Denite -buffer-name=buffers buffer file_mru<CR
 nnoremap <silent> <leader>f :<C-u>Denite -buffer-name=files file_rec<CR>
 
 " Quick grep from cwd with the word under cursor
-nnoremap <silent> <leader>g :<C-u>DeniteCursorWord -buffer-name=grep grep <CR>
+nnoremap <silent> <leader>g :<C-u>DeniteCursorWord -buffer-name=grep -no-empty grep<CR>
 
 " Quick line using the word under cursor
 nnoremap <silent> <leader>l :<C-u>DeniteCursorWord -buffer-name=search_file line<CR>
