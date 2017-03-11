@@ -294,7 +294,8 @@ call denite#custom#map(
   " insert mode key mappings
 call denite#custom#map('insert', '<C-a>', '<denite:move_caret_to_head>', 'noremap')
 call denite#custom#map('insert', '<C-v>', '<denite:paste_from_register>', 'noremap')
-call denite#custom#map('insert', '<M-k>', '<denite:enter_mode:normal>', 'noremap')
+call denite#custom#map('insert', 'kk', '<denite:enter_mode:normal>', 'noremap')
+call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>', 'noremap')
 call denite#custom#map('insert', '<M-q>', '<denite:quit>', 'noremap')
 call denite#custom#map('insert', '<M-b>', '<denite:move_caret_to_one_word_left>', 'noremap')
 call denite#custom#map('insert', '<M-f>', '<denite:move_caret_to_one_word_right>', 'noremap')

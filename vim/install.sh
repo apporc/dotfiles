@@ -20,8 +20,6 @@ usage () {
   echo "Usage: $0 [-hij] [-o OS]"
   echo "-h    Show this help."
   echo "-o    The operating system name, supported now including centos, ubuntu, fedora, redhat, debian, gentoo, arch."
-  echo "-i    Install graphic vim automatically."
-  echo "-j    Prepare for javascript(install npm, eg), default no."
 }
 
 parse_opt () {
@@ -30,8 +28,6 @@ parse_opt () {
       case $opt in
           h) usage;exit 0;;
           o) os=$OPTARG;;
-          i) graphic_vim=y;;
-          j) javascript=y;;
       esac
   done
   if [ -z $os ];then
@@ -43,18 +39,18 @@ parse_opt () {
 
 
 install_pack () {
-    PACK=$@
-    if [ $os == 'ubuntu' -o $os == 'debian' ];then
-        sudo ${APT} -y install $PACK
-    elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
-        sudo ${YUM} install -y $PACK
-    elif [ $os == 'gentoo' ];then
-        sudo ${EMERGE} $PACK
-    elif [ $os == 'arch' ]; then
-        sudo ${PACMAN} --noconfirm --needed -S $PACK
-    elif [ $os == 'macos' ]; then
-        brew install $PACK
-    fi
+  PACK=$@
+  if [ $os == 'ubuntu' -o $os == 'debian' ];then
+    sudo ${APT} -y install $PACK
+  elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
+    sudo ${YUM} install -y $PACK
+  elif [ $os == 'gentoo' ];then
+    sudo ${EMERGE} $PACK
+  elif [ $os == 'arch' ]; then
+    sudo ${PACMAN} --noconfirm --needed -S $PACK
+  elif [ $os == 'macos' ]; then
+    brew install $PACK
+  fi
 }
 
 npm_config () {
@@ -63,25 +59,9 @@ npm_config () {
   sudo npm config set disturl https://npm.taobao.org/dist --global
 }
 
-npm_pack () {
+npm_install () {
   PACK=$@
-  sudo npm install -g -d $PACK
-}
-
-install_graphic_vim () {
-  if [ $os == 'ubuntu' -o $os == 'debian' ];then
-    sudo ${APT} -y install vim-gnome
-    #Use vim-tiny as vi
-    sudo update-alternatives --set vi /usr/bin/vim.tiny
-  elif [ $os == 'fedora' -o $os == 'centos' -o $os == 'redhat' ];then
-    sudo ${YUM} install -y vim-X11
-  elif [ $os == 'gentoo' ];then
-    sudo ${EMERGE} vim
-  elif [ $os == 'arch' ]; then
-    sudo ${PACMAN} --noconfirm --needed -S vim
-  elif [ $os == 'macos' ]; then
-    brew install macvim vim
-  fi
+  sudo npm install -d $PACK
 }
 
 update_rc () {
@@ -103,51 +83,52 @@ update_rc () {
   done
 }
 
-setting_neovim () {
+setup_for_neovim () {
     mkdir -p ${HOME}/.config/nvim
     ln -sf ${LOTUS_PWD}/.vimrc ${HOME}/.config/nvim/init.vim
-    install_pack python2-neovim xsel
+    pip2 install neovim
+    pip3 install neovim
+    # install dein package manager for neovim
+    if [ ! -d "{HOME}/.cache/dein/repos/github.com/Shougo/dein.vim" ];then
+      git clone https://github.com/Shougo/dein.vim ~/.cache/dein/repos/github.com/Shougo/dein.vim
+    fi
 }
+
+setup_for_python () {
+      pip2 install jedi pygments pylint flake8
+      pip3 install jedi pygments pylint flake8
+}
+
+setup_for_javascript () {
+    npm_config
+    npm_install npm@latest jslint bower gulp
+  }
 
 main () {
     echo "Please input your password when you are asked to."
     echo "======================================================="
 
-    if [ -z "$graphic_vim" -o "$graphic_vim" == 'y' -o "$graphic_vim" == 'Y' ];then
-        install_graphic_vim
-    fi
-
     if [ "$os" != "macos" ];then
-      install_pack gcc make python-setuptools cscope ctags python-pygments npm
-
-      if [ "$os" == 'arch' ];then
-        install_pack python2-pylint
-        install_pack python2-flake8
-      else
-        install_pack pylint
-        install_pack python-flake8
-      fi
+      install_pack gcc make python2 python3 cscope ctags npm neovim xsel go
     else
-      # for macos
-      install_pack python cscope ctags-exuberant npm
-      pip install pygments
-      # install neovim
       brew tap neovim/neovim
-      brew install neovim
+      install_pack cscope ctags-exuberant npm neovim go
     fi
+
+    # config files
     update_rc $HOME ${LOTUS_PWD} .vimrc .lotusvim
     update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .pylintrc .vimpressrc
     update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
 
-    # javascript rules.
-    if [ $javascript == 'y' ]
-    then
-      npm_config
-      npm_pack jslint bower gulp
-    fi
-
     # neovim
-    setting_neovim
+    setup_for_neovim
+
+    # python
+    setup_for_python
+
+    # javascript
+    setup_for_javascript
+
     echo "======================================================="
     echo "Done."
     exit 0

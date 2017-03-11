@@ -12,7 +12,7 @@ endfunction
 " Initialization:
 call s:source_rc('init.rc.vim')
 " Vundle Plugin:
-call s:source_rc('vundle.rc.vim')
+call s:source_rc('dein.rc.vim')
 " Utils:
 call s:source_rc('utils.rc.vim')
 " Encoding:
