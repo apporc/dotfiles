@@ -30,7 +30,6 @@ if dein#load_state(g:dein_dir)
     call dein#add('neomake/neomake')
 
     " File types
-    call dein#disable('fatih/vim-go')
     call dein#add('dart-lang/dart-vim-plugin.git')
     call dein#add('rodjek/vim-puppet.git')
     call dein#add('vim-scripts/po.vim.git')
