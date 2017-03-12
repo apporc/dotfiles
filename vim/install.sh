@@ -109,10 +109,10 @@ main () {
     echo "======================================================="
 
     if [ "$os" != "macos" ];then
-      install_pack gcc make python2 python3 cscope ctags npm neovim xsel go
+      install_pack gcc make python2 python3 ctags npm neovim xsel go
     else
       brew tap neovim/neovim
-      install_pack cscope ctags-exuberant npm neovim go
+      install_pack ctags-exuberant npm neovim go
     fi
 
     # config files

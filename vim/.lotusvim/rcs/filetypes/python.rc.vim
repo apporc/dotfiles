@@ -5,7 +5,6 @@ function! Auto_PYTHON()
   " setl nosmartindent
   "This silent won't work, don't know why.
   noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Python . <CR>
-  silent source ~/.lotusvim/rcs/cscope.rc.vim
 endfunction
 
 " ------------------
