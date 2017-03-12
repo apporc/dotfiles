@@ -10,6 +10,25 @@
        \ 'unite' : 1
        \}
 
+let g:ycm_python_binary_path = 'python'
+let g:ycm_key_invoke_completion = '<m-f>'
+let g:ycm_semantic_triggers =  {
+\   'c' : ['->', '.'],
+\   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+\             're!\[.*\]\s'],
+\   'ocaml' : ['.', '#'],
+\   'cpp,objcpp' : ['->', '.', '::'],
+\   'perl' : ['->'],
+\   'php' : ['->', '::'],
+\   'cs,java,javascript,typescript,d,perl6,scala,vb,elixir,go' : ['.'],
+\   'python' : ['.', 're!import '],
+\   'ruby' : ['.', '::'],
+\   'lua' : ['.', ':'],
+\   'erlang' : [':'],
+\ }
+
+nnoremap <m-g> :YcmCompleter GoTo<CR>
+
 " ------------------
 " neomake & syntastic
 " ------------------
