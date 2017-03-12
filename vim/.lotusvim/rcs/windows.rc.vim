@@ -219,34 +219,16 @@ endfunction
 "}}}
 
 " ------------------
-" Terminal && Conque Shell
+" Terminal
 " ------------------
 "
-" Keep updating conque buffer after switching to other buffer
-let g:ConqueTerm_ReadUnfocused = 1
-" Close conque buffer when program exits
-let g:ConqueTerm_CloseOnEnd = 1
-" suppress warning message
-let g:ConqueTerm_StartMessages = 0
-if has('nvim')
-    " use neovim's own terminal
-    nnoremap <m-t> :vsplit term://zsh<CR>
-    nnoremap <m-s-t> :split term://zsh<CR>
-    " automatically go to insert mode
-    autocmd BufWinEnter,WinEnter term://* startinsert
-    " automatically go to normal mode
-    autocmd BufLeave term://* stopinsert
-else
-    nnoremap <m-t> :ConqueTermVSplit zsh<CR>
-    nnoremap <m-s-t> :ConqueTermSplit zsh<CR>
-endif
-
-autocmd MyAutoCmd FileType conque_term call s:conque_term_my_settings()
-function! s:conque_term_my_settings() "{{{
-    call Disable_window_shortcut()
-endfunction
-"}}}
-"
+" use neovim's own terminal
+nnoremap <m-t> :vsplit term://zsh<CR>
+nnoremap <m-s-t> :split term://zsh<CR>
+" automatically go to insert mode
+autocmd BufWinEnter,WinEnter term://* startinsert
+" automatically go to normal mode
+autocmd BufLeave term://* stopinsert
 
 " ------------------
 "  Denite
