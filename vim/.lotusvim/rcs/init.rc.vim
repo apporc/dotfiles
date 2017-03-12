@@ -6,11 +6,6 @@
 " Default home directory.
 let t:cwd = getcwd()
 
-" Because a value is not set in $MYGVIMRC with the console, set it.
-if !exists($MYGVIMRC)
-  let $MYGVIMRC = expand('~/.vim/gvimrc')
-endif
-
 if !isdirectory(expand('~/.cache'))
   call mkdir(expand('~/.cache'), 'p')
 endif
@@ -101,22 +96,9 @@ set timeout timeoutlen=1000 ttimeoutlen=0
 
 " Use system clipboard, not vim's buffer
 " With this you can copy/paste from/to system clipboard
-" First make sure your vim support clipboard option, with 'vim --version|grep clipboard'
-" It should have +clipboard and +xterm_clipboard
-" With Ubuntu, you may need to install vim-gnome instead of the default vim package.
-" It made chinese garbled, give up at present.
 " unamed * register, terminal used
 " unamedplus + register, chrome used
-if has('nvim') || has('unnamedplus')
-  set clipboard^=unnamed,unnamedplus
-else
-  set clipboard^=unnamed
-endif
-
-if v:version < 703 || (v:version == 7.3 && !has('patch336'))
-  " Vim's bug.
-  set notagbsearch
-endif
+set clipboard^=unnamed,unnamedplus
 
 " Enable virtualedit in visual block mode, so cursor can be anywhere, not only on characters.
 set virtualedit=block
@@ -124,7 +106,7 @@ set virtualedit=block
 " Check timestamp more for 'autoread'.
 autocmd MyAutoCmd WinEnter * checktime
 
-" Disable paste.
+" Disable paste automatically.
 autocmd MyAutoCmd InsertLeave *
       \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
       \ if &l:diff | diffupdate | endif
@@ -141,11 +123,7 @@ autocmd VimEnter * call Startup()
 " Files to ignore
 " ------------------------------------------------------------------------------
 set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-else
-    set wildignore+=.git\*,.hg\*,.svn\*
-endif
+set wildignore+=.git\*,.hg\*,.svn\*
 
 " Indent, tabwidth, shiftwidth
 " ------------------------------------------------------------------------------
@@ -162,24 +140,6 @@ set smarttab
 
 " use indentation of previous line
 set autoindent
-
-" Mouse settings
-" ------------------------------------------------------------------------------
-" Using the mouse on a terminal.
-if has('mouse') && !has('nvim')
-    set mouse=a
-    if has('mouse_sgr')
-        set ttymouse=sgr
-    else
-        set ttymouse=xterm2
-    endif
-
-    " Paste.
-    nnoremap <RightMouse> "+p
-    xnoremap <RightMouse> "+p
-    inoremap <RightMouse> <C-r><C-o>+
-    cnoremap <RightMouse> <C-r>+
-endif
 
 " Fold settings
 " ------------------------------------------------------------------------------
@@ -233,11 +193,9 @@ set directory=~/.local/share/nvim/swap//
 " Enable swapfile for safety.
 set swapfile
 
-if v:version >= 703
-  " Set undofile.
-  set undofile
-  let &undodir=&directory
-endif
+" Set undofile.
+set undofile
+let &undodir=&directory
 
 " Turn backup off
 set nobackup
