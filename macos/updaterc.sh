@@ -33,6 +33,6 @@ update_rc () {
   done
 }
 update_rc ${HOME} $BASEDIR .tmux.conf
-update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf
+update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf .tern-config
 
 echo 'source ~/.bashrc' > ~/.bash_profile

@@ -1,0 +1,23 @@
+{
+  "libs": [
+    "browser",
+    "jquery",
+    "chai",
+    "ecmascript",
+    "underscore"
+  ],
+  "loadEagerly": [
+  ],
+  "plugins": {
+    "requirejs": {},
+    "angular": {},
+    "commonjs": {},
+    "complete_strings": {},
+    "doc_comment": {},
+    "es_modules": {},
+    "modules": {},
+    "node": {},
+    "node_resolve": {},
+    "webpack": {}
+  }
+}
