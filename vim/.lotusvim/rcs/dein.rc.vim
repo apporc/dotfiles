@@ -38,6 +38,8 @@ if dein#load_state(g:dein_dir)
     call dein#add('Valloric/YouCompleteMe', {'merged': 0, 'build': './install.py --clang-completer --gocode-completer --tern-completer'})
 
     " for python
+    call dein#add('Vimjas/vim-python-pep8-indent')
+    call dein#add('tell-k/vim-autopep8')
     call dein#add('jmcantrell/vim-virtualenv')
 
     " For markdown
