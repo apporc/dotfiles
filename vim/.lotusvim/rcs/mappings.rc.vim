@@ -6,11 +6,6 @@ let mapleader = ','
 noremap <F1> <Esc>
 inoremap <F1> <Esc>
 
-" Set alt-o as esc, because being tired of esc.
-"
-inoremap <m-o> <ESC>
-nnoremap <m-o> <ESC>
-
 " Leave insert mode quickly
 inoremap <leader>j <ESC>j
 inoremap <leader>k <ESC>k
@@ -27,7 +22,7 @@ inoremap <leader>v <ESC>v
 inoremap <leader>x <ESC>xi
 inoremap <leader>dd <ESC>dd
 inoremap <leader>dw <ESC>dw
-inoremap <leader>db <ESC>db
+inoremap <leader>db <ESC>ldb
 
 inoremap <leader>e <ESC>e
 inoremap <leader>w <ESC>w
