@@ -243,13 +243,20 @@ call denite#custom#source('file_rec,file_rec,file_mru,file,buffer,grep',
       \ 'google/obj/',
       \ 'tmp/',
       \ '.sass-cache',
-      \ '.tox/',
+      \ '.tox/*',
       \ 'build/',
       \ 'dist/',
       \ '.eggs/',
       \ ], '\|'))
 call denite#custom#source('file_rec,file_rec,file_mru,file,buffer,grep',
       \ 'max_candidates', 1000)
+
+" use sorter_sublime for grep source.
+" sorter_ranker is better for file source, not grep.
+" sorter_ranker sort according to line's length, but it's better
+" for lines from the same file to be gathered together.
+call denite#custom#source(
+\ 'grep', 'sorters', [])
 
 " custom grep
 call denite#custom#var('grep', 'command', ['grep'])
