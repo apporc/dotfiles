@@ -112,6 +112,8 @@ main () {
       install_pack gcc make python2 python3 ctags npm neovim xsel go
     else
       brew tap neovim/neovim
+      brew tap homebrew/dupes
+      brew install grep --with-default-names
       install_pack ctags-exuberant npm neovim go
     fi
 

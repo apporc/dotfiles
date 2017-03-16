@@ -233,24 +233,6 @@ autocmd BufLeave term://* stopinsert
 " ------------------
 "  Denite
 " ------------------
-" Set up some custom ignores
-call denite#custom#source('file_rec,file_rec,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '.*',
-      \ '*.pyc',
-      \ '\.git/',
-      \ 'git5/.*/review/',
-      \ 'google/obj/',
-      \ 'tmp/',
-      \ '.sass-cache',
-      \ '.tox/*',
-      \ 'build/',
-      \ 'dist/',
-      \ '.eggs/',
-      \ ], '\|'))
-call denite#custom#source('file_rec,file_rec,file_mru,file,buffer,grep',
-      \ 'max_candidates', 1000)
-
 " use sorter_sublime for grep source.
 " sorter_ranker is better for file source, not grep.
 " sorter_ranker sort according to line's length, but it's better
@@ -260,7 +242,7 @@ call denite#custom#source(
 
 " custom grep
 call denite#custom#var('grep', 'command', ['grep'])
-call denite#custom#var('grep', 'default_opts', ['-inH'])
+call denite#custom#var('grep', 'default_opts', ['-inH', '--exclude=.tags', '--exclude-dir=.tox', '--exclude-dir=.git'])
 call denite#custom#var('grep', 'recursive_opts', ['-r'])
 call denite#custom#var('grep', 'pattern_opt', ['-e'])
 call denite#custom#var('grep', 'separator', ['--'])
