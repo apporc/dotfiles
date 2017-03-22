@@ -32,15 +32,14 @@ nnoremap <m-g> :YcmCompleter GoTo<CR>
 " ------------------
 " neomake
 " ------------------
-let g:neomake_open_list = 2
 let g:neomake_serialize = 1
 let g:neomake_echo_current_error = 1
 let g:neomake_python_enabled_makers = ['pylint']
 let g:neomake_go_enabled_makers = ['golint', 'govet', 'errcheck']
 
 
-" disable neomake automatic behaviour.
-" autocmd! BufWritePost * Neomake
+" enable neomake automatic behaviour.
+autocmd! BufWritePost * Neomake
 
 nnoremap <Leader>c :Neomake<CR>
 nnoremap <Leader>j :lnext<CR>

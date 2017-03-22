@@ -237,6 +237,13 @@ autocmd BufLeave term://* stopinsert
 " sorter_ranker is better for file source, not grep.
 " sorter_ranker sort according to line's length, but it's better
 " for lines from the same file to be gathered together.
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+            \ ['*~', '*.o', '*.exe', '*.bak', '.DS_Store', '*.pyc', '*.sw[po]', '*.class',
+            \ '.hg/', '.git/', '.bzr/', '.svn/', '.tox/', 'tags', 'tags-*'])
+
+call denite#custom#source(
+      \ 'file_rec', 'matchers', ['matcher_fuzzy', 'matcher_ignore_globs'])
+
 call denite#custom#source(
 \ 'grep', 'sorters', [])
 
