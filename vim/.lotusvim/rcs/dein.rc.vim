@@ -56,7 +56,7 @@ if dein#load_state(g:dein_dir)
     call dein#add('tpope/vim-fugitive')
 
     " Match Tags for HTML/XML...
-    call dein#add('valloric/MatchTagAlways')
+    call dein#add('Valloric/MatchTagAlways')
 
     " drawit
     call dein#add('vim-scripts/DrawIt.git')
