@@ -47,7 +47,6 @@ if dein#load_state(g:dein_dir)
     call dein#add('plasticboy/vim-markdown')
 
     " integrate ultisnips with vim-snippets.
-    call dein#add('SirVer/ultisnips')
     call dein#add('honza/vim-snippets')
 
     " auto close brackets

@@ -262,7 +262,7 @@ call denite#custom#var("file_rec", "command",
 
 " custom grep, ignore some files
 call denite#custom#var('grep', 'command', ['grep'])
-call denite#custom#var('grep', 'default_opts', ['-inH', '--exclude=.tags', '--exclude-dir=.tox', '--exclude-dir=.git'])
+call denite#custom#var('grep', 'default_opts', ['-inH', '--exclude=.tags', '--exclude-dir=.tox', '--exclude-dir=.git', '--exclude-dir=bower_components'])
 call denite#custom#var('grep', 'recursive_opts', ['-r'])
 call denite#custom#var('grep', 'pattern_opt', ['-e'])
 call denite#custom#var('grep', 'separator', ['--'])

@@ -24,8 +24,8 @@ set history=1024
 "disable vi compatibility (emulation of old bugs)
 set nocompatible
 " highlight cursor line
-au WinLeave * set nocursorline nocursorcolumn
-au WinEnter * set cursorline cursorcolumn
+au BufLeave * set nocursorline nocursorcolumn
+au BufEnter * set cursorline cursorcolumn
 
 " Write the contents of the file, if it has been modified.
 set autowriteall
