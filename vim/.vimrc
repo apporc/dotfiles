@@ -1,5 +1,5 @@
 " Skip initialization for vim-tiny or vim-small.
-if !1 | finish | endif
+if ! has('nvim') | finish | endif
 
 " set python binary for neovim
 " this avoid use virtualenv python
