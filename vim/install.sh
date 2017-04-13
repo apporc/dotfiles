@@ -86,8 +86,13 @@ update_rc () {
 setup_for_neovim () {
     mkdir -p ${HOME}/.config/nvim
     ln -sf ${LOTUS_PWD}/.vimrc ${HOME}/.config/nvim/init.vim
-    pip2 install neovim
-    pip3 install neovim
+    if [ "$os" != "macos" ];then
+      sudo pip2 install neovim
+      sudo pip3 install neovim
+    else
+      pip2 install neovim
+      pip3 install neovim
+    fi
     # install dein package manager for neovim
     if [ ! -d "{HOME}/.cache/dein/repos/github.com/Shougo/dein.vim" ];then
       git clone https://github.com/Shougo/dein.vim ~/.cache/dein/repos/github.com/Shougo/dein.vim
@@ -95,8 +100,13 @@ setup_for_neovim () {
 }
 
 setup_for_python () {
+    if [ "$os" != "macos" ];then
+      sudo pip2 install jedi pygments pylint flake8
+      sudo pip3 install jedi pygments pylint flake8
+    else
       pip2 install jedi pygments pylint flake8
       pip3 install jedi pygments pylint flake8
+    fi
 }
 
 setup_for_javascript () {
@@ -109,7 +119,7 @@ main () {
     echo "======================================================="
 
     if [ "$os" != "macos" ];then
-      install_pack gcc make python2 python3 ctags npm neovim xsel go
+      install_pack gcc make python2 python3 ctags npm neovim xsel go python2-pip python-pip
     else
       brew tap neovim/neovim
       brew tap homebrew/dupes
