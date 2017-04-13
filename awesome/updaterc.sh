@@ -30,10 +30,18 @@ update_rc () {
   done
 }
 
+# get awesome-copycats
 update_rc ${HOME} $BASEDIR .xinitrc .Xresources .irssi .inputrc .Xmodmap .tmux.conf
 update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf .tern-config
 if [ ! -d ${HOME}/.config/awesome ]
 then
   mkdir -p ${HOME}/.config/awesome
 fi
-update_rc ${HOME}/.config/awesome $BASEDIR rc.lua themes
+git clone https://github.com/copycat-killer/awesome-copycats.git ~/Projects/awesome-copycats
+ln -s ~/Projects/awesome-copycats ~/.config/awesome
+cd ~/Projects/awesome-copycats
+git submodule init
+git submodule sync
+git submodule update
+cd -
+update_rc ${HOME}/.config/awesome $BASEDIR rc.lua
