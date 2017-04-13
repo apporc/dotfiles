@@ -129,7 +129,6 @@ wireshark-cli
 wireshark-common
 wireshark-gtk
 wqy-bitmapfont
-xchat
 xlockmore
 xmind
 zip
@@ -139,3 +138,4 @@ gvfs-gphoto2
 gvfs-mtp
 gvfs-nfs
 gvfs-smb
+mpc
