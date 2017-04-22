@@ -64,7 +64,7 @@ awful.spawn.with_shell("if [ $(tmux ls 2>&1 | grep apporc | grep -v attached |wc
 local chosen_theme = "holo"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "urxvtc" or "xterm"
+local terminal     = "urxvt" or "xterm"
 local editor       = os.getenv("EDITOR") or "nano" or "vi"
 local gui_editor   = "gvim"
 local browser      = "firefox"
