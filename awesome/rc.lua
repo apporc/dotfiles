@@ -326,7 +326,8 @@ globalkeys = awful.util.table.join(
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey, "Shift" }, "l", function () awful.util.spawn("xlock") end),
-    awful.key({ modkey, "Shift" }, "p", function () awful.util.spawn("shutdown -h now") end),
+    awful.key({ modkey, "Shift" }, "p", function () awful.util.spawn("systemctl poweroff") end),
+    awful.key({ modkey, "Shift" }, "s", function () awful.util.spawn("systemctl suspend") end),
     -- awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
     --           {description = "increase master width factor", group = "layout"}),
     -- awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incmwfact(-0.05)          end,
@@ -371,7 +372,7 @@ globalkeys = awful.util.table.join(
         end),
     awful.key({ }, "XF86AudioRaiseVolume",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
+            os.execute(string.format("amixer -q set %s 5%%+", beautiful.volume.channel))
             beautiful.volume.update()
         end),
     awful.key({ modkey, 'Shift'}, "Down",
@@ -381,7 +382,7 @@ globalkeys = awful.util.table.join(
         end),
     awful.key({ }, "XF86AudioLowerVolume",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
+            os.execute(string.format("amixer -q set %s 5%%-", beautiful.volume.channel))
             beautiful.volume.update()
         end),
     awful.key({ modkey, 'Shift' }, "m",
