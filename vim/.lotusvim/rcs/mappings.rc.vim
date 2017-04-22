@@ -13,16 +13,19 @@ inoremap <leader>h <ESC>h
 inoremap <leader>l <ESC>l
 
 inoremap <leader>a <ESC>la
-inoremap <leader>i <ESC>a
+inoremap <leader>i <ESC>i
 inoremap <leader>A <ESC>A
 inoremap <leader>I <ESC>I
 inoremap <leader>o <ESC>o
 inoremap <leader>O <ESC>O
 inoremap <leader>v <ESC>v
 inoremap <leader>x <ESC>xi
+inoremap <leader>^ <ESC>^
 inoremap <leader>dd <ESC>dd
 inoremap <leader>dw <ESC>dw
+inoremap <leader>cw <ESC>cw
 inoremap <leader>db <ESC>ldb
+inoremap <leader>df <ESC>ldf
 
 inoremap <leader>e <ESC>e
 inoremap <leader>w <ESC>w

@@ -4,16 +4,16 @@ if ! has('nvim') | finish | endif
 " set python binary for neovim
 " this avoid use virtualenv python
 " i don't want to install neovim-python to every virtualenv of mine.
-if filereadable('/usr/bin/python')
-  let g:python_host_prog = '/usr/bin/python'
-elseif filereadable('/usr/local/bin/python')
+if filereadable('/usr/local/bin/python')
   let g:python_host_prog = '/usr/local/bin/python'
+elseif filereadable('/usr/bin/python')
+  let g:python_host_prog = '/usr/bin/python'
 endif
 
-if filereadable('/usr/bin/python3')
-  let g:python3_host_prog = '/usr/bin/python3'
-elseif filereadable('/usr/local/bin/python3')
+if filereadable('/usr/local/bin/python3')
   let g:python3_host_prog = '/usr/local/bin/python3'
+elseif filereadable('/usr/bin/python3')
+  let g:python3_host_prog = '/usr/bin/python3'
 endif
 
 " Function to source vim configuration files.

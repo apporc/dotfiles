@@ -35,6 +35,8 @@ if dein#load_state(g:dein_dir)
     call dein#add('vim-scripts/po.vim.git')
 
     " autocomplete and definition
+    " currently need to instll yaourt -S ncurses5-compat-libs to make it work
+    " on archlinu.
     call dein#add('Valloric/YouCompleteMe', {'merged': 0, 'build': './install.py --clang-completer --gocode-completer --tern-completer'})
 
     " for python
