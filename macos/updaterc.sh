@@ -32,6 +32,11 @@ update_rc () {
     ln -sf $src/$filename $dst
   done
 }
+
+# get oh-my-zsh
+if [ ! -d ~/Projects/oh-my-zsh ];then
+  git clone https://github.com/robbyrussell/oh-my-zsh.git ~/Projects/oh-my-zsh
+fi
 update_rc ${HOME} $BASEDIR .tmux.conf
 update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf .tern-config
 
