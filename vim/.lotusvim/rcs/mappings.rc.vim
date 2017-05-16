@@ -21,6 +21,7 @@ inoremap <leader>O <ESC>O
 inoremap <leader>v <ESC>v
 inoremap <leader>x <ESC>xi
 inoremap <leader>^ <ESC>^
+inoremap <leader>J <ESC>J
 inoremap <leader>dd <ESC>dd
 inoremap <leader>dw <ESC>dw
 inoremap <leader>cw <ESC>cw
