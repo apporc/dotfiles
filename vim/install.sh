@@ -16,13 +16,13 @@ EMERGE=emerge
 PACMAN=pacman
 
 
-usage () {
+function usage () {
   echo "Usage: $0 [-hij] [-o OS]"
   echo "-h    Show this help."
   echo "-o    The operating system name, supported now including centos, ubuntu, fedora, redhat, debian, gentoo, arch."
 }
 
-parse_opt () {
+function parse_opt () {
   while getopts "hijo:" opt
   do
       case $opt in
@@ -38,7 +38,7 @@ parse_opt () {
 }
 
 
-install_pack () {
+function install_pack () {
   PACK=$@
   if [ $os == 'ubuntu' -o $os == 'debian' ];then
     sudo ${APT} -y install $PACK
@@ -53,18 +53,18 @@ install_pack () {
   fi
 }
 
-npm_config () {
+function npm_config () {
   # fuck gfw
   sudo npm config set registry https://registry.npm.taobao.org --global
   sudo npm config set disturl https://npm.taobao.org/dist --global
 }
 
-npm_install () {
+function npm_install () {
   PACK=$@
   sudo npm install -d $PACK
 }
 
-update_rc () {
+function update_rc () {
   dst=$1
   src=$2
   shift
@@ -83,7 +83,7 @@ update_rc () {
   done
 }
 
-setup_for_neovim () {
+function setup_for_neovim () {
     mkdir -p ${HOME}/.config/nvim
     ln -sf ${LOTUS_PWD}/.vimrc ${HOME}/.config/nvim/init.vim
     if [ "$os" != "macos" ];then
@@ -99,7 +99,7 @@ setup_for_neovim () {
     fi
 }
 
-setup_for_python () {
+function setup_for_python () {
     if [ "$os" != "macos" ];then
       sudo pip2 install jedi pygments pylint flake8
       sudo pip3 install jedi pygments pylint flake8
@@ -109,12 +109,12 @@ setup_for_python () {
     fi
 }
 
-setup_for_javascript () {
+function setup_for_javascript () {
     npm_config
     npm_install npm@latest jslint bower gulp
   }
 
-main () {
+function main () {
     echo "Please input your password when you are asked to."
     echo "======================================================="
 
