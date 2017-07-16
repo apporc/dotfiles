@@ -12,10 +12,9 @@ rxvt-unicode
 xorg-xrandr
 xorg-xrdb
 ttf-dejavu
-fcitx
+fcitx-im
 fcitx-googlepinyin
 fcitx-configtool
-fcitx-gtk2
 urxvt-tabbedex
 urxvt-clipboard
 alas-utils

@@ -56,8 +56,9 @@ local function run_once(cmd_arr)
 end
 
 -- run_once({ "urxvtd", "unclutter -root" })
-run_once({ "fcitx", "chromium", "virt-manager"})
+run_once({ "chromium", "virt-manager" })
 awful.spawn.with_shell("if [ $(tmux ls 2>&1 | grep apporc | grep -v attached |wc -l) -eq 1 ]; then urxvt -e tmux source-file /home/apporc/.tmux/apporc.conf; fi")
+awful.spawn.with_shell("fcitx -d -r")
 -- }}}
 
 -- {{{ Variable definitions

@@ -42,11 +42,20 @@ if [ ! -d ${HOME}/.config/awesome ]
 then
   mkdir -p ${HOME}/.config/awesome
 fi
-git clone https://github.com/copycat-killer/awesome-copycats.git ~/Projects/awesome-copycats
-ln -s ~/Projects/awesome-copycats ~/.config/awesome
-cd ~/Projects/awesome-copycats
-git submodule init
-git submodule sync
-git submodule update
-cd -
-update_rc ${HOME}/.config/awesome $BASEDIR rc.lua
+
+# get awesome theme
+if [ ! -d ${HOME}/Projects/awesome-copycats ]
+then
+  git clone https://github.com/copycat-killer/awesome-copycats.git ${HOME}/Projects/awesome-copycats
+  cd ${HOME}/Projects/awesome-copycats
+  git submodule init
+  git submodule sync
+  git submodule update
+  cd -
+fi
+if [ ! -e ${HOME}/.config/awesome ]
+then
+  ln -s ${HOME}/Projects/awesome-copycats ${HOME}/.config/awesome
+fi
+
+update_rc ${HOME}/.config/awesome $BASEDIR rc.lua autorun.sh

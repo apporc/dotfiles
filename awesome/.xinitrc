@@ -2,6 +2,7 @@
 #
 # User's .xinitrc file
 
+# because awesome bug, disable it at present
 if [ -s ~/.Xmodmap ];
 then
     xmodmap ~/.Xmodmap
