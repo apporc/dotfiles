@@ -55,13 +55,19 @@ function install_pack () {
 
 function npm_config () {
   # fuck gfw
-  sudo npm config set registry https://registry.npm.taobao.org --global
-  sudo npm config set disturl https://npm.taobao.org/dist --global
+  sudo npm config -g set cache "${HOME}/.npm"
+  sudo npm config -g set registry https://registry.npm.taobao.org --global
+  sudo npm config -g set disturl https://npm.taobao.org/dist --global
 }
 
 function npm_install () {
   PACK=$@
-  sudo npm install -d $PACK
+  sudo npm install -g $PACK
+}
+
+function go_get () {
+  PACK=$@
+  go get -u $@
 }
 
 function update_rc () {
@@ -111,8 +117,12 @@ function setup_for_python () {
 
 function setup_for_javascript () {
     npm_config
-    npm_install npm@latest jslint bower gulp
+    npm_install npm@latest jslint bower gulp jsctags
   }
+
+function setup_for_go () {
+    go_get github.com/jstemmer/gotags
+}
 
 function main () {
     echo "Please input your password when you are asked to."

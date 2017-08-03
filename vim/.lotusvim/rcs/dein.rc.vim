@@ -33,6 +33,7 @@ if dein#load_state(g:dein_dir)
     call dein#add('dart-lang/dart-vim-plugin.git')
     call dein#add('rodjek/vim-puppet.git')
     call dein#add('vim-scripts/po.vim.git')
+    call dein#add('ternjs/tern_for_vim', {'merged': 0, 'build': 'npm install'})
 
     " autocomplete and definition
     " currently need to instll yaourt -S ncurses5-compat-libs to make it work
