@@ -14,7 +14,7 @@ fi
 alias rm='rm -i'
 alias xmind='XMind'
 alias less='less -R'
-alias grep='grep --color=always'
+alias grep='grep --color=auto'
 alias vim='nvim'
 
 # tmux workspace alias
