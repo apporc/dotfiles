@@ -55,5 +55,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+unsetopt share_history
+
 # Custom settings
 source ~/.apporcrc
