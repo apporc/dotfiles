@@ -56,6 +56,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 unsetopt share_history
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # Custom settings
 source ~/.apporcrc
