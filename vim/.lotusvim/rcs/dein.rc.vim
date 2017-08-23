@@ -23,7 +23,7 @@ if dein#load_state(g:dein_dir)
     call dein#add('moll/vim-bbye')  " Preserve the window when closing buffer.
     call dein#add('vim-scripts/BufOnly.vim')
 
-    call dein#add('Shougo/denite.nvim')
+    call dein#add('Shougo/denite.nvim', {'merged': 0})
     call dein#add('Shougo/neomru.vim')
 
     " Syntax Checker
