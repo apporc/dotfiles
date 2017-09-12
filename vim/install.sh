@@ -55,14 +55,24 @@ function install_pack () {
 
 function npm_config () {
   # fuck gfw
-  sudo npm config -g set cache "${HOME}/.npm"
-  sudo npm config -g set registry https://registry.npm.taobao.org --global
-  sudo npm config -g set disturl https://npm.taobao.org/dist --global
+  if [ $os == 'macos' ]; then
+    npm config -g set cache "${HOME}/.npm"
+    npm config -g set registry https://registry.npm.taobao.org --global
+    npm config -g set disturl https://npm.taobao.org/dist --global
+  else
+    sudo npm config -g set cache "${HOME}/.npm"
+    sudo npm config -g set registry https://registry.npm.taobao.org --global
+    sudo npm config -g set disturl https://npm.taobao.org/dist --global
+  fi
 }
 
 function npm_install () {
   PACK=$@
-  sudo npm install -g $PACK
+  if [ $os == 'macos' ]; then
+    npm install -g $PACK
+  else
+    sudo npm install -g $PACK
+  fi
 }
 
 function go_get () {
@@ -122,6 +132,8 @@ function setup_for_javascript () {
 
 function setup_for_go () {
     go_get github.com/jstemmer/gotags
+    go_get github.com/golang/lint/golint
+    go_get github.com/kisielk/errcheck
 }
 
 function main () {
