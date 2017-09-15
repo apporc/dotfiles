@@ -126,6 +126,7 @@ function setup_for_python () {
 }
 
 function setup_for_javascript () {
+    install_pack npm
     npm_config
     npm_install npm@latest jslint bower gulp jsctags
   }

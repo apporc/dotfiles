@@ -122,4 +122,17 @@ export PATH=${PATH}:${HOME}/Projects/android_repo
 # arcanist
 export PATH=${PATH}:${HOME}/Projects/arcanist/bin
 
+# proxy command on mac
+function proxy_off(){
+    unset http_proxy
+    unset https_proxy
+    echo -e "proxy off"
+}
+function proxy_on() {
+    export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+    export http_proxy="http://127.0.0.1:1087"
+    export https_proxy=$http_proxy
+    echo -e "proxy on"
+}
+
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
