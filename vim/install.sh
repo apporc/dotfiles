@@ -60,9 +60,12 @@ function npm_config () {
     npm config -g set registry https://registry.npm.taobao.org --global
     npm config -g set disturl https://npm.taobao.org/dist --global
   else
-    sudo npm config -g set cache "${HOME}/.npm"
-    sudo npm config -g set registry https://registry.npm.taobao.org --global
-    sudo npm config -g set disturl https://npm.taobao.org/dist --global
+    NPM_PACK_DIR="${HOME}/Projects/npm-packages"
+    mkdir -p $NPM_PACK_DIR
+    npm config set prefix $NPM_PACK_DIR
+    npm config -g set cache "${HOME}/.npm"
+    npm config -g set registry https://registry.npm.taobao.org --global
+    npm config -g set disturl https://npm.taobao.org/dist --global
   fi
 }
 
@@ -71,7 +74,7 @@ function npm_install () {
   if [ $os == 'macos' ]; then
     npm install -g $PACK
   else
-    sudo npm install -g $PACK
+    npm install -g $PACK
   fi
 }
 
@@ -126,7 +129,6 @@ function setup_for_python () {
 }
 
 function setup_for_javascript () {
-    install_pack npm
     npm_config
     npm_install npm@latest jslint bower gulp jsctags
   }
