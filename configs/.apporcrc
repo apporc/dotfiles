@@ -88,39 +88,40 @@ fi
 
 # scripts of myself
 
-export PATH=${PATH}:${HOME}/Projects/dotfiles/scripts
+export PATH=${HOME}/Projects/dotfiles/scripts:${PATH}
 
 # cabal
-export PATH=${PATH}:${HOME}/.cabal/bin/
+export PATH=${HOME}/.cabal/bin/:${PATH}
 
 # dart lang
-export PATH=${PATH}:${HOME}/Projects/dart
+export PATH=${HOME}/Projects/dart:${PATH}
 
-# go lang, arch linux go package need GOROOT to be /usr/lib/go
-# export GOROOT=/usr/lib/go
 export GOPATH=${HOME}/Projects/go
-export PATH=${PATH}:${GOPATH}/bin
+export PATH=${GOPATH}/bin:${PATH}
 
 # adt
-export PATH=${PATH}:/home/apporc/Software/devtool/adt-bundle-linux-x86_64-20140702/sdk/platform-tools
-export PATH=${PATH}:/usr/local/bin/apporc
+export PATH=/home/apporc/Software/devtool/adt-bundle-linux-x86_64-20140702/sdk/platform-tools:${PATH}
+export PATH=/usr/local/bin/apporc:${PATH}
 
 # ruby
-export PATH=${PATH}:${HOME}/.gem/ruby/2.1.0/bin
+export PATH=${HOME}/.gem/ruby/2.1.0/bin:${PATH}
 
 # android studio sdk
 export ANDROID_HOME=~/Library/Android/sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+export PATH=${ANDROID_HOME}/tools:${PATH}
+export PATH=${ANDROID_HOME}/platform-tools:${PATH}
 
 # chromiumos dev, repo cmd
-export PATH=${PATH}:${HOME}/Projects/depot_tools
+export PATH=${HOME}/Projects/depot_tools:${PATH}
 
 # android dev, repo cmd
-export PATH=${PATH}:${HOME}/Projects/android_repo
+export PATH=${HOME}/Projects/android_repo:${PATH}
 
 # arcanist
-export PATH=${PATH}:${HOME}/Projects/arcanist/bin
+export PATH=${HOME}/Projects/arcanist/bin:${PATH}
+
+# npm
+export PATH=${HOME}/Projects/npm-packages/bin:${PATH}
 
 # proxy command on mac
 function proxy_off(){

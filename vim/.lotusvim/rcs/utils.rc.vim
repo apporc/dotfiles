@@ -51,7 +51,7 @@ endfunction
 function! SetTabWidth(width)
   execute 'setl shiftwidth=' . a:width
   execute 'setl tabstop=' . a:width
-  execute 'setl softtabstop='. a:width
+  execute 'setl softtabstop=' . a:width
 endfunction
 
 function! Disable_window_shortcut() "{{{

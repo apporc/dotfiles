@@ -130,7 +130,7 @@ function setup_for_python () {
 
 function setup_for_javascript () {
     npm_config
-    npm_install npm@latest bower gulp jsctags eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard
+    npm_install npm@latest yarn bower gulp jsctags eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard
   }
 
 function setup_for_go () {
@@ -165,6 +165,9 @@ function main () {
 
     # javascript
     setup_for_javascript
+
+    # go
+    setup_for_go
 
     echo "======================================================="
     echo "Done."
