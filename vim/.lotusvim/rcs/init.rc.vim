@@ -106,6 +106,9 @@ set virtualedit=block
 " Check timestamp more for 'autoread'.
 autocmd MyAutoCmd WinEnter * checktime
 
+" disable number in terminal mode
+autocmd MyAutoCmd TermOpen * setlocal nonumber norelativenumber
+
 " Disable paste automatically.
 autocmd MyAutoCmd InsertLeave *
       \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
