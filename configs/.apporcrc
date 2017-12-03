@@ -79,6 +79,7 @@ if [[ "$OS" != 'Darwin' ]];then
     mkdir -p $SSH_AGENT_DIR
     fi
     if ! pgrep -u $USER ssh-agent > /dev/null; then
+        rm -f ${SSH_AUTH_SOCK}
         ssh-agent -a $SSH_AUTH_SOCK > ${SSH_AGENT_DIR}/${SSH_AGENT_PID}
     fi
     if [[ "$SSH_AGENT_PID" == "" ]]; then
