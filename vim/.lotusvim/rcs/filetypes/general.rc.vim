@@ -26,6 +26,7 @@ let g:ycm_semantic_triggers =  {
 \   'lua' : ['.', ':'],
 \   'erlang' : [':'],
 \ }
+let g:ycm_global_ycm_extra_conf = expand('$HOME') . '/.ycm_extra_conf.py'
 
 nnoremap <m-g> :YcmCompleter GoTo<CR>
 
