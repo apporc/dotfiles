@@ -146,6 +146,7 @@ function main () {
     if [ "$os" != "macos" ];then
       install_pack gcc make python2 python3 ctags npm neovim xsel go python2-pip python-pip
     else
+      brew install wget
       wget https://bootstrap.pypa.io/get-pip.py
       python get-pip.py
       brew tap neovim/neovim
