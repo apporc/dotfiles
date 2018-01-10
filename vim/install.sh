@@ -146,12 +146,7 @@ function main () {
     if [ "$os" != "macos" ];then
       install_pack gcc make python2 python3 ctags npm neovim xsel go python2-pip python-pip
     else
-      brew install wget
-      if [ -f './get-pip.py' ]
-      then
-        wget https://bootstrap.pypa.io/get-pip.py
-      fi
-      sudo python get-pip.py
+      brew install python python3
       brew tap neovim/neovim
       brew tap homebrew/dupes
       brew install grep --with-default-names
