@@ -146,11 +146,15 @@ function main () {
     if [ "$os" != "macos" ];then
       install_pack gcc make python2 python3 ctags npm neovim xsel go python2-pip python-pip
     else
+      wget https://bootstrap.pypa.io/get-pip.py
+      python get-pip.py
       brew tap neovim/neovim
       brew tap homebrew/dupes
       brew install grep --with-default-names
       install_pack ctags-exuberant npm neovim go
     fi
+
+    mkdir -p $HOME/.config/
 
     # config files
     update_rc $HOME ${LOTUS_PWD} .vimrc .lotusvim
