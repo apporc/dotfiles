@@ -1,7 +1,7 @@
 function! Auto_PYTHON()
   call SetTabWidth(4)
   setl fdm=indent
-  setl smartindent
+  setl nosmartindent
   "This silent won't work, don't know why.
   noremap <buffer> <silent> <F5> :!ctags -R -f .tags --sort=yes --fields=+iaSl --extra=+q --languages=Python . <CR>
 endfunction
