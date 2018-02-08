@@ -69,3 +69,19 @@ endfunction
 
 autocmd MyAutoCmd FileType qf call s:quickfix_my_settings()
 autocmd MyAutoCmd FileType help call s:help_my_settings()
+
+" ------------------
+" jsbeautify
+" ------------------
+"
+map <m-f> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <m-f> :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <m-f> :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <m-f> :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <m-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <m-f> :call CSSBeautify()<cr>

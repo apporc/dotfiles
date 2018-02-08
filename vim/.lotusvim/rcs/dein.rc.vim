@@ -45,6 +45,9 @@ if dein#load_state(g:dein_dir)
     call dein#add('tell-k/vim-autopep8')
     call dein#add('jmcantrell/vim-virtualenv')
 
+    " for javascript
+    call dein#add('maksimr/vim-jsbeautify')
+
     " For markdown
     call dein#add('godlygeek/tabular')
     call dein#add('plasticboy/vim-markdown')

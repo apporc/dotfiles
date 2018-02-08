@@ -4,6 +4,8 @@ OS=$(uname)
 export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='nvim'
 export BROWSER='chromium'
+export COLUMNS=${COLUMNS}
+export LINES=${LINES}
 
 if [[ "$OS" == 'Darwin' ]];then
   alias ls='ls -G'

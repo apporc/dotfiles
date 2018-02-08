@@ -130,7 +130,7 @@ function setup_for_python () {
 
 function setup_for_javascript () {
     npm_config
-    npm_install npm@latest yarn bower gulp jsctags eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard
+    npm_install npm@latest yarn bower gulp jsctags eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard uglify-js
   }
 
 function setup_for_go () {
@@ -161,7 +161,7 @@ function main () {
 
     # config files
     update_rc $HOME ${LOTUS_PWD} .vimrc .lotusvim
-    update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .pylintrc .vimpressrc .ycm_extra_conf.py
+    update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .pylintrc .vimpressrc .ycm_extra_conf.py .editorconfig
     update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
 
     # neovim
