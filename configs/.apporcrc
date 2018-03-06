@@ -24,50 +24,6 @@ alias oslo="tmux_apporc oslo"
 alias algo="tmux_apporc algorithm"
 alias golang="tmux_apporc golang"
 
-# alias for git
-#
-alias gtad='git add'
-alias gtap='git apply'
-alias gtbi='git bisect'
-alias gtbr='git branch'
-alias gtci='git commit'
-alias gtcf='git config'
-alias gtcl='git clone'
-alias gtco='git checkout'
-alias gtcp='git cherry-pick'
-alias gtcr='git cherry'
-alias gtde='git describe'
-alias gtdi='git diff'
-alias gtdis='git diff --stat'
-alias gtfe='git fetch'
-alias gtfp='git format-patch'
-alias gtgc='git gc'
-alias gtlg='git log'
-alias gtlg1='git log --pretty=oneline'                                                                                                                                                         
-alias gtlgp='git log -p'
-alias gtlgs='git log --stat'
-alias gtlgfp='git log --first-parent'
-alias gtlglr='git log --pretty=oneline --left-right'
-
-alias gtmg='git merge'
-alias gtmv='git mv'
-alias gtps='git push'
-alias gtpl='git pull'
-alias gtrb='git rebase'
-alias gtrl='git reflog'
-alias gtrm='git rm'
-alias gtrs='git reset'
-alias gtrmt='git remote'
-alias gtsbr='git show-branch'
-alias gtsh='git show'
-alias gtslg='git shortlog'
-alias gtsm='git submodule'
-alias gtss='git stash'
-alias gtst='git status'
-alias gttg='git tag'
-alias gtnw='git new-workdir'
-
-
 # ssh-agent configuration
 
 if [[ "$OS" != 'Darwin' ]];then
@@ -125,6 +81,9 @@ export PATH=${HOME}/Projects/arcanist/bin:${PATH}
 
 # npm
 export PATH=${HOME}/Projects/npm-packages/bin:${PATH}
+
+# mac brew python2
+export PATH=/usr/local/opt/python@2/bin:${PATH}
 
 # proxy command on mac
 function proxy_off(){

@@ -146,10 +146,11 @@ function main () {
     if [ "$os" != "macos" ];then
       install_pack gcc make python2 python3 ctags npm neovim xsel go python2-pip python-pip
     else
-      brew install python python3 tmux
-      if [ ! -f /usr/local/bin/python ]
+      brew install python python2 tmux
+      export PATH=/usr/local/opt/python@2/bin:${PATH}
+      if [ ! -e /usr/local/bin/python ]
       then
-        ln -s /usr/local/bin/python2 /usr/local/bin/python
+        ln -s /usr/local/opt/python@2/bin/python2 /usr/local/bin/python
       fi
       brew tap neovim/neovim
       brew tap homebrew/dupes

@@ -11,6 +11,7 @@
        \}
 
 let g:ycm_python_binary_path = 'python'
+" let g:ycm_server_python_interpreter = '/usr/local/bin/python'
 let g:ycm_key_invoke_completion = '<m-f>'
 let g:ycm_semantic_triggers =  {
 \   'c' : ['->', '.'],
