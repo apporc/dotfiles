@@ -161,7 +161,7 @@ function main () {
 
     # config files
     update_rc $HOME ${LOTUS_PWD} .vimrc .lotusvim
-    update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .pylintrc .vimpressrc .ycm_extra_conf.py .editorconfig
+    update_rc $HOME ${LOTUS_PWD}/.lotusvim/configs .pylintrc .vimpressrc .editorconfig
     update_rc $HOME/.config/ ${LOTUS_PWD}/.lotusvim/configs flake8
 
     # neovim

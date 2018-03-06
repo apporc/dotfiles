@@ -35,9 +35,11 @@ if [ ! -d ~/Projects/oh-my-zsh ];then
   git clone https://github.com/robbyrussell/oh-my-zsh.git ~/Projects/oh-my-zsh
 fi
 
-# get awesome-copycats
 update_rc ${HOME} $BASEDIR .xinitrc .Xresources .irssi .inputrc .Xmodmap .tmux.conf
-update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf .tern-config
+update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf .tern-config .irssi .pydistutils.cfg
+mkdir -p ${HOME}/.pip
+update_rc ${HOME}/.pip $CONFIGDIR pip.conf
+
 if [ ! -d ${HOME}/.config/awesome ]
 then
   mkdir -p ${HOME}/.config/awesome

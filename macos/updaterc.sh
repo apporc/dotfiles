@@ -22,7 +22,7 @@ update_rc () {
       echo "Old $filename detected"
       echo "Backing up old $filename to /tmp"
       echo "Check that yourself"
-      cp -rf $dst/$filename /tmp/$filename$RANDOM
+      cp -Rf $dst/$filename /tmp/$filename$RANDOM
       if [[ -d $dst/$filename ]];then
         rm -rf $dst/$filename
       else
@@ -38,6 +38,9 @@ if [ ! -d ~/Projects/oh-my-zsh ];then
   git clone https://github.com/robbyrussell/oh-my-zsh.git ~/Projects/oh-my-zsh
 fi
 update_rc ${HOME} $BASEDIR .tmux.conf
-update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf .tern-config
+update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf .tern-config .irssi .pydistutils.cfg
+
+mkdir -p ${HOME}/.pip
+update_rc ${HOME}/.pip $CONFIGDIR pip.conf
 
 echo 'source ~/.bashrc' > ~/.bash_profile
