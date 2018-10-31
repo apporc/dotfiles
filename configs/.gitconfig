@@ -11,3 +11,5 @@
 	scheme = https
 	port = 443
 	username = apporc
+[pager]
+	branch = false
