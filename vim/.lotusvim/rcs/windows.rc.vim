@@ -295,7 +295,7 @@ call denite#custom#var('grep', 'default_opts', ['-inH', '--exclude=.tags', '--ex
 call denite#custom#var('grep', 'recursive_opts', ['-r'])
 call denite#custom#var('grep', 'pattern_opt', ['-e'])
 call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', ['.'])
+call denite#custom#var('grep', 'final_opts', [])
 
 " Change mappings.
 call denite#custom#map(
@@ -317,6 +317,7 @@ call denite#custom#map('insert', '<C-v>', '<denite:paste_from_register>', 'norem
 call denite#custom#map('insert', 'kk', '<denite:enter_mode:normal>', 'noremap')
 call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>', 'noremap')
 call denite#custom#map('insert', '<M-q>', '<denite:quit>', 'noremap')
+call denite#custom#map('insert', '<M-r>', '<denite:redraw>', 'noremap')
 call denite#custom#map('insert', '<M-b>', '<denite:move_caret_to_one_word_left>', 'noremap')
 call denite#custom#map('insert', '<M-f>', '<denite:move_caret_to_one_word_right>', 'noremap')
 call denite#custom#map('insert', '<M-d>', '<denite:delete_word_under_caret>', 'noremap')
