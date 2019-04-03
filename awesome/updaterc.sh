@@ -36,7 +36,7 @@ if [ ! -d ~/Projects/oh-my-zsh ];then
 fi
 
 update_rc ${HOME} $BASEDIR .xinitrc .Xresources .irssi .inputrc .Xmodmap .tmux.conf
-update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf .tern-config .irssi .pydistutils.cfg
+update_rc ${HOME} $CONFIGDIR .bashrc .gitconfig .pypirc .tmux .zshrc .apporcrc .common_tmux.conf .tern-config .irssi .pydistutils.cfg .npmrc
 mkdir -p ${HOME}/.pip
 update_rc ${HOME}/.pip $CONFIGDIR pip.conf
 

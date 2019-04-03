@@ -56,16 +56,19 @@ function install_pack () {
 function npm_config () {
   # fuck gfw
   if [ $os == 'macos' ]; then
-    npm config -g set cache "${HOME}/.npm"
-    npm config -g set registry https://registry.npm.taobao.org --global
-    npm config -g set disturl https://npm.taobao.org/dist --global
+    NPM_PACK_DIR="${HOME}/Projects/npm-packages"
+    mkdir -p $NPM_PACK_DIR
+    npm config set -g prefix $NPM_PACK_DIR
+    npm config set -g cache "/tmp/npm"
+    npm config set -g registry https://registry.npm.taobao.org
+    npm config set -g disturl https://npm.taobao.org/dist
   else
     NPM_PACK_DIR="${HOME}/Projects/npm-packages"
     mkdir -p $NPM_PACK_DIR
-    npm config set prefix $NPM_PACK_DIR
-    npm config -g set cache "${HOME}/.npm"
-    npm config -g set registry https://registry.npm.taobao.org --global
-    npm config -g set disturl https://npm.taobao.org/dist --global
+    npm config set -g prefix $NPM_PACK_DIR
+    npm config set -g cache "/tmp/npm"
+    npm config set -g registry https://registry.npm.taobao.org
+    npm config set -g disturl https://npm.taobao.org/dist
   fi
 }
 
@@ -130,7 +133,7 @@ function setup_for_python () {
 
 function setup_for_javascript () {
     npm_config
-    npm_install npm@latest yarn bower gulp jsctags eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard uglify-js
+    npm_install npm@latest yarn jsctags eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard uglify-js
   }
 
 function setup_for_go () {
@@ -153,9 +156,7 @@ function main () {
         ln -s /usr/local/opt/python@2/bin/python2 /usr/local/bin/python
       fi
       brew tap neovim/neovim
-      brew tap homebrew/dupes
-      brew install grep --with-default-names
-      install_pack ctags-exuberant npm neovim go
+      install_pack grep ctags-exuberant npm neovim go
     fi
 
     mkdir -p $HOME/.config/
