@@ -67,7 +67,7 @@ export PATH=/usr/local/bin/apporc:${PATH}
 export PATH=${HOME}/.gem/ruby/2.1.0/bin:${PATH}
 
 # android studio sdk
-export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_HOME=~/Projects/Android/sdk
 export PATH=${ANDROID_HOME}/tools:${PATH}
 export PATH=${ANDROID_HOME}/platform-tools:${PATH}
 

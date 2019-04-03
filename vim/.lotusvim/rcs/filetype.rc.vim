@@ -21,6 +21,7 @@ for i in ['general.rc.vim',
       \'php.rc.vim',
       \'python.rc.vim',
       \'vimscript.rc.vim',
+      \'yaml.rc.vim',
       \'dot.rc.vim']
   call s:source_filerc(i)
 endfor
@@ -40,3 +41,5 @@ autocmd Filetype php silent call Auto_PHP()
 autocmd Filetype go silent call Auto_GO()
 autocmd Filetype dart silent call Auto_Dart()
 autocmd Filetype dot silent call Auto_DOT()
+autocmd Filetype markdown silent call Auto_Markdown()
+autocmd Filetype yaml silent call Auto_YAML()
