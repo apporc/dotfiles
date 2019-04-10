@@ -133,7 +133,7 @@ function setup_for_python () {
 
 function setup_for_javascript () {
     npm_config
-    npm_install npm@latest yarn jsctags eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard uglify-js
+    npm_install npm@latest yarn@latest jsctags@latest uglify-js@latest eslint@latest
   }
 
 function setup_for_go () {
