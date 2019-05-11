@@ -47,6 +47,7 @@ if dein#load_state(g:dein_dir)
 
     " for javascript
     call dein#add('maksimr/vim-jsbeautify')
+    call dein#add('mxw/vim-jsx')
 
     " For markdown
     call dein#add('godlygeek/tabular')
